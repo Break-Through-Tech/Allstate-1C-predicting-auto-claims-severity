@@ -1,7 +1,7 @@
 # Predicting Auto Claims Severity
 
 **Company / Org:** Allstate  
-**Challenge Advisor:** Krystal Smuda, krystal.smuda@allstate.com; Nancy Zhang, nancy.zhang@allstate.com  
+**Challenge Advisor:** Krystal Smuda, krystal.smuda@allstate.com     
 **Program:** Break Through Tech AI Studio - Fall 2026
 
 ---
