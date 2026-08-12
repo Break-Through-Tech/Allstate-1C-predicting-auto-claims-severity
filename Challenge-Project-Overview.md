@@ -36,10 +36,10 @@ Use these milestones to guide your work. Your team will create a **GitHub Projec
 
 ## 📊 Dataset
 
-**Name and Source:** [Auto Insurance Claims Dataset]  
+**Name and Source:** Auto Insurance Claims Dataset  
 **Format:** CSV  
 **Size:** under 1gb  
-**Location:** https://github.com/Break-Through-Tech/Allstate_Auto_Claims_Severity_Prediction/tree/main/data  
+**Location:** [Data folder](data/allstate_claims_data.csv)
 
 ### Key Details
 - Numerical and categorical data stored in CSV format. Each record represents one auto insurance claim, its total paid amount ('loss' field), and different anonymized claim and vehicle characteristic fields (cat#, cont# fields).  
@@ -92,7 +92,7 @@ The following resources will help your team understand the problem space and pot
 
 **Recommended Tools:**
 - **Coding:** Google Colab
-- **Collaboration:** GitHub, Notion
+- **Collaboration:** GitHub
 - **Virtual Meetings:** Zoom
 
 ---
@@ -109,4 +109,4 @@ I’m excited to work with you!
 
 ## ❓ Questions?
 
-Please bring any questions to our first meeting during the week of August 24th (Break Through Tech’s Bridge to Studio - Session C). 
+Please bring any questions to our first meeting during the week of August 24th (Break Through Tech’s Bridge to Studio - Session A). 
