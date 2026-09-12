@@ -11,9 +11,10 @@ Welcome into office hours for this fall semester. Let's get this underway:
     - Under your section (ex. Fall AI Studio A)
     - Look for project group (ex. allstate-1, accenture-1-a)
     - Look for the office hours post where your teams posts are
-- In this post you will find the Office Hours Availability Survey. Take it! This way I will know when office hours are needed for this semester and be able to fill it.
-
-Office hours will start the week of **Sept 1st**.
+- Office hours:
+    - Wed: 5pm - 7pm ET
+    - Thu: 12pm - 4pm ET
+    - Sat: 5pm - 7pm ET
 
 Office hours are not just regular office hours they are a **virtual co-working space** that uses **body doubling** to be productive. Come with work, any work, and focus with other peeps.
 
