@@ -35,6 +35,13 @@ Tips during the CA meeting:
 - Say what you already tried. "We're stuck on X. We tried A, then B, and here's what happened" gets you a clearer answer.
 - Read back your action items. Make sure everyone is aligned on next steps.
 
+### Following Up with your Challenge Advisor
+
+After this meeting your team will be expected to communicate with your Challenge Advisor before and after each meeting.
+
+- **Challenge Advisor Prep Email**: This email is sent before the meeting and is to inform the CA what you have worked on and any questions that you might have for the upcoming meeting.
+- **Challenge Advisor Wrap Emails**: This is email is sent after meeting with the CA. This should include a recap of the meeting and any questions that were left over and not answered.
+
 ### Previous Assignments
 
 **Sept 6th**
