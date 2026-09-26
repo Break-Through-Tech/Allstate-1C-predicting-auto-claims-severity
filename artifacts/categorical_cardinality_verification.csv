@@ -1,0 +1,6 @@
+feature,inventory_cardinality,independently_recalculated_cardinality,match
+cat1,2,2,True
+cat102,9,9,True
+cat109,84,84,True
+cat110,131,131,True
+cat116,326,326,True

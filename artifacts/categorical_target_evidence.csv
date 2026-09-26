@@ -1,0 +1,38 @@
+field_name,level,level_support,denominator,support_share,rare_level_threshold,raw_mean_loss,raw_median_loss,raw_loss_iqr,support_class,selection
+cat57,A,185296,188318,0.9839526757930734,100,2919.869698644331,2081.9300000000003,2555.335,meets EDA support rule,low-cardinality observed median-range example
+cat57,B,3022,188318,0.016047324206926582,100,10239.967772998014,9532.34,5424.892499999998,meets EDA support rule,low-cardinality observed median-range example
+cat89,A,183744,188318,0.975711296848947,100,2908.94434169279,2073.635,2545.1,meets EDA support rule,low-cardinality observed median-range example
+cat89,B,4312,188318,0.02289743943754713,100,8213.293627087198,7666.925,7004.349999999999,meets EDA support rule,low-cardinality observed median-range example
+cat89,C,220,188318,0.0011682367059973025,100,7803.455545454545,6860.18,6530.562499999998,meets EDA support rule,low-cardinality observed median-range example
+cat89,D,33,188318,0.00017523550589959537,100,8898.260909090908,7238.85,9344.57,low-support / uncertain,low-cardinality observed median-range example
+cat89,E,5,188318,2.6550834227211417e-05,100,3244.568,3032.37,486.19000000000005,low-support / uncertain,low-cardinality observed median-range example
+cat89,I,2,188318,1.0620333690884567e-05,100,9814.04,9814.04,7621.320000000001,low-support / uncertain,low-cardinality observed median-range example
+cat89,G,1,188318,5.310166845442284e-06,100,3666.93,3666.93,0.0,low-support / uncertain,low-cardinality observed median-range example
+cat89,H,1,188318,5.310166845442284e-06,100,18646.37,18646.37,0.0,low-support / uncertain,low-cardinality observed median-range example
+cat116,HK,21061,188318,0.11183742393185994,100,3125.6688960638144,2110.69,2821.88,meets EDA support rule,high-cardinality leading supported levels
+cat116,DJ,20244,188318,0.1074990176191336,100,2911.9006871171705,2032.92,2726.315,meets EDA support rule,high-cardinality leading supported levels
+cat116,CK,10162,188318,0.05396191548338449,100,3037.328947057666,2211.585,2945.3325000000004,meets EDA support rule,high-cardinality leading supported levels
+cat116,DP,9202,188318,0.048864155311759895,100,3107.6975168441645,2087.0550000000003,2927.34,meets EDA support rule,high-cardinality leading supported levels
+cat116,GS,8736,188318,0.046389617561783794,100,3071.702022664835,2123.7200000000003,2734.1625000000004,meets EDA support rule,high-cardinality leading supported levels
+cat116,AD,1,188318,5.310166845442284e-06,100,1624.82,1624.82,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat116,AE,1,188318,5.310166845442284e-06,100,509.85,509.85,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat116,MS,1,188318,5.310166845442284e-06,100,67537.73,67537.73,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat116,J,1,188318,5.310166845442284e-06,100,51383.04,51383.04,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat110,CL,25305,188318,0.13437377202391698,100,3523.7305382335503,2285.55,3047.0899999999997,meets EDA support rule,high-cardinality leading supported levels
+cat110,EG,24654,188318,0.13091685340753406,100,3047.407985316784,2159.245,2686.705,meets EDA support rule,high-cardinality leading supported levels
+cat110,CS,24592,188318,0.13058762306311664,100,3024.8991513500328,2056.51,2660.3725000000004,meets EDA support rule,high-cardinality leading supported levels
+cat110,EB,21396,188318,0.1136163298250831,100,2912.5478514675638,2130.495,2614.595,meets EDA support rule,high-cardinality leading supported levels
+cat110,CO,17495,188318,0.09290136896101275,100,3117.470019434124,2149.32,2807.795,meets EDA support rule,high-cardinality leading supported levels
+cat110,AS,1,188318,5.310166845442284e-06,100,1467.99,1467.99,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat110,BD,1,188318,5.310166845442284e-06,100,1576.5,1576.5,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat110,EH,1,188318,5.310166845442284e-06,100,7020.68,7020.68,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat110,AE,16,188318,8.496266952707654e-05,100,4646.9825,1809.42,2427.24,low-support / uncertain,high-cardinality rare-tail example
+cat109,BI,152918,188318,0.8120200936713432,100,3146.284931531932,2141.13,2775.78,meets EDA support rule,high-cardinality leading supported levels
+cat109,AB,21933,188318,0.11646788942108562,100,2609.7275730634206,2048.22,2329.99,meets EDA support rule,high-cardinality leading supported levels
+cat109,BU,3142,188318,0.016684544228379655,100,2639.220868873329,2054.755,2081.8875,meets EDA support rule,high-cardinality leading supported levels
+cat109,K,2999,188318,0.01592519036948141,100,2313.3989663221073,1816.35,2002.5400000000002,meets EDA support rule,high-cardinality leading supported levels
+cat109,G,1353,188318,0.00718465574188341,100,2893.4349445676276,2305.31,2737.95,meets EDA support rule,high-cardinality leading supported levels
+cat109,AG,1,188318,5.310166845442284e-06,100,1150.72,1150.72,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat109,AK,1,188318,5.310166845442284e-06,100,544.06,544.06,0.0,low-support / uncertain,high-cardinality rare-tail example
+cat109,C,39,188318,0.00020709650697224908,100,4059.7602564102563,3210.76,4485.83,low-support / uncertain,high-cardinality rare-tail example
+cat109,L,89,188318,0.00047260484924436326,100,3689.716853932584,3018.58,4032.75,low-support / uncertain,high-cardinality rare-tail example

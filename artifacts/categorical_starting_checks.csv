@@ -1,0 +1,6 @@
+check,expected,observed,status
+Exactly 2 levels,72,72,PASS
+At most 4 levels,88,88,PASS
+cat116 cardinality,326,326,PASS
+cat110 cardinality,131,131,PASS
+cat109 cardinality,84,84,PASS
