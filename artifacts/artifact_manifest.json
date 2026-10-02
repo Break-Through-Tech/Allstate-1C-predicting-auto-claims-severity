@@ -1,0 +1,347 @@
+{
+  "manifest_version": "1.0.0",
+  "bundle": "September EDA final Artifact Bundle (Gate 4)",
+  "source": {
+    "path": "data/allstate_claims_data.csv",
+    "sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+    "bytes": 70025339,
+    "rows": 188318,
+    "columns": 132
+  },
+  "code": {
+    "notebook": "notebooks/data-understanding.ipynb",
+    "code_cells_sha256": "67d4749eb00f7e13f0d6f8fd8247f565031bd3777b87b0b956d5d7fda84f28ac",
+    "requirements_sha256": "f44c1e5c0066e55fc86d71e09c432e5a6c515471eafb02511b0ef48226fa8d17"
+  },
+  "configuration": {
+    "settings": {
+      "rare_level_threshold": "support < 100 claims (Gate 2, Task #7); display/support rule only",
+      "cardinality_display_rule": "<=10 levels low, >10 high (Gate 2, Task #7)",
+      "continuous_bin_rule": "pandas.qcut(q=10, duplicates='drop'); actual bin count recorded (Gate 2 Task 4)",
+      "target_plot_settings": "50 bins, no clipping, no sampling (Gate 2 Task 1, item 10)",
+      "correlations": "Pearson and Spearman vs raw loss and log1p(loss); Pearson for predictor pairs (Gate 2 Task 4)",
+      "binned_pattern_rule (proposed at Gate 3; needs team approval)": {
+        "bootstrap_resamples": 200,
+        "bootstrap_seed": 42,
+        "ci": "95% percentile CI of each bin median",
+        "practical_spread": ">= 10% of overall median",
+        "monotonic": "abs(Spearman of bin index vs bin median) >= 0.8"
+      },
+      "random_seeds": "42 for the bootstrap; no other randomized operations",
+      "display_precision": "loss 2 dp; skewness and correlations 3 dp; shares 2 dp (%)"
+    },
+    "dictionary_version": "v1.1.0",
+    "pinned_versions": {
+      "matplotlib": "3.11.2",
+      "numpy": "2.3.3",
+      "pandas": "2.3.2",
+      "scipy": "1.18.1",
+      "seaborn": "0.13.2"
+    },
+    "sha256": "9dca91702e86217139cf1cd8031358a2842a2fdd84c259d855442e9d9b2bd0ca"
+  },
+  "required_contents": {
+    "source identity and manifest": [
+      "data/allstate_claims_data.csv",
+      "artifacts/artifact_manifest.json"
+    ],
+    "plain-language analysis contract": [
+      "notebooks/data-understanding.ipynb#gate-2-task-1"
+    ],
+    "project-specific data dictionary": [
+      "artifacts/data_dictionary_v1.1.0.csv"
+    ],
+    "anomaly register": [
+      "docs/anomaly_register.md"
+    ],
+    "reproducible EDA notebook or source code": [
+      "notebooks/data-understanding.ipynb",
+      "requirements.txt"
+    ],
+    "machine-readable data-quality and field-profile tables": [
+      "artifacts/source_profile.csv"
+    ],
+    "target-distribution tables and figures": [
+      "artifacts/target_summary.csv",
+      "notebooks/data-understanding.ipynb#gate-2-task-1"
+    ],
+    "categorical cardinality, support, and target-effect evidence": [
+      "artifacts/categorical_cardinality_verification.csv",
+      "artifacts/categorical_dominance_evidence.csv",
+      "artifacts/categorical_high_cardinality_evidence.csv",
+      "artifacts/categorical_inventory.csv",
+      "artifacts/categorical_level_target.csv",
+      "artifacts/categorical_low_support_evidence.csv",
+      "artifacts/categorical_starting_checks.csv",
+      "artifacts/categorical_target_evidence.csv"
+    ],
+    "continuous distribution, binned-target, and correlation evidence": [
+      "artifacts/continuous_inventory.csv",
+      "artifacts/continuous_bin_target.csv",
+      "notebooks/data-understanding.ipynb#gate-3-task-4"
+    ],
+    "findings register": [
+      "docs/findings_register.md"
+    ],
+    "independent-review records": [
+      "docs/gate1_signoff.md",
+      "docs/gate2_signoff.md",
+      "docs/gate3_signoff.md",
+      "artifacts/categorical_cardinality_verification.csv",
+      "notebooks/data-understanding.ipynb#independent-recalculation"
+    ],
+    "instructions for reproducing the September workflow": [
+      "README.md#setup-and-installation"
+    ]
+  },
+  "not_hashed": {
+    "data/allstate_claims_data.csv": "identified by source.sha256",
+    "artifacts/artifact_manifest.json": "this file",
+    "notebooks/data-understanding.ipynb": "identified by code.code_cells_sha256 (outputs change every run)",
+    "docs/gate1_signoff.md": "sign-off record, updated after runs",
+    "docs/gate2_signoff.md": "sign-off record, updated after runs",
+    "docs/gate3_signoff.md": "sign-off record, updated after runs"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "5f8bb38e07e891e678ff0b293ed2d09e50b956aee3064498b3a5b62be325dd72",
+      "bytes": 5574
+    },
+    {
+      "path": "artifacts/categorical_cardinality_verification.csv",
+      "sha256": "820671e73a07c31fc2c950670bedb020d33a1aa11a632958a42545c84dd87f0a",
+      "bytes": 163,
+      "rows": 5,
+      "columns": [
+        "feature",
+        "inventory_cardinality",
+        "independently_recalculated_cardinality",
+        "match"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_dominance_evidence.csv",
+      "sha256": "b9d7346c5c2220ca67abd816d1d290b5e2523d62174572e0b485c8913307ad65",
+      "bytes": 4800,
+      "rows": 116,
+      "columns": [
+        "feature",
+        "most_common_level",
+        "support",
+        "denominator",
+        "support_share"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_high_cardinality_evidence.csv",
+      "sha256": "6823de4e685eff2d259eaf6e9a67c4250185f86f91a721ec028ad82ad866a5d5",
+      "bytes": 1004,
+      "rows": 17,
+      "columns": [
+        "feature",
+        "cardinality",
+        "supported_level_count",
+        "rare_level_count",
+        "rare_observation_count",
+        "denominator",
+        "rare_observation_share",
+        "rare_level_threshold"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_inventory.csv",
+      "sha256": "a150c14b47f59078ae649fbb86906742999e7f37077ec7d97e048eaf77b4f0b2",
+      "bytes": 7684,
+      "rows": 116,
+      "columns": [
+        "column_name",
+        "cardinality",
+        "most_common_level",
+        "least_common_level",
+        "most_common_level_support",
+        "least_common_level_support",
+        "most_common_level_share",
+        "min_level_support",
+        "median_level_support",
+        "levels_below_rare_threshold",
+        "rare_level_threshold",
+        "cardinality_group"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_level_target.csv",
+      "sha256": "3265c23e50e9d31f2f944f20dc0ed5d03edae978fd161fb70b9976c423103356",
+      "bytes": 106376,
+      "rows": 1139,
+      "columns": [
+        "field_name",
+        "level",
+        "level_support",
+        "raw_mean_loss",
+        "raw_median_loss",
+        "raw_loss_iqr",
+        "rare_level_flag",
+        "log1p_mean_loss",
+        "log1p_median_loss"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_low_support_evidence.csv",
+      "sha256": "3d90edc9e3df4eaf7fdf369631faf898abaabf13419b1af8d9b8518f50f9b8b9",
+      "bytes": 21468,
+      "rows": 469,
+      "columns": [
+        "field_name",
+        "level",
+        "level_support",
+        "denominator",
+        "support_share",
+        "rare_level_threshold"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_starting_checks.csv",
+      "sha256": "df5e43b22690990e7c5279685378761326630fa4df92525d8a74abf162c8a8e0",
+      "bytes": 181,
+      "rows": 5,
+      "columns": [
+        "check",
+        "expected",
+        "observed",
+        "status"
+      ]
+    },
+    {
+      "path": "artifacts/categorical_target_evidence.csv",
+      "sha256": "99c7bfb4737ebb2df476b4b32280dbaf58928fb21c203b4aa6df3295aa9f4bf7",
+      "bytes": 5444,
+      "rows": 37,
+      "columns": [
+        "field_name",
+        "level",
+        "level_support",
+        "denominator",
+        "support_share",
+        "rare_level_threshold",
+        "raw_mean_loss",
+        "raw_median_loss",
+        "raw_loss_iqr",
+        "support_class",
+        "selection"
+      ]
+    },
+    {
+      "path": "artifacts/continuous_bin_target.csv",
+      "sha256": "eb138b683ea6c8ecf5d606824c5b6dc3aa68f9aefec8dd2427b520d360dd8bd8",
+      "bytes": 13253,
+      "rows": 137,
+      "columns": [
+        "field",
+        "bin_index",
+        "bin_interval",
+        "support",
+        "raw_mean_loss",
+        "raw_median_loss",
+        "raw_loss_iqr",
+        "median_ci_low",
+        "median_ci_high"
+      ]
+    },
+    {
+      "path": "artifacts/continuous_inventory.csv",
+      "sha256": "5f5e771755c52c687a38ab86514b971110ac79a7911fbe4a99f425d2e2aac99b",
+      "bytes": 3746,
+      "rows": 14,
+      "columns": [
+        "field",
+        "min",
+        "max",
+        "mean",
+        "median",
+        "std",
+        "unique_count",
+        "pearson_raw",
+        "spearman_raw",
+        "pearson_log1p",
+        "spearman_log1p",
+        "actual_bins",
+        "min_bin_support",
+        "max_bin_support",
+        "median_spread",
+        "median_spread_frac",
+        "bin_index_vs_median_spearman",
+        "ci_separated",
+        "pattern_classification"
+      ]
+    },
+    {
+      "path": "artifacts/data_dictionary_v1.1.0.csv",
+      "sha256": "d977451fc9ecc7d71b5b1a117f025b6a9f7682e1671166088e26340eb930ab8f",
+      "bytes": 31368,
+      "rows": 141,
+      "columns": [
+        "field",
+        "field_type",
+        "role",
+        "observed_dtype",
+        "range_or_levels",
+        "unique_count",
+        "missing_count",
+        "missing_pct",
+        "unit_or_scale",
+        "documented_meaning",
+        "quality_limitation",
+        "september_handling",
+        "purpose",
+        "inputs",
+        "derivation",
+        "version",
+        "owner"
+      ]
+    },
+    {
+      "path": "artifacts/source_profile.csv",
+      "sha256": "a837a1a952cd3645d3464a30855ff033325e7364e7145859b5b732eb8b2e300a",
+      "bytes": 8810,
+      "rows": 132,
+      "columns": [
+        "column_name",
+        "role",
+        "observed_dtype",
+        "unique_count",
+        "missing_count",
+        "missing_percentage",
+        "observed_min",
+        "observed_max",
+        "expected_scale"
+      ]
+    },
+    {
+      "path": "artifacts/target_summary.csv",
+      "sha256": "6734ad8c3f043c0d5159f7db461ac88a437af24ca7ab8ceb190bc9485cb83ed5",
+      "bytes": 621,
+      "rows": 17,
+      "columns": [
+        "metric",
+        "value",
+        "unit"
+      ]
+    },
+    {
+      "path": "docs/anomaly_register.md",
+      "sha256": "3acd93495a992c92ee01cfefd8dba4dfa340dae6519d1c44c0b5e7a7162c734f",
+      "bytes": 7717
+    },
+    {
+      "path": "docs/findings_register.md",
+      "sha256": "6d9821dbc23c700d6ecd31ccddd3147609a869e5306747a81fde67afe486d4c5",
+      "bytes": 10709
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "f44c1e5c0066e55fc86d71e09c432e5a6c515471eafb02511b0ef48226fa8d17",
+      "bytes": 2534
+    }
+  ]
+}

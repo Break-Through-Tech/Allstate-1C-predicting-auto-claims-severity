@@ -1,0 +1,18 @@
+metric,value,unit
+count,188318,claims
+mean,3037.3376856699833,loss units
+std,2904.086186390403,loss units
+min,0.67,loss units
+p25,1204.46,loss units
+p50,2115.5699999999997,loss units
+p75,3864.045,loss units
+p90,6401.743,loss units
+p95,8508.536499999998,loss units
+p99,13981.202999999998,loss units
+max,121012.25,loss units
+skewness,3.7949583775378586,unitless
+log1p_skewness,0.09661958950314063,unitless (visualization field)
+mean_to_median_ratio,1.4357065403980884,ratio
+top1pct_claims_share_of_total_loss,0.06067436924216587,share
+top5pct_claims_share_of_total_loss,0.19851778562910322,share
+claims_below_100,59,claims
