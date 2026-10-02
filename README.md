@@ -41,6 +41,8 @@ The September EDA runs as one notebook: `notebooks/data-understanding.ipynb` (Ga
 3. Open `notebooks/data-understanding.ipynb` in VS Code, select that environment as the kernel, and click **Run All**. The notebook must run from the `notebooks/` folder (VS Code's default).
 4. The last cell prints the Workflow Run receipt: status, reproduction check against the committed artifacts, dependency versions, settings, and Artifact Bundle IDs. A passing official run shows `"official_gate3_run": true`. Copy the receipt into `docs/gate3_signoff.md`.
 
+After the Gate 3 receipt, the Gate 4 section checks that counts agree across all artifacts, writes the Artifact Manifest (`artifacts/artifact_manifest.json`), and prints the Gate 4 Run Receipt with the September Artifact Bundle ID. A passing official run shows `"official_gate4_run": true`; record it in `docs/gate4_signoff.md`.
+
 The run fails if the source file's SHA-256 changes, if `docs/findings_register.md` quotes a value the data does not reproduce, or if the independent recalculation disagrees with the primary results.
 
 ---
