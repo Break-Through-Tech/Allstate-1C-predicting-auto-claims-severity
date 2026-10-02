@@ -1,1 +1,12 @@
+# Python virtual environment
+.venv/
 
+# macOS
+.DS_Store
+
+# Python and Jupyter caches
+__pycache__/
+.ipynb_checkpoints/
+
+# Local secrets (python-dotenv is in requirements.txt)
+.env

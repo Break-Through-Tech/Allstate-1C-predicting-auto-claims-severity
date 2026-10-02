@@ -31,13 +31,17 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-**Provide step-by-step instructions so someone else can run your code and reproduce your results. Depending on your setup, include:**
+The September EDA runs as one notebook: `notebooks/data-understanding.ipynb` (Gates 1–3). The dataset is included in the repository at `data/allstate_claims_data.csv` (SHA-256 `74037cb2…ae03`).
 
-* How to clone the repository
-* How to install dependencies
-* How to set up the environment
-* How to access the dataset(s)
-* How to run the notebook or scripts
+**Official Workflow Run (VS Code)**
+
+1. Clone the repository and check out the exact commit being verified (`git checkout <commit-sha>`). `git status` must show no changes.
+2. Create and activate a virtual environment, then install the pinned versions:
+   `pip install pandas==2.3.2 numpy==2.3.3 scipy==1.18.1 matplotlib==3.11.2 seaborn==0.13.2 ipykernel`
+3. Open `notebooks/data-understanding.ipynb` in VS Code, select that environment as the kernel, and click **Run All**. The notebook must run from the `notebooks/` folder (VS Code's default).
+4. The last cell prints the Workflow Run receipt: status, reproduction check against the committed artifacts, dependency versions, settings, and Artifact Bundle IDs. A passing official run shows `"official_gate3_run": true`. Copy the receipt into `docs/gate3_signoff.md`.
+
+The run fails if the source file's SHA-256 changes, if `docs/findings_register.md` quotes a value the data does not reproduce, or if the independent recalculation disagrees with the primary results.
 
 ---
 
