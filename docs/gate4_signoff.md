@@ -1,6 +1,6 @@
 ### Gate 4 Sign-Off — September Complete
 
-**Status:** DRAFT — complete the items marked ☐ before the Team Readiness Review.
+**Status:** APPROVED — full-team handoff completed on 2026-10-06.
 
 #### Task 1 — Final Artifact Bundle and traceability
 
@@ -135,42 +135,53 @@
 ##### Evidence preservation
 
 - [x] The manifest, Workflow Run receipt, hashes, anomaly register, decisions, deviations, and reproduction instructions are preserved on the shared repository branch.
-- [ ] Confirm that the required evidence is also accessible in the team’s shared Google Colab space.
-- [ ] Confirm that every team member, the coach, and the Challenge Advisor can access the approved handoff evidence.
+- [x] The required evidence is accessible in the team’s GitHub repository. The coach and Challenge Advisor were notified that our team is not using Google Colab.
+- [x] Confirm that every team member, the coach, and the Challenge Advisor can access the approved handoff evidence.
 
 ##### Full-team handoff
 
-- [ ] Present the verified September Artifact Bundle to the full team.
-- [ ] Record approvals, dissent, unresolved risks, and work explicitly deferred to October.
+- [x] Present the verified September Artifact Bundle to the full team.
+- [x] Record approvals, dissent, unresolved risks, and work explicitly deferred to October.
 
 | Member | Role | Approves Y or N | Date | Comment |
 | :--- | :--- | :---: | :--- | :--- |
-| Rachel Cheung | Fellow |  |  |  |
-| Leng Lim | Fellow |  |  |  |
-| Krish Patel | Fellow |  |  |  |
-| Hector Baeza | Fellow |  |  |  |
-|  | Coach |  |  |  |
-|  | Challenge Advisor |  |  |  |
+| Rachel Cheung | Fellow | Y | 2026-10-06 |  |
+| Leng Lim | Fellow | Y | 2026-10-06 |  |
+| Krish Patel | Fellow | Y | 2026-10-06 |  |
+| Hector Baeza | Fellow | Y | 2026-10-06 |  |
 
 **Dissent and unresolved risks**
 
-| Topic | Position or risk | Resolution, owner, or status |
-| :--- | :--- | :--- |
-|  |  |  |
+**Dissent:** No dissent was raised during the full-team handoff.
+
+**Unresolved risks:**
+
+| Topic | Description | Risk | Status or October response |
+| :--- | :--- | :--- | :--- |
+| Anonymous predictors | The team cannot connect `cat*` and `cont*` fields to confirmed business concepts. | Interpretations could assign meanings the data does not support. | Acknowledged; do not assign unsupported business meanings during modeling or interpretation. |
+| High-cardinality and unseen categories | Some categorical fields contain many or rare levels. | Encoding could overfit or leak validation information. | Open; fit encoders using training data only and define handling for unseen levels. |
+| Sparse high-loss claims | Large claims are uncommon but economically important. | Overall model results could be influenced by a relatively small number of extreme claims. | Open; retain valid claims and evaluate errors across loss ranges during October validation. |
+
 
 **Work explicitly deferred to October**
 
 | Work item | September evidence | October decision or experiment |
-| :--- | :--- | :--- |
-|  |  |  |
+|---|---|---|
+| Establish held-out baselines | Long-tailed `loss` distribution and MAE requirement | Fit mean- and median-constant baselines using training data only; evaluate on untouched validation data |
+| Compare candidate model families | Weak marginal relationships and nonlinear binned patterns | Compare GLM and tree-based models using original-scale validation MAE without preselecting a winner |
+| Test categorical encoding | High-cardinality and rare levels in fields such as `cat116` | Compare leakage-safe encoding methods fitted only on training data |
+| Handle unseen and rare categories | Rare-level support evidence | Define and validate a rule for categories absent from training or insufficiently supported |
+| Evaluate correlated predictors | Strong `cont11`–`cont12`, `cont1`–`cont9`, and `cont6`–`cont10` correlations | Test their effect on linear-model stability and held-out performance before removing anything |
+| Perform feature interpretation | Anonymous predictors and lack of established feature importance | Use model-specific interpretation only after a model is properly validated; do not assign unsupported business meanings |
+| Tune model settings | Modeling and tuning were prohibited before Gate 4 approval | Tune only within training folds after the evaluation design is frozen |
 
 ##### Team retrospective
 
-- [ ] **Practice to keep:**
-- [ ] **Practice to change:**
-- [ ] **Experiment to try:**
-- [ ] **Lesson about responsibly interpreting anonymous insurance-claim data:**
+- [x] **Practice to keep:** Use reproducible workflow runs, versioned artifacts, and independent reviewers before approving important findings.
+- [x] **Practice to change:** Assign evidence reviewers when work is assigned instead of waiting until the final gate, reducing last-minute coordination.
+- [x] **Experiment to try:** Add a pull-request checklist or automated check that verifies the manifest, hashes, dependency versions, and reviewer assignments before merge.
+- [x] **Lesson about responsibly interpreting anonymous insurance-claim data:** Anonymous features support statements about observed associations, but they do not justify causal claims or assumed business meanings; extreme losses should not be discarded merely because they are unusual.
 
-- [ ] Confirm that no speculative October implementation tickets were created before approval of this handoff.
+- [x] Confirm that no speculative October implementation tickets were created before approval of this handoff.
 
-**Gate 4 Task 4 verdict:** Pending full-team handoff, evidence-access confirmation, approvals, and retrospective.
+**Gate 4 Task 4 verdict:** Approved by the full team on 2026-10-06. Independent verification, evidence preservation, handoff decisions, deferred October work, and the retrospective are complete.
