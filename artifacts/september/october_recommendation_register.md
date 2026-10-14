@@ -1,8 +1,8 @@
 # October Recommendation Register
 
-Version 1.0.0 · Task #15 / Gate 4 Task 3 · Evidence snapshot: `5353f05906ba37830500e46f4693e345f2a02d97`.
+Version 1.1.0 · Task #15 / Gate 4 Task 3 · Evidence snapshot: `5353f05906ba37830500e46f4693e345f2a02d97` · Challenge Advisor guidance received October 13, 2026.
 
-All entries are **PROPOSED** October work. This register synthesizes committed September evidence; it does not assert final September approval. Gate 3/4 independent human reviews and team decisions remain pending. Methodological requirements are explicitly distinguished from empirical findings.
+All entries remain **PROPOSED** October work until the team approves the implementation details. This register synthesizes committed September evidence and now records the Challenge Advisor's October 13 guidance on field availability, final-evaluation design, and correlated predictors. Methodological requirements are explicitly distinguished from empirical findings.
 
 [Structured CSV](../artifacts/october_recommendation_register.csv) · [Modeling handoff](october_modeling_handoff.md). CSV `evidence_location` uses repository-relative paths with `::` section/row selectors, separated by semicolons. Each section below contains the same nine fields as the CSV.
 
@@ -12,8 +12,8 @@ All entries are **PROPOSED** October work. This register synthesizes committed S
 - **evidence_location:** [artifacts/artifact_manifest.json](../artifacts/artifact_manifest.json) — source; [artifacts/data_dictionary_v1.1.0.csv](../artifacts/data_dictionary_v1.1.0.csv) — field_type=source; [artifacts/source_profile.csv](../artifacts/source_profile.csv) — all 132 rows; [docs/findings_register.md](../docs/findings_register.md) — FND-005
 - **rationale:** Methodological requirement: source identity and feature-role consistency make experiment comparisons reproducible.
 - **recommendation_type:** validation_requirement
-- **october_action:** Check source hash/schema at experiment entry; exclude id and September-derived display fields from ordinary predictors; retain all 130 source predictors initially.
-- **validation_needed:** Recorded matching SHA-256, role counts, dictionary version, input-column list, and explicit schema-failure behavior.
+- **october_action:** The Challenge Advisor confirmed on October 13 that all supplied fields may be assumed available when a claim is filed and when the model would be used. Check source hash/schema at experiment entry; exclude `id` and September-derived display fields from ordinary predictors; retain all 130 source predictors initially.
+- **validation_needed:** Recorded matching SHA-256, role counts, dictionary version, input-column list, explicit schema-failure behavior, and a note that prediction-time field availability is based on Challenge Advisor guidance.
 - **status:** PROPOSED
 
 ## OCT-REC-002 — Confirm a reproducible validation design before experiments.
@@ -22,8 +22,8 @@ All entries are **PROPOSED** October work. This register synthesizes committed S
 - **evidence_location:** [docs/findings_register.md](../docs/findings_register.md) — FND-009; [notebooks/data-understanding.ipynb](../notebooks/data-understanding.ipynb) — October Evaluation Plan (Draft); [docs/gate3_signoff.md](../docs/gate3_signoff.md) — Team approval
 - **rationale:** Methodological requirement: common partitions permit fair comparison; anonymous fields do not establish independent or temporally exchangeable rows.
 - **recommendation_type:** future_decision
-- **october_action:** Propose shuffled 5-fold regression cross-validation with random seed 42, subject to advisor confirmation of grouping/time constraints; persist fold assignments and reuse them.
-- **validation_needed:** Team approval, group/time assessment, fold counts and assignments, seed, fold-level original-scale MAE, unweighted mean/std MAE and sample-weighted pooled MAE; separate untouched final evaluation if repeated selection is performed.
+- **october_action:** The Challenge Advisor recommended on October 13 that the team create a train/test split, keep the test partition untouched until final evaluation, and use cross-validation within the training partition. The team must approve the split proportion, random seed, cross-validation fold count, and any group/time constraints before creating and persisting the partition assignments.
+- **validation_needed:** Team-approved split method, proportions, seed, group/time assessment, test membership and row count, cross-validation fold construction inside the training partition, fold-level original-scale MAE and aggregate CV results, plus evidence that the test partition was not used for fitting, preprocessing, tuning, or model selection before final evaluation.
 - **status:** PROPOSED
 
 ## OCT-REC-003 — Plan both training-only constant baselines and original-scale MAE.
@@ -72,8 +72,8 @@ All entries are **PROPOSED** October work. This register synthesizes committed S
 - **evidence_location:** [docs/findings_register.md](../docs/findings_register.md) — FND-001; [notebooks/data-understanding.ipynb](../notebooks/data-understanding.ipynb) — Gate 3 Task 4 strongest pairs table
 - **rationale:** Strong predictor correlation can complicate linear-model coefficient interpretation; correlation alone does not justify dropping a feature.
 - **recommendation_type:** proposed_experiment
-- **october_action:** Start with all source predictors. If approved, compare retaining versus omitting correlated partners on identical partitions; contrast GLM sensitivity with tree/ensemble behavior.
-- **validation_needed:** Held-out original-scale MAE deltas, fold variability and coefficient stability where applicable. Interpretability and predictive performance must be assessed separately; no removal based solely on correlation.
+- **october_action:** The Challenge Advisor advised on October 13 that correlations above 0.9 should be treated as highly correlated. Under that guidance, `cont11`/`cont12` (0.994) and `cont1`/`cont9` (0.930) qualify, while `cont6`/`cont10` (0.883) does not. Retain all predictors initially for tree-based models, but note that a tree may select one correlated field arbitrarily, making individual feature importance less reliable. If a GLM is tested, compare a documented approach to the two highly correlated pairs within the approved training-only cross-validation design.
+- **validation_needed:** For a GLM, record the chosen collinearity treatment and compare held-out original-scale MAE, fold variability, and coefficient stability using training-only cross-validation. For tree-based models, record that correlated fields were retained and qualify any individual feature-importance interpretation for the two pairs above 0.9. Do not remove a predictor without a documented modeling decision.
 - **status:** PROPOSED
 
 ## OCT-REC-008 — Evaluate only the project-supported candidate model families.
@@ -122,6 +122,6 @@ All entries are **PROPOSED** October work. This register synthesizes committed S
 - **evidence_location:** [docs/findings_register.md](../docs/findings_register.md) — FND-005,FND-009; [artifacts/data_dictionary_v1.1.0.csv](../artifacts/data_dictionary_v1.1.0.csv) — documented_meaning; [Challenge-Project-Overview.md](../Challenge-Project-Overview.md) — Dataset / Project Milestones / Algorithm examples
 - **rationale:** Unknown time/group structure and scoring availability affect validation validity; absent future-period data limits generalization claims.
 - **recommendation_type:** unresolved_question
-- **october_action:** Confirm groups/time and prediction-time availability, upstream scaling provenance, external test availability, mandatory families, transform constraints, interpretation scope and October deliverables.
-- **validation_needed:** Written advisor/team answers tied to questions Q1–Q6 in the handoff; update proposed design before any affected experiment is approved.
+- **october_action:** The Challenge Advisor confirmed on October 13 that all supplied fields may be assumed available when the claim is filed and recommended reserving a test partition for final evaluation while using cross-validation within training. Keep the remaining questions open: group/time structure, upstream scaling provenance, external or future-period data, mandatory model families, target-transform constraints, interpretation scope, and October deliverables.
+- **validation_needed:** Preserve the dated Advisor responses, obtain team approval for the train/test proportions, seed, fold construction, and correlated-feature plan, and record answers to the remaining questions before affected experiments or final claims are approved.
 - **status:** PROPOSED
