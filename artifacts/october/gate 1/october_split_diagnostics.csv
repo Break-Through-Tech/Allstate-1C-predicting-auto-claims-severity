@@ -1,0 +1,29 @@
+partition,metric,value,denominator,unit
+train,row_count,141238,188318,claims
+train,share_of_eligible,0.749997344917,188318,share
+validation,row_count,28248,188318,claims
+validation,share_of_eligible,0.15000159305,188318,share
+test,row_count,18832,188318,claims
+test,share_of_eligible,0.100001062033,188318,share
+train,loss_count,141238,141238,claims
+train,loss_mean,3038.29745614,141238,original loss units
+train,loss_median,2116.665,141238,original loss units
+train,loss_std_ddof1,2909.74607377,141238,original loss units
+train,loss_p90,6400.174,141238,original loss units
+train,loss_p95,8511.919,141238,original loss units
+train,loss_p99,13900.7768,141238,original loss units
+train,loss_max,121012.25,141238,original loss units
+train,historical_september_p95_threshold,8508.5365,141238,original loss units
+train,high_loss_count,7071,141238,claims
+train,high_loss_share,0.0500644302525,141238,share
+validation,loss_count,28248,28248,claims
+validation,loss_mean,3032.02460033,28248,original loss units
+validation,loss_median,2120.02,28248,original loss units
+validation,loss_std_ddof1,2858.75126028,28248,original loss units
+validation,loss_p90,6398.207,28248,original loss units
+validation,loss_p95,8483.153,28248,original loss units
+validation,loss_p99,14084.3391,28248,original loss units
+validation,loss_max,54190.39,28248,original loss units
+validation,historical_september_p95_threshold,8508.5365,28248,original loss units
+validation,high_loss_count,1405,28248,claims
+validation,high_loss_share,0.0497380345511,28248,share
