@@ -1,0 +1,22 @@
+{
+  "decision_id": "OCT-SPLIT-ACCEPTANCE-20261024",
+  "recorded_date": "2026-10-24",
+  "status": "accepted_for_baselines",
+  "reported_by": "Krish Patel",
+  "evidence": "Krish confirmed in the task conversation that retaining this exact 75/15/10 split was the team\u2019s agreed decision (reply: agreed). Recorded by Codex; not fabricated individual signatures.",
+  "manifest_id": "october-split-v1",
+  "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "proportions_percent": {
+    "test": 10,
+    "train": 75,
+    "validation": 15
+  },
+  "seed": 42,
+  "partition_counts": {
+    "test": 18832,
+    "train": 141238,
+    "validation": 28248
+  },
+  "scope": "Freeze the existing assignments for the requested mean/median baselines and shared evaluator. Cross-validation remains inside training. Test stays sealed. This does not approve all Gate 1 proposals or candidate-model training."
+}
