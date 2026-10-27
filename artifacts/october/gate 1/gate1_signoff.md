@@ -309,3 +309,10 @@ print('No models/baselines fitted; no internal-test target results computed; no 
 - PR preparation: the documentation is ready for Leng's review and a draft PR after authorization. Coordinate integration with PR #52 because both append to the overview; preserve both owners' content. Full Task 4 completion still needs board evidence and the actual team decision.
 
 No staging, commit, push, PR creation, review comment, email, board/issue mutation or official approval was performed.
+
+
+## October 24 Addendum — Split Agreement for Baseline Work
+
+Krish Patel confirmed in the task conversation that keeping `october-split-v1` at **75% training / 15% validation / 10% test, seed 42**, was the team's agreed decision. Codex records that reported decision here; no individual signatures or independent reviews are inferred. The exact assignments and source are identified by [split_acceptance.json](split_acceptance.json): manifest SHA-256 `18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1`; 141,238 train, 28,248 validation and 18,832 test claims.
+
+The original split metadata remains a historical, unmodified generation record; its PROPOSED label is superseded for this exact split by this dated agreement. This resolves the split-freeze prerequisite for Krish's requested constant-baseline/shared-evaluator task. It does **not** mark the overall Gate 1 status approved, approve remaining CV/stopping/preprocessing proposals, authorize candidate-model training, or open test targets. Broader readiness decisions and review actions elsewhere in this record remain for the team.
