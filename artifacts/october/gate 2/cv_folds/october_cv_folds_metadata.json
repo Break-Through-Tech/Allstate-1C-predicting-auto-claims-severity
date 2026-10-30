@@ -1,0 +1,30 @@
+{
+  "fold_version": "october-cv-v1",
+  "status": "PROPOSED; persisted for Gate 2 verification",
+  "created": "2026-10-29",
+  "owner": "Rachel Cheung",
+  "policy": "OCT-G1-T4-PROPOSAL-v1",
+  "method": "sklearn KFold(n_splits=5, shuffle=True, random_state=42) over training IDs sorted ascending",
+  "uses_target_or_predictors": false,
+  "held_out_counts": {
+    "0": 28248,
+    "1": 28248,
+    "2": 28248,
+    "3": 28247,
+    "4": 28247
+  },
+  "training_claims": 141238,
+  "manifest_id": "october-split-v1",
+  "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "fold_file_sha256": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+  "created_by": "notebooks/gate2_training_folds.ipynb",
+  "environment": {
+    "python": "3.13.16",
+    "pandas": "2.3.2",
+    "numpy": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2"
+  },
+  "assumption": "Claims are exchangeable; no confirmed group or time key exists (open Advisor question)."
+}

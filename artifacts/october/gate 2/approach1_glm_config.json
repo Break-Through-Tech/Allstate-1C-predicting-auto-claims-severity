@@ -1,0 +1,71 @@
+{
+  "config_id": "approach1-glm-v1",
+  "status": "PROPOSED scaffold; freeze at Gate 2 review before any Gate 3 fit",
+  "owner": "Rachel Cheung",
+  "issues": {
+    "scaffold": "#40",
+    "training_and_tuning": "#44"
+  },
+  "approach": "Approach 1: regularized linear model (ridge) on log1p(loss)",
+  "hypothesis": "September found weak, mostly additive marginal signals. A penalized linear model on the log scale should beat both constant predictors on held-out MAE, but will miss nonlinear effects and interactions between fields.",
+  "inputs": {
+    "features": "all 130 source predictors (cat1-cat116, cont1-cont14)",
+    "excluded": [
+      "id",
+      "loss",
+      "log1p_loss",
+      "partition",
+      "September summaries and bin labels"
+    ],
+    "split_manifest": "october-split-v1",
+    "cv_folds": "artifacts/october/gate 2/cv_folds/october_cv_folds.csv"
+  },
+  "preprocessing": {
+    "source": "Hector's GLM pipeline (notebooks/gate2_preprocessing.ipynb)",
+    "rare_min_count": 30,
+    "unseen_or_missing_category": "rare column if the field has one, otherwise all zeros",
+    "continuous": "StandardScaler fit on the fit rows",
+    "correlated_pairs": "cont11/cont12 and cont1/cont9 retained; L2 penalty shares weight",
+    "fit_scope": "refit inside every CV fit portion and for the final training refit"
+  },
+  "target": {
+    "transform": "log1p(loss)",
+    "inverse": "expm1(clip(z, log1p(min fit loss), log1p(max fit loss)))",
+    "non_finite_output": "raise error; log the run as failed; never drop or fill predictions",
+    "bias_correction": "none (median-type estimate suits MAE)"
+  },
+  "model": {
+    "estimator": "sklearn.linear_model.Ridge",
+    "solver": "lsqr",
+    "tol": 1e-06,
+    "fit_intercept": true
+  },
+  "search_space": {
+    "alpha": [
+      1.0,
+      10.0,
+      100.0,
+      1000.0,
+      10000.0,
+      100000.0
+    ],
+    "complexity_order": "larger alpha = stronger penalty = simpler model"
+  },
+  "evaluation": {
+    "cv_fits": "6 configurations x 5 folds = 30",
+    "selection_metric": "pooled out-of-fold MAE in original loss units",
+    "also_report": "each fold's MAE and claim count, mean and sample sd, fold-matched mean/median constants",
+    "tie_rule": "within 1 loss unit of the best pooled MAE counts as tied; pick the larger alpha",
+    "edge_rule": "if the best alpha is at either end of the grid, record it; extending needs a team amendment",
+    "final_refit": "refit the selected alpha on all 141,238 training claims",
+    "validation_release": "the single selected candidate only, scored once with the shared evaluator",
+    "test_partition": "never used in October"
+  },
+  "environment": {
+    "python": "3.13.16",
+    "pandas": "2.3.2",
+    "numpy": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2"
+  }
+}
