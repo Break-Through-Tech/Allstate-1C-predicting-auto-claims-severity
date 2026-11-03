@@ -1,0 +1,156 @@
+{
+  "run_id": "glm-20261103T055706Z-0748a4b5",
+  "approval_note": "Hector reported verbal team approval on November 2, 2026. Proceeding with Rachel\u2019s proposed Approach 1 configuration.",
+  "config": {
+    "config_id": "approach1-glm-v1",
+    "status": "PROPOSED scaffold; freeze at Gate 2 review before any Gate 3 fit",
+    "owner": "Rachel Cheung",
+    "issues": {
+      "scaffold": "#40",
+      "training_and_tuning": "#44"
+    },
+    "approach": "Approach 1: regularized linear model (ridge) on log1p(loss)",
+    "hypothesis": "September found weak, mostly additive marginal signals. A penalized linear model on the log scale should beat both constant predictors on held-out MAE, but will miss nonlinear effects and interactions between fields.",
+    "inputs": {
+      "features": "all 130 source predictors (cat1-cat116, cont1-cont14)",
+      "excluded": [
+        "id",
+        "loss",
+        "log1p_loss",
+        "partition",
+        "September summaries and bin labels"
+      ],
+      "split_manifest": "october-split-v1",
+      "cv_folds": "artifacts/october/gate 2/cv_folds/october_cv_folds.csv"
+    },
+    "preprocessing": {
+      "source": "Hector's GLM pipeline (notebooks/gate2_preprocessing.ipynb)",
+      "rare_min_count": 30,
+      "unseen_or_missing_category": "rare column if the field has one, otherwise all zeros",
+      "continuous": "StandardScaler fit on the fit rows",
+      "correlated_pairs": "cont11/cont12 and cont1/cont9 retained; L2 penalty shares weight",
+      "fit_scope": "refit inside every CV fit portion and for the final training refit"
+    },
+    "target": {
+      "transform": "log1p(loss)",
+      "inverse": "expm1(clip(z, log1p(min fit loss), log1p(max fit loss)))",
+      "non_finite_output": "raise error; log the run as failed; never drop or fill predictions",
+      "bias_correction": "none (median-type estimate suits MAE)"
+    },
+    "model": {
+      "estimator": "sklearn.linear_model.Ridge",
+      "solver": "lsqr",
+      "tol": 1e-06,
+      "fit_intercept": true
+    },
+    "search_space": {
+      "alpha": [
+        1.0,
+        10.0,
+        100.0,
+        1000.0,
+        10000.0,
+        100000.0
+      ],
+      "complexity_order": "larger alpha = stronger penalty = simpler model"
+    },
+    "evaluation": {
+      "cv_fits": "6 configurations x 5 folds = 30",
+      "selection_metric": "pooled out-of-fold MAE in original loss units",
+      "also_report": "each fold's MAE and claim count, mean and sample sd, fold-matched mean/median constants",
+      "tie_rule": "within 1 loss unit of the best pooled MAE counts as tied; pick the larger alpha",
+      "edge_rule": "if the best alpha is at either end of the grid, record it; extending needs a team amendment",
+      "final_refit": "refit the selected alpha on all 141,238 training claims",
+      "validation_release": "the single selected candidate only, scored once with the shared evaluator",
+      "test_partition": "never used in October"
+    },
+    "environment": {
+      "python": "3.13.16",
+      "pandas": "2.3.2",
+      "numpy": "2.3.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "git_commit": "404532c616bed99263d655abf80c0dcc24b8b9cd",
+  "environment": {
+    "numpy": "2.3.3",
+    "pandas": "2.3.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2"
+  },
+  "status": "completed",
+  "test_used": false,
+  "validation_score_attempted": true,
+  "input_sha256": {
+    "artifacts/october/gate 2/approach1_glm_config.json": "f87decbdb5b94c4992d36f3f3e6e18c6f644b6e898ec23b958c6837a669fdab4",
+    "artifacts/october/gate 2/cv_folds/october_cv_folds.csv": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+    "/Users/beck/Developer/Allstate-1C-predicting-auto-claims-severity/notebooks/gate2_training_folds.ipynb": "41b97634986deababfe90817fd5a20219c054af1d08449f0a22738206e9b0751",
+    "/Users/beck/Developer/Allstate-1C-predicting-auto-claims-severity/scripts/run_glm_candidate.py": "ea3d2e9e4146f7a08399ee4a3627514e967e403bea5ac9106c780ab507efb53d",
+    "scripts/evaluation.py": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+    "scripts/verify_gate2_preprocessing_leng.py": "4c912e4b329f55c0d4d08d6c6bf18d86c50841fb1964cb5b15093183178b28cc"
+  },
+  "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "manifest_id": "october-split-v1",
+  "training_claims": 141238,
+  "selected_alpha": 100.0,
+  "pooled_cv_mae": {
+    "1.0": 1246.0854900383645,
+    "10.0": 1245.721246863279,
+    "100.0": 1245.4044484586707,
+    "1000.0": 1246.5778666845404,
+    "10000.0": 1269.3443946350008,
+    "100000.0": 1470.8651531947528
+  },
+  "fold_mae_summary": {
+    "1.0": {
+      "mean": 1246.0855461913948,
+      "std": 13.021735770975452
+    },
+    "10.0": {
+      "mean": 1245.7213021202092,
+      "std": 13.183327756979136
+    },
+    "100.0": {
+      "mean": 1245.4044958530176,
+      "std": 12.641633241510869
+    },
+    "1000.0": {
+      "mean": 1246.5779142208273,
+      "std": 11.398328481283603
+    },
+    "10000.0": {
+      "mean": 1269.3444451474832,
+      "std": 10.36400823080851
+    },
+    "100000.0": {
+      "mean": 1470.8651945049592,
+      "std": 12.2582901973276
+    }
+  },
+  "prediction_sha256": "0637dc5fcdde2ee2be1f3a037a48abd7d7deb411aa2af6de221cd3b9205ee01f",
+  "validation": {
+    "mae": 1250.453333128099,
+    "evaluated_claim_count": 28248,
+    "partition": "validation",
+    "partition_id": "october-split-v1:validation",
+    "manifest_id": "october-split-v1",
+    "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+    "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+    "metric": "MAE",
+    "units": "original loss units",
+    "run_metadata": {
+      "run_id": "glm-20261103T055706Z-0748a4b5",
+      "alpha": 100.0
+    },
+    "checks": {
+      "id_alignment": true,
+      "duplicate_prediction_ids_absent": true,
+      "missing_prediction_ids_absent": true,
+      "extra_prediction_ids_absent": true,
+      "numeric_finite_predictions": true
+    }
+  },
+  "runtime_seconds": 89.02515091700116
+}
