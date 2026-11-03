@@ -1,0 +1,238 @@
+{
+  "run_id": "leng-gate2-20261102T021120.871783Z",
+  "timestamp_utc": "2026-11-02T02:11:20.871783+00:00",
+  "base_commit": "aa8a87a42e2353f78d38345ede2351c0a5ad36ee",
+  "branch": "leng/oct-gate2-task8",
+  "working_tree": "?? \"artifacts/october/gate 2/approach2_xgboost_config.json\"\n?? \"artifacts/october/gate 2/leng_gate2_independent_verification.md\"\n?? \"artifacts/october/gate 2/leng_verification/\"\n?? environments/\n?? scripts/verify_gate2_leng.py\n?? scripts/verify_gate2_preprocessing_leng.py\n?? tests/test_verify_gate2_leng.py",
+  "python": "3.13.5",
+  "tracked_diff": "",
+  "staged_diff": "",
+  "python_optimized": false,
+  "interpreter": "/opt/anaconda3/envs/allstate-btt/bin/python",
+  "environment": {
+    "numpy": "2.3.3",
+    "pandas": "2.3.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.1.1",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "ipykernel": "7.4.0",
+    "jupyter_client": "8.10.0"
+  },
+  "execution_command": "/opt/anaconda3/envs/allstate-btt/bin/python -B -m scripts.verify_gate2_leng --baseline-run /private/tmp/leng-gate2-focused-sxhr2mtt/baseline-rerun/baselines-20261102T020455Z-313e8d4d --approach2-config 'artifacts/october/gate 2/approach2_xgboost_config.json' --receipt /private/tmp/leng-gate2-focused-sxhr2mtt/independent-final.json",
+  "gate_approval": "NOT RECORDED; technical verification only",
+  "constants": {
+    "mean": 3038.297456137867,
+    "median": 2116.665
+  },
+  "validation_mae": {
+    "mean": 1959.6309163876394,
+    "median": 1802.7938540781647
+  },
+  "partition_counts": {
+    "train": 141238,
+    "validation": 28248,
+    "test": 18832
+  },
+  "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "baseline_runs": [
+    {
+      "run_id": "baselines-20261025T034722Z-10e9a301",
+      "receipt_sha256": "6e818e6e43898a730c80c6bbf52194efab41ca2f4f84201e3e3981caa842793f",
+      "recorded_commit_available": true,
+      "receipt_path": "artifacts/october/gate 2/baselines/baselines-20261025T034722Z-10e9a301/baseline_run_receipt.json",
+      "comparison_sha256": "9e82e7b58dcc4071412f3dc6223f2e0cfdf8ec353f3681b9e1ce59b1bc036735",
+      "recorded_code_version": "5dd8b99aeae24526d34192ff475778e6457e3fb6",
+      "recorded_environment": {
+        "python": "3.13.5",
+        "numpy": "2.3.2",
+        "pandas": "2.3.2"
+      },
+      "code_identity": {
+        "scripts/evaluation.py": {
+          "recorded_sha256": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+          "current_sha256": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+          "matches_current": true
+        },
+        "scripts/run_baselines.py": {
+          "recorded_sha256": "2d9f312e00be99dbbbd7aee18df3ec94da308149d2b84909cfe182dff5c5dfcd",
+          "current_sha256": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a",
+          "matches_current": false
+        }
+      },
+      "results": [
+        {
+          "baseline": "mean",
+          "mae": 1959.6309163876394,
+          "claims": 28248,
+          "prediction_sha256": "0bbd02a90d9d4b9b97891d966a1eefa65e1969e14f496e583b463ebfcb0f53bd"
+        },
+        {
+          "baseline": "median",
+          "mae": 1802.7938540781647,
+          "claims": 28248,
+          "prediction_sha256": "9087e4adbe924d696e2fddcf296d90fbe183b99579c05b4b292fee9f7c807225"
+        }
+      ]
+    },
+    {
+      "run_id": "baselines-20261025T034742Z-0e9ea822",
+      "receipt_sha256": "f36b4196b6380906833e99daa87d64c38f2c2ee9f1573051606c52470fc5f007",
+      "recorded_commit_available": true,
+      "receipt_path": "artifacts/october/gate 2/baselines/baselines-20261025T034742Z-0e9ea822/baseline_run_receipt.json",
+      "comparison_sha256": "52886573382d579a9b0b2a31a5bb48de7127bf240945ee55b3278e09b6c56e98",
+      "recorded_code_version": "5dd8b99aeae24526d34192ff475778e6457e3fb6",
+      "recorded_environment": {
+        "python": "3.13.5",
+        "numpy": "2.3.2",
+        "pandas": "2.3.2"
+      },
+      "code_identity": {
+        "scripts/evaluation.py": {
+          "recorded_sha256": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+          "current_sha256": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+          "matches_current": true
+        },
+        "scripts/run_baselines.py": {
+          "recorded_sha256": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a",
+          "current_sha256": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a",
+          "matches_current": true
+        }
+      },
+      "results": [
+        {
+          "baseline": "mean",
+          "mae": 1959.6309163876394,
+          "claims": 28248,
+          "prediction_sha256": "0bbd02a90d9d4b9b97891d966a1eefa65e1969e14f496e583b463ebfcb0f53bd"
+        },
+        {
+          "baseline": "median",
+          "mae": 1802.7938540781647,
+          "claims": 28248,
+          "prediction_sha256": "9087e4adbe924d696e2fddcf296d90fbe183b99579c05b4b292fee9f7c807225"
+        }
+      ]
+    }
+  ],
+  "synthetic_evaluator": {
+    "nonconstant_mae": 5.666666666666667,
+    "invalid_cases_rejected": 26,
+    "cases": [
+      "missing",
+      "empty",
+      "duplicate",
+      "extra",
+      "test ID",
+      "wrong schema",
+      "numeric strings",
+      "boolean predictions",
+      "complex predictions",
+      "nonfinite nan",
+      "nonfinite inf",
+      "nonfinite -inf",
+      "invalid ID None",
+      "invalid ID True",
+      "invalid ID 0",
+      "invalid ID -1",
+      "invalid ID 4.0",
+      "invalid ID '04'",
+      "invalid ID 'bad'",
+      "duplicate truth",
+      "missing truth",
+      "extra truth column",
+      "invalid loss 0.0",
+      "invalid loss -1.0",
+      "invalid loss nan",
+      "invalid loss inf"
+    ]
+  },
+  "cv": {
+    "held_out_counts": {
+      "0": 28248,
+      "1": 28248,
+      "2": 28248,
+      "3": 28247,
+      "4": 28247
+    },
+    "fold_sha256": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+    "cv_constant_pooled_mae": {
+      "mean": 1965.8950853746826,
+      "median": 1808.9919795664057,
+      "expm1(mean of log1p)": 1809.7774636487848
+    }
+  },
+  "test_target_policy": "Test rows skipped before loss conversion; no test targets scored",
+  "status": "PASS",
+  "baseline_reproduction": {
+    "runs": [
+      {
+        "run_id": "baselines-20261102T020455Z-313e8d4d",
+        "receipt_sha256": "b2a85382f759cad75fa76c813fe1210b5c552e0ed6e0ad0d402f19afca8222e0",
+        "recorded_commit_available": true,
+        "comparison_sha256": "d6ee8a59cd03b8f49d309d4bdb4030d89f4e56c60db418151100cfab66f10fbf",
+        "recorded_code_version": "aa8a87a42e2353f78d38345ede2351c0a5ad36ee",
+        "recorded_environment": {
+          "python": "3.13.5",
+          "numpy": "2.3.3",
+          "pandas": "2.3.2"
+        },
+        "code_identity": {
+          "scripts/evaluation.py": {
+            "recorded_sha256": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+            "current_sha256": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+            "matches_current": true
+          },
+          "scripts/run_baselines.py": {
+            "recorded_sha256": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a",
+            "current_sha256": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a",
+            "matches_current": true
+          }
+        },
+        "results": [
+          {
+            "baseline": "mean",
+            "mae": 1959.6309163876394,
+            "claims": 28248,
+            "prediction_sha256": "0bbd02a90d9d4b9b97891d966a1eefa65e1969e14f496e583b463ebfcb0f53bd"
+          },
+          {
+            "baseline": "median",
+            "mae": 1802.7938540781647,
+            "claims": 28248,
+            "prediction_sha256": "9087e4adbe924d696e2fddcf296d90fbe183b99579c05b4b292fee9f7c807225"
+          }
+        ]
+      }
+    ],
+    "artifact_policy": "Fresh temporary outputs are not required by the submission; their prediction bytes match the committed baseline artifacts."
+  },
+  "approach2_scaffold": {
+    "config_sha256": "0aa4dd5f848ad09eebf3b12730219fda9130c21481ffc53f5e42cbc5edb670e2",
+    "training_authorized": false,
+    "policy_decision": "PENDING_TEAM_DECISION",
+    "selected_option": null,
+    "decision_record": null,
+    "initial_configurations": 5,
+    "reserved_iteration_configurations": 1,
+    "maximum_cv_fits": 30,
+    "scope": "Static review only; no model fit, tuning, release or team approval"
+  },
+  "input_sha256": {
+    "scripts/verify_gate2_leng.py": "5c43c99740ebf6a752703889178d8bf48b72c4e4080ce31968bdd04712cfb466",
+    "data/allstate_claims_data.csv": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+    "artifacts/october/gate 1/october_partition_manifest.csv": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+    "artifacts/october/gate 1/october_split_metadata.json": "dc95b89481aa9092a79059e2c71b5bbd632c7c785cd659097a878e184b29859d",
+    "artifacts/october/gate 1/split_acceptance.json": "1561b59d1c1fff367d14781b326df302bbebd0b1548b6c984fecc79dddb07ebf",
+    "artifacts/october/gate 2/cv_folds/october_cv_folds.csv": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+    "artifacts/october/gate 2/cv_folds/october_cv_folds_metadata.json": "f8e1bb16e25249908f3ab49007db55c31f502260aa057da433fabfd3bf270cef",
+    "artifacts/october/gate 2/cv_folds/cv_constant_baselines.csv": "c5619c6ef2f46fd348c0c01105ad6c77af95ea793abe2bcda6eb039fe80759a1",
+    "scripts/evaluation.py": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+    "scripts/run_baselines.py": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a",
+    "tests/test_verify_gate2_leng.py": "336ad7fc89b2384921734d6ddcdfaa945eab383a7d8b9d7ed739fe13b19f8fce",
+    "environments/gate2/requirements.txt": "370d964bdeeacbe531a1b16475f7b190972c1575c39556161b5be1fc3dcd95cb",
+    "artifacts/october/gate 2/approach2_xgboost_config.json": "0aa4dd5f848ad09eebf3b12730219fda9130c21481ffc53f5e42cbc5edb670e2"
+  }
+}

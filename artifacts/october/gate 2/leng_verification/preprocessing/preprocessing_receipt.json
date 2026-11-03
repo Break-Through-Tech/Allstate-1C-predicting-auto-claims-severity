@@ -1,0 +1,69 @@
+{
+  "run_id": "leng-gate2-20261102T021208.120836Z",
+  "timestamp_utc": "2026-11-02T02:12:08.120836+00:00",
+  "base_commit": "aa8a87a42e2353f78d38345ede2351c0a5ad36ee",
+  "branch": "leng/oct-gate2-task8",
+  "working_tree": "?? \"artifacts/october/gate 2/leng_gate2_independent_verification.md\"\n?? \"artifacts/october/gate 2/leng_verification/\"\n?? environments/\n?? scripts/verify_gate2_leng.py\n?? scripts/verify_gate2_preprocessing_leng.py\n?? tests/test_verify_gate2_leng.py",
+  "python": "3.13.5",
+  "tracked_diff": "",
+  "staged_diff": "",
+  "python_optimized": false,
+  "interpreter": "/opt/anaconda3/envs/allstate-btt/bin/python",
+  "environment": {
+    "numpy": "2.3.3",
+    "pandas": "2.3.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.1.1",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "ipykernel": "7.4.0",
+    "jupyter_client": "8.10.0"
+  },
+  "execution_command": "/opt/anaconda3/envs/allstate-btt/bin/python -B -m scripts.verify_gate2_preprocessing_leng --receipt /private/tmp/leng-gate2-focused-sxhr2mtt/preprocessing-final.json",
+  "gate_approval": "NOT RECORDED; technical verification only",
+  "notebook": {
+    "code_cells_executed": 34,
+    "errors": 0,
+    "kernel_interpreter": "/opt/anaconda3/envs/allstate-btt/bin/python",
+    "kernel_optimization": 0,
+    "output_blocks_checked": 32,
+    "output_storage": "Checked in memory; no executed notebook artifact required",
+    "source_notebook_sha256": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "independent_preprocessing": {
+    "training_rare_levels": 352,
+    "fields_with_rare_levels": 30,
+    "validation_rare_claims": 490,
+    "validation_unseen_claims": 12,
+    "validation_unseen_occurrences": 13,
+    "validation_both": 3,
+    "validation_either": 499,
+    "glm_output_columns": 808,
+    "native_output_columns": 130,
+    "glm_oracle_validation_rows": 180,
+    "predictor_reader_requests_loss": false
+  },
+  "target_inverse": {
+    "fit_transform": "log1p",
+    "inverse": "expm1 after fit-range clipping",
+    "invalid_cases_rejected": 6,
+    "uses_real_model_targets": false
+  },
+  "test_target_policy": "Predictor reader excludes loss; synthetic targets only in model checks",
+  "status": "PASS",
+  "limitations": [
+    "No real candidate CV or performance evaluation",
+    "Notebook self-tests are reproduction evidence; independent oracles are separate",
+    "GLM values checked on 180 validation rows; native labels checked on all validation rows"
+  ],
+  "input_sha256": {
+    "scripts/verify_gate2_preprocessing_leng.py": "eff1748a3372613e74b0240ef2e7376563937a6c2fc7d6b341b35f2591dec26d",
+    "scripts/verify_gate2_leng.py": "5c43c99740ebf6a752703889178d8bf48b72c4e4080ce31968bdd04712cfb466",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10",
+    "notebooks/gate2_training_folds.ipynb": "41b97634986deababfe90817fd5a20219c054af1d08449f0a22738206e9b0751",
+    "data/allstate_claims_data.csv": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+    "artifacts/october/gate 1/october_partition_manifest.csv": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+    "environments/gate2/requirements.txt": "370d964bdeeacbe531a1b16475f7b190972c1575c39556161b5be1fc3dcd95cb"
+  }
+}
