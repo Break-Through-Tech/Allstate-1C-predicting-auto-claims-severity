@@ -15,7 +15,6 @@ import pickle
 import sys
 import types
 
-import nbformat
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, RegressorMixin, clone
@@ -35,7 +34,7 @@ CONTS = [f"cont{i}" for i in range(1, 15)]
 FEATURES = CATS + CONTS
 
 
-def load_definitions(path, names, module_name):
+def load_definitions(path, names, module_name, bindings=None):
     """Use actual notebook definitions, without running data loads or writes."""
     notebook = load_json(path)
     source = "\n".join("".join(c["source"]) for c in notebook["cells"]
@@ -46,12 +45,14 @@ def load_definitions(path, names, module_name):
     found = {n.name for n in body if isinstance(n, (ast.ClassDef, ast.FunctionDef))}
     require(found == set(names), f"Notebook definitions missing: {set(names) - found}")
     module = types.ModuleType(module_name)
+    module.__dict__.update(bindings or {})
     sys.modules[module_name] = module
     exec(compile(ast.Module(body=body, type_ignores=[]), str(path), "exec"), module.__dict__)
     return module
 
 
 def reproduce_notebook():
+    import nbformat
     from jupyter_client import AsyncKernelManager
     from nbclient import NotebookClient
 
