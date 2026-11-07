@@ -1,0 +1,105 @@
+{
+  "run_id": "comparison-20261107T175139Z-d1372e77",
+  "timestamp_utc": "2026-11-07T17:51:41.316530+00:00",
+  "git_commit": "404532c616bed99263d655abf80c0dcc24b8b9cd",
+  "git_status": "?? \"artifacts/october/gate 3/comparison_inputs/\"\n?? \"artifacts/october/gate 3/comparisons/\"\n?? docs/october_model_comparison_guide.md\n?? docs/task_model_comparison_summary.md\n?? scripts/model_comparison.py\n?? tests/test_model_comparison.py",
+  "source_hash": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "manifest_id": "october-split-v1",
+  "manifest_hash": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "validation_claim_count": 28248,
+  "training_claim_count": 141238,
+  "baseline_run_ids": [
+    "baselines-20261025T034742Z-0e9ea822"
+  ],
+  "candidate_run_ids": [
+    "glm-20261103T055706Z-0748a4b5",
+    "unavailable"
+  ],
+  "evaluation_code_version": "b05721ae9aef30a51f7c66d38cfe95f6dc0cef4af3c822ceb42b0be61ce57b09",
+  "comparison_code_version": "bc5f36736df981f1e47696f31eb4bde6cc12046d795786ceb31a3db13711b64b",
+  "input_sha256": {
+    "artifacts/october/gate 2/baselines/baselines-20261025T034742Z-0e9ea822/baseline_run_receipt.json": "f36b4196b6380906833e99daa87d64c38f2c2ee9f1573051606c52470fc5f007",
+    "artifacts/october/gate 2/baselines/baselines-20261025T034742Z-0e9ea822/baseline_mean_predictions.csv": "0bbd02a90d9d4b9b97891d966a1eefa65e1969e14f496e583b463ebfcb0f53bd",
+    "artifacts/october/gate 2/baselines/baselines-20261025T034742Z-0e9ea822/baseline_median_predictions.csv": "9087e4adbe924d696e2fddcf296d90fbe183b99579c05b4b292fee9f7c807225",
+    "artifacts/october/gate 3/comparison_inputs/glm-20261103T055706Z-0748a4b5/validation_predictions.csv": "0637dc5fcdde2ee2be1f3a037a48abd7d7deb411aa2af6de221cd3b9205ee01f",
+    "artifacts/october/gate 3/comparison_inputs/glm-20261103T055706Z-0748a4b5/run_receipt.json": "942fa837c6a553c0c7a9a11adfa724b12f96519c4417d288200e807cb26bc60f",
+    "artifacts/october/gate 3/comparison_inputs/glm-20261103T055706Z-0748a4b5/provenance.json": "2702b1a67b1e2d84e581bf5a2995808f6d174766ae1570304028fd442f4f8570",
+    "artifacts/october/gate 3/comparison_inputs/glm-20261103T055706Z-0748a4b5/cv_results.csv": "ce0a6c386aa11d6918bc422e0f81adf4957aa6c215f3e7b1a419d9658e81c58c",
+    "artifacts/october/gate 2/cv_folds/october_cv_folds.csv": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+    "artifacts/october/gate 2/approach2_xgboost_config.json": "0aa4dd5f848ad09eebf3b12730219fda9130c21481ffc53f5e42cbc5edb670e2"
+  },
+  "thresholds": {
+    "training_count": 141238,
+    "quantiles": [
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      0.95,
+      0.99
+    ],
+    "boundaries": [
+      1205.0525,
+      2116.665,
+      3868.315,
+      6400.174,
+      8511.918999999998,
+      13900.776800000007
+    ]
+  },
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.3.2",
+    "pandas": "2.3.2",
+    "matplotlib": "3.10.5"
+  },
+  "reproduction_command": "python3 -m scripts.model_comparison",
+  "execution_command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m scripts.model_comparison --write-summary",
+  "tests": {
+    "exit_code": 0,
+    "output": "..........................\n----------------------------------------------------------------------\nRan 26 tests in 0.034s\n\nOK\n"
+  },
+  "test_isolation": "Shared loader skips test rows before target conversion; train/validation only; no model fitting",
+  "limitations": [
+    "GLM evidence snapshotted from an unmerged branch with user authorization.",
+    "XGBoost incomplete; no predictions or run receipt.",
+    "No in-sample training MAE, seed/repeat evidence or hardware record.",
+    "Runtime is total workflow, not isolated training time; post-encoding coefficient count unavailable.",
+    "Prediction scale established from producer provenance; numeric values cannot prove scale alone."
+  ],
+  "artifacts_sha256": {
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/candidate_inventory.csv": "51afb93151797f57521a4230a3cba4c6781cd4fbdf6534f515c9844069d80dcd",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_comparison.csv": "d752640210b0f54ac34af1bac6e231089c05c3794e28076b8f2a6bd28b9bd69d",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_comparison.png": "53f394edb1893f6fef2fa8da6f17978ea8b4aa51767fc0ee2c3216f7a8721bf9",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_high_loss_diagnostics.csv": "9704b8dd18fb866b3def7abffac9237436681ff492185781cb8eb9ec10ed445c",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_overfitting_diagnostics.csv": "f6764053e596d96d5246d19d8aec8c4bfcc7c076d5ddba74db780b4e108739c8",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_prediction_failures.csv": "fa680dd122fde0f66959af8fccadfe07dcbbf67b1213db2ff99bdafbc61707fd",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_stability_diagnostics.csv": "e162a603509692d9b0b20270fe698815f1308d67c43e340596eff90b20019870",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_tail_and_cv.png": "bc07aa32d588a7c453d1ecfe10267074da03684c7e2d30d45d8fdcb3ce42bc7d",
+    "artifacts/october/gate 3/comparisons/comparison-20261107T175139Z-d1372e77/model_target_bin_diagnostics.csv": "b28c53a66a76f5ba77fe31b21b57647c7554e391648349911891a82175e32b8e"
+  },
+  "checks": {
+    "Frozen source verified": true,
+    "Frozen manifest verified": true,
+    "Shared evaluator reused": true,
+    "Baseline comparability verified": true,
+    "Candidate artifacts discovered": true,
+    "Prediction IDs validated": true,
+    "All valid models evaluated on identical claims": true,
+    "Original-scale validation MAE calculated": true,
+    "Baseline deltas calculated": true,
+    "Complexity documented": true,
+    "Runtime documented or explicitly unavailable": true,
+    "Target-distribution diagnostics generated": true,
+    "High-loss diagnostics generated": true,
+    "Support counts documented": true,
+    "Overfitting diagnostics generated": true,
+    "Stability assessed or explicitly unavailable": true,
+    "Prediction failures identified": true,
+    "Automated tests passed": true,
+    "Documentation generated": true,
+    "Internal test targets untouched": true,
+    "Completion summary generated": true,
+    "Run receipt generated": true
+  }
+}

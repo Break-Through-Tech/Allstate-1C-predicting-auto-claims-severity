@@ -1,0 +1,7 @@
+model_name,run_id,evidence_type,status,count,mean_mae,std_mae,min_mae,max_mae,range_mae
+Training mean,baselines-20261025T034742Z-0e9ea822,cross_validation_folds,NOT_ASSESSED — insufficient repeated-run evidence,0,,,,,
+Training mean,baselines-20261025T034742Z-0e9ea822,random_seed_or_repeated_training,NOT_ASSESSED — insufficient repeated-run evidence,0,,,,,
+Training median,baselines-20261025T034742Z-0e9ea822,cross_validation_folds,NOT_ASSESSED — insufficient repeated-run evidence,0,,,,,
+Training median,baselines-20261025T034742Z-0e9ea822,random_seed_or_repeated_training,NOT_ASSESSED — insufficient repeated-run evidence,0,,,,,
+Ridge GLM,glm-20261103T055706Z-0748a4b5,cross_validation_folds,ASSESSED,5,1245.4044958530176,12.641633241510851,1231.8398432376573,1261.0855934952974,29.245750257640111
+Ridge GLM,glm-20261103T055706Z-0748a4b5,random_seed_or_repeated_training,NOT_ASSESSED — insufficient repeated-run evidence,0,,,,,
