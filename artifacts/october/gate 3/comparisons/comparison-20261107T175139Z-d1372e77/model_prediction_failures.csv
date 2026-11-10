@@ -1,0 +1,2 @@
+model_name,run_id,failure_type,failure_count,expected_validation_claim_count,actual_prediction_row_count,example_affected_ids,artifact_path,resolution_status,reason
+XGBoost,unavailable,missing_run_and_predictions,1,28248,,,artifacts/october/gate 2/approach2_xgboost_config.json,INCOMPLETE,Only proposed configuration available; no candidate MAE assigned

@@ -1,0 +1,4 @@
+model_name,run_id,validation_mae,training_mae,cv_mean_mae,generalization_gap,validation_minus_cv_mean,cv_pooled_mae,cv_std_mae,cv_fold_count,training_sample_count,validation_sample_count,assessment
+Training mean,baselines-20261025T034742Z-0e9ea822,1959.6309163876397,,,,,,,0,141238,28248,NOT_ASSESSED — training/CV evidence unavailable
+Training median,baselines-20261025T034742Z-0e9ea822,1802.7938540781647,,,,,,,0,141238,28248,NOT_ASSESSED — training/CV evidence unavailable
+Ridge GLM,glm-20261103T055706Z-0748a4b5,1250.4533331280991,,1245.4044958530176,,5.048837275081496,1245.4044484586707,12.641633241510851,5,141238,28248,Provisional descriptive CV difference; in-sample training MAE unavailable

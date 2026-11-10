@@ -1,0 +1,3 @@
+model_name,run_id,evidence_path,evaluation_status,reason
+Ridge GLM,glm-20261103T055706Z-0748a4b5,artifacts/october/gate 3/comparison_inputs/glm-20261103T055706Z-0748a4b5,VALID,
+XGBoost,unavailable,artifacts/october/gate 2/approach2_xgboost_config.json,INCOMPLETE,Only proposed configuration; no committed prediction/run receipt in comparison inputs

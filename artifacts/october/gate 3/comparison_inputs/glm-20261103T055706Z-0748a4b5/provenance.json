@@ -1,0 +1,21 @@
+{
+  "source_branch": "origin/hector/Oct-gate3-task1",
+  "source_commit": "ab331538eba349e19a326ff6d87c395ccdb1a742",
+  "integration_status": "unmerged at inspection; user authorized read-only evidence snapshot",
+  "files": {
+    "run_receipt.json": {
+      "original_path": "artifacts/october/gate 3/runs/glm-20261103T055706Z-0748a4b5/run_receipt.json",
+      "sha256": "942fa837c6a553c0c7a9a11adfa724b12f96519c4417d288200e807cb26bc60f"
+    },
+    "validation_predictions.csv": {
+      "original_path": "artifacts/october/gate 3/runs/glm-20261103T055706Z-0748a4b5/validation_predictions.csv",
+      "sha256": "0637dc5fcdde2ee2be1f3a037a48abd7d7deb411aa2af6de221cd3b9205ee01f"
+    },
+    "cv_results.csv": {
+      "original_path": "artifacts/october/gate 3/runs/glm-20261103T055706Z-0748a4b5/cv_results.csv",
+      "sha256": "ce0a6c386aa11d6918bc422e0f81adf4957aa6c215f3e7b1a419d9658e81c58c"
+    }
+  },
+  "runtime_definition": "Total measured workflow: source checks, preprocessing, 30 CV fits/scorings, final refit and validation evaluation; not isolated training or prediction runtime. Verified from scripts/run_glm_candidate.py lines 37-104 at source_commit.",
+  "hardware": "unavailable"
+}
