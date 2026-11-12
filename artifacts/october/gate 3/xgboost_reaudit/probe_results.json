@@ -1,0 +1,49 @@
+{
+  "scope": "Synthetic temporary fixtures only",
+  "code_sha256": {
+    "scripts/run_xgboost.py": "90990bae551769697679e5b5a1b3e0ffa6324107252e8d1e6298d793d365f6c7",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "lock": [
+    {
+      "command": "followup",
+      "status": "BLOCKED",
+      "reason": "Stage already consumed or out of sequence; no additional fit or validation release authorized",
+      "data_fit_validation_dispatches": 0,
+      "current_ledger_preserved": true
+    },
+    {
+      "command": "release",
+      "status": "BLOCKED",
+      "reason": "Stage already consumed or out of sequence; no additional fit or validation release authorized",
+      "data_fit_validation_dispatches": 0,
+      "current_ledger_preserved": true
+    }
+  ],
+  "environment": [
+    {
+      "command": "followup",
+      "status": "BLOCKED",
+      "reason": "Campaign interpreter/package environment changed; no fit or validation access authorized",
+      "data_fit_validation_dispatches": 0
+    },
+    {
+      "command": "release",
+      "status": "BLOCKED",
+      "reason": "Campaign interpreter/package environment changed; no fit or validation access authorized",
+      "data_fit_validation_dispatches": 0
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "fit_claims": 200,
+    "validation_ids": [
+      201
+    ],
+    "features_and_target_match_separate_fixture": true,
+    "validation_transform_only": true,
+    "test_features_and_target_not_generated": true,
+    "real_source_accesses": 0
+  }
+}

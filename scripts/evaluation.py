@@ -180,28 +180,46 @@ def load_partition_targets(split):
             checked_frame(validation, 'loss', split.validation_ids, 'validation targets').sort_values('id').reset_index(drop=True))
 
 
+def evaluate_training_mae(ground_truth, predictions, *, split, held_out_ids, run_metadata=None):
+    """Score a training-only CV holdout with the same checks as validation.
+
+    Explicit membership prevents a training prediction from being mislabeled as
+    a validation release. No validation/test claim can enter this metric.
+    """
+    split.validate()
+    ids = claim_ids(held_out_ids, 'CV holdout')
+    require(bool(ids) and set(ids) <= set(split.train_ids), 'CV holdout must contain training IDs only')
+    return _evaluate_mae(ground_truth, predictions, split=split, expected_ids=ids,
+                         partition='training_oof', run_metadata=run_metadata)
+
+
 def evaluate_mae(ground_truth, predictions, *, split, run_metadata=None):
     """Return ID-aligned validation MAE and traceability in original loss units.
 
     Caller must supply original-unit predictions; numeric scale cannot be inferred.
     Negative finite predictions are scored as provided, never silently clipped.
     """
+    return _evaluate_mae(ground_truth, predictions, split=split,
+                         expected_ids=split.validation_ids, partition='validation', run_metadata=run_metadata)
+
+
+def _evaluate_mae(ground_truth, predictions, *, split, expected_ids, partition, run_metadata):
     split.validate()
-    truth = checked_frame(ground_truth, 'loss', split.validation_ids, 'ground truth')
-    predicted = checked_frame(predictions, 'prediction', split.validation_ids, 'predictions')
+    truth = checked_frame(ground_truth, 'loss', expected_ids, 'ground truth')
+    predicted = checked_frame(predictions, 'prediction', expected_ids, 'predictions')
     aligned = truth.merge(predicted, on='id', how='inner', validate='one_to_one').sort_values('id')
-    require(len(aligned) == len(split.validation_ids), 'Aligned count differs from validation population')
+    require(len(aligned) == len(expected_ids), 'Aligned count differs from evaluation population')
     with np.errstate(over='ignore', invalid='ignore'):
         errors = np.abs(aligned.loss.to_numpy() - aligned.prediction.to_numpy())
         # Divide first to avoid overflowing an otherwise finite average.
         mae = float(np.sum(errors / len(aligned)))
     require(np.isfinite(errors).all() and np.isfinite(mae), 'MAE overflow/non-finite error; cannot report score')
-    return {'mae': mae, 'evaluated_claim_count': len(aligned), 'partition': 'validation',
-            'partition_id': f'{split.manifest_id}:validation', 'manifest_id': split.manifest_id,
+    return {'mae': mae, 'evaluated_claim_count': len(aligned), 'partition': partition,
+            'partition_id': f'{split.manifest_id}:{partition}', 'manifest_id': split.manifest_id,
             'manifest_sha256': split.manifest_sha256, 'source_sha256': split.source_sha256,
             'metric': 'MAE', 'units': 'original loss units', 'run_metadata': dict(run_metadata or {}),
-            'checks': {'id_alignment': len(aligned) == len(split.validation_ids),
+            'checks': {'id_alignment': len(aligned) == len(expected_ids),
                        'duplicate_prediction_ids_absent': predicted.id.is_unique,
-                       'missing_prediction_ids_absent': set(split.validation_ids) <= set(predicted.id),
-                       'extra_prediction_ids_absent': set(predicted.id) <= set(split.validation_ids),
+                       'missing_prediction_ids_absent': set(expected_ids) <= set(predicted.id),
+                       'extra_prediction_ids_absent': set(predicted.id) <= set(expected_ids),
                        'numeric_finite_predictions': bool(np.isfinite(predicted.prediction).all())}}

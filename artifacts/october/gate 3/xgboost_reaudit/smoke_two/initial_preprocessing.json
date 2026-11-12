@@ -1,0 +1,1195 @@
+{
+  "schema": [
+    "cat1",
+    "cat2",
+    "cat3",
+    "cat4",
+    "cat5",
+    "cat6",
+    "cat7",
+    "cat8",
+    "cat9",
+    "cat10",
+    "cat11",
+    "cat12",
+    "cat13",
+    "cat14",
+    "cat15",
+    "cat16",
+    "cat17",
+    "cat18",
+    "cat19",
+    "cat20",
+    "cat21",
+    "cat22",
+    "cat23",
+    "cat24",
+    "cat25",
+    "cat26",
+    "cat27",
+    "cat28",
+    "cat29",
+    "cat30",
+    "cat31",
+    "cat32",
+    "cat33",
+    "cat34",
+    "cat35",
+    "cat36",
+    "cat37",
+    "cat38",
+    "cat39",
+    "cat40",
+    "cat41",
+    "cat42",
+    "cat43",
+    "cat44",
+    "cat45",
+    "cat46",
+    "cat47",
+    "cat48",
+    "cat49",
+    "cat50",
+    "cat51",
+    "cat52",
+    "cat53",
+    "cat54",
+    "cat55",
+    "cat56",
+    "cat57",
+    "cat58",
+    "cat59",
+    "cat60",
+    "cat61",
+    "cat62",
+    "cat63",
+    "cat64",
+    "cat65",
+    "cat66",
+    "cat67",
+    "cat68",
+    "cat69",
+    "cat70",
+    "cat71",
+    "cat72",
+    "cat73",
+    "cat74",
+    "cat75",
+    "cat76",
+    "cat77",
+    "cat78",
+    "cat79",
+    "cat80",
+    "cat81",
+    "cat82",
+    "cat83",
+    "cat84",
+    "cat85",
+    "cat86",
+    "cat87",
+    "cat88",
+    "cat89",
+    "cat90",
+    "cat91",
+    "cat92",
+    "cat93",
+    "cat94",
+    "cat95",
+    "cat96",
+    "cat97",
+    "cat98",
+    "cat99",
+    "cat100",
+    "cat101",
+    "cat102",
+    "cat103",
+    "cat104",
+    "cat105",
+    "cat106",
+    "cat107",
+    "cat108",
+    "cat109",
+    "cat110",
+    "cat111",
+    "cat112",
+    "cat113",
+    "cat114",
+    "cat115",
+    "cat116",
+    "cont1",
+    "cont2",
+    "cont3",
+    "cont4",
+    "cont5",
+    "cont6",
+    "cont7",
+    "cont8",
+    "cont9",
+    "cont10",
+    "cont11",
+    "cont12",
+    "cont13",
+    "cont14"
+  ],
+  "continuous": [
+    "cont1",
+    "cont2",
+    "cont3",
+    "cont4",
+    "cont5",
+    "cont6",
+    "cont7",
+    "cont8",
+    "cont9",
+    "cont10",
+    "cont11",
+    "cont12",
+    "cont13",
+    "cont14"
+  ],
+  "rare_min_count": 30,
+  "rare_levels": {
+    "cat1": [
+      "FOLD0_ONLY",
+      "RARE"
+    ],
+    "cat2": [
+      "RARE"
+    ],
+    "cat3": [
+      "RARE"
+    ],
+    "cat4": [
+      "RARE"
+    ],
+    "cat5": [
+      "RARE"
+    ],
+    "cat6": [
+      "RARE"
+    ],
+    "cat7": [
+      "RARE"
+    ],
+    "cat8": [
+      "RARE"
+    ],
+    "cat9": [
+      "RARE"
+    ],
+    "cat10": [
+      "RARE"
+    ],
+    "cat11": [
+      "RARE"
+    ],
+    "cat12": [
+      "RARE"
+    ],
+    "cat13": [
+      "RARE"
+    ],
+    "cat14": [
+      "RARE"
+    ],
+    "cat15": [
+      "RARE"
+    ],
+    "cat16": [
+      "RARE"
+    ],
+    "cat17": [
+      "RARE"
+    ],
+    "cat18": [
+      "RARE"
+    ],
+    "cat19": [
+      "RARE"
+    ],
+    "cat20": [
+      "RARE"
+    ],
+    "cat21": [
+      "RARE"
+    ],
+    "cat22": [
+      "RARE"
+    ],
+    "cat23": [
+      "RARE"
+    ],
+    "cat24": [
+      "RARE"
+    ],
+    "cat25": [
+      "RARE"
+    ],
+    "cat26": [
+      "RARE"
+    ],
+    "cat27": [
+      "RARE"
+    ],
+    "cat28": [
+      "RARE"
+    ],
+    "cat29": [
+      "RARE"
+    ],
+    "cat30": [
+      "RARE"
+    ],
+    "cat31": [
+      "C",
+      "RARE"
+    ],
+    "cat32": [
+      "RARE"
+    ],
+    "cat33": [
+      "RARE"
+    ],
+    "cat34": [
+      "RARE"
+    ],
+    "cat35": [
+      "RARE"
+    ],
+    "cat36": [
+      "RARE"
+    ],
+    "cat37": [
+      "RARE"
+    ],
+    "cat38": [
+      "RARE"
+    ],
+    "cat39": [
+      "RARE"
+    ],
+    "cat40": [
+      "RARE"
+    ],
+    "cat41": [
+      "RARE"
+    ],
+    "cat42": [
+      "RARE"
+    ],
+    "cat43": [
+      "RARE"
+    ],
+    "cat44": [
+      "RARE"
+    ],
+    "cat45": [
+      "RARE"
+    ],
+    "cat46": [
+      "RARE"
+    ],
+    "cat47": [
+      "RARE"
+    ],
+    "cat48": [
+      "RARE"
+    ],
+    "cat49": [
+      "RARE"
+    ],
+    "cat50": [
+      "RARE"
+    ],
+    "cat51": [],
+    "cat52": [
+      "RARE"
+    ],
+    "cat53": [
+      "RARE"
+    ],
+    "cat54": [
+      "RARE"
+    ],
+    "cat55": [
+      "RARE"
+    ],
+    "cat56": [
+      "RARE"
+    ],
+    "cat57": [
+      "RARE"
+    ],
+    "cat58": [
+      "RARE"
+    ],
+    "cat59": [
+      "RARE"
+    ],
+    "cat60": [
+      "RARE"
+    ],
+    "cat61": [
+      "RARE"
+    ],
+    "cat62": [
+      "RARE"
+    ],
+    "cat63": [
+      "RARE"
+    ],
+    "cat64": [
+      "RARE"
+    ],
+    "cat65": [
+      "RARE"
+    ],
+    "cat66": [
+      "RARE"
+    ],
+    "cat67": [
+      "RARE"
+    ],
+    "cat68": [
+      "RARE"
+    ],
+    "cat69": [
+      "RARE"
+    ],
+    "cat70": [
+      "RARE"
+    ],
+    "cat71": [
+      "RARE"
+    ],
+    "cat72": [
+      "RARE"
+    ],
+    "cat73": [
+      "RARE"
+    ],
+    "cat74": [],
+    "cat75": [
+      "RARE"
+    ],
+    "cat76": [
+      "RARE"
+    ],
+    "cat77": [
+      "RARE"
+    ],
+    "cat78": [
+      "RARE"
+    ],
+    "cat79": [
+      "RARE"
+    ],
+    "cat80": [
+      "RARE"
+    ],
+    "cat81": [
+      "RARE"
+    ],
+    "cat82": [
+      "RARE"
+    ],
+    "cat83": [
+      "RARE"
+    ],
+    "cat84": [
+      "RARE"
+    ],
+    "cat85": [
+      "RARE"
+    ],
+    "cat86": [
+      "RARE"
+    ],
+    "cat87": [
+      "RARE"
+    ],
+    "cat88": [
+      "RARE"
+    ],
+    "cat89": [
+      "RARE"
+    ],
+    "cat90": [
+      "RARE"
+    ],
+    "cat91": [
+      "RARE"
+    ],
+    "cat92": [
+      "RARE"
+    ],
+    "cat93": [
+      "RARE"
+    ],
+    "cat94": [
+      "RARE"
+    ],
+    "cat95": [
+      "RARE"
+    ],
+    "cat96": [
+      "RARE"
+    ],
+    "cat97": [
+      "RARE"
+    ],
+    "cat98": [
+      "RARE"
+    ],
+    "cat99": [
+      "RARE"
+    ],
+    "cat100": [
+      "RARE"
+    ],
+    "cat101": [
+      "RARE"
+    ],
+    "cat102": [
+      "RARE"
+    ],
+    "cat103": [
+      "RARE"
+    ],
+    "cat104": [
+      "RARE"
+    ],
+    "cat105": [
+      "RARE"
+    ],
+    "cat106": [
+      "RARE"
+    ],
+    "cat107": [
+      "RARE"
+    ],
+    "cat108": [
+      "RARE"
+    ],
+    "cat109": [
+      "RARE"
+    ],
+    "cat110": [
+      "RARE"
+    ],
+    "cat111": [
+      "RARE"
+    ],
+    "cat112": [
+      "RARE"
+    ],
+    "cat113": [
+      "RARE"
+    ],
+    "cat114": [
+      "RARE"
+    ],
+    "cat115": [
+      "RARE"
+    ],
+    "cat116": [
+      "RARE"
+    ]
+  },
+  "categories": {
+    "cat1": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat2": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat3": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat4": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat5": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat6": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat7": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat8": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat9": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat10": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat11": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat12": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat13": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat14": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat15": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat16": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat17": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat18": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat19": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat20": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat21": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat22": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat23": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat24": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat25": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat26": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat27": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat28": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat29": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat30": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat31": [
+      "A",
+      "B",
+      "__rare__"
+    ],
+    "cat32": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat33": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat34": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat35": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat36": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat37": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat38": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat39": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat40": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat41": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat42": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat43": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat44": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat45": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat46": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat47": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat48": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat49": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat50": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat51": [
+      "A",
+      "B",
+      "C"
+    ],
+    "cat52": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat53": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat54": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat55": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat56": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat57": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat58": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat59": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat60": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat61": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat62": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat63": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat64": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat65": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat66": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat67": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat68": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat69": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat70": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat71": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat72": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat73": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat74": [
+      "A",
+      "B",
+      "C"
+    ],
+    "cat75": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat76": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat77": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat78": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat79": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat80": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat81": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat82": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat83": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat84": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat85": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat86": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat87": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat88": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat89": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat90": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat91": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat92": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat93": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat94": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat95": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat96": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat97": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat98": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat99": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat100": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat101": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat102": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat103": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat104": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat105": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat106": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat107": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat108": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat109": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat110": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat111": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat112": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat113": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat114": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat115": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ],
+    "cat116": [
+      "A",
+      "B",
+      "C",
+      "__rare__"
+    ]
+  },
+  "notebook_sha256": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+}

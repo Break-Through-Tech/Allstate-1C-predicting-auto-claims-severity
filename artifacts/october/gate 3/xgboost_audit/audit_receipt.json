@@ -1,0 +1,44 @@
+{
+  "scope": "Synthetic data, saved predictions/receipts, and manifest/fold IDs only; no real claims CSV loaded.",
+  "branch": "leng/oct-gate3-task4",
+  "base_commit": "df557c41e23fa162b4bdfd00df8316e0b6e74f3a",
+  "reviewed_code_sha256": {
+    "scripts/run_xgboost.py": "73f2a9af1fdf887feac9a1a2618fd5191e14f9e2ce14c76a401ff29b25c7f6b2",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "config_sha256": "0aa4dd5f848ad09eebf3b12730219fda9130c21481ffc53f5e42cbc5edb670e2",
+  "test_sha256": "98332a1623b544e94eee3896b356a5a0967ca1c54aa4667fbc23dca3fcf2c1ef",
+  "tests_command": "/opt/anaconda3/envs/allstate-btt/bin/python -B -m unittest discover -s tests -v",
+  "verdict": "FAIL: fixes required before real training; readiness hold works",
+  "smoke_receipts": [
+    {
+      "path": "/private/tmp/task4-audit-smoke-one-20261111/run_receipt.json",
+      "sha256": "02a9e73ccdd1fbd778eef676f1ef35d716bd3e0a425c97b91d9d6d516a789664",
+      "command": [
+        "/Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/scripts/run_xgboost.py",
+        "smoke",
+        "--output",
+        "/private/tmp/task4-audit-smoke-one-20261111"
+      ],
+      "status": "COMPLETE",
+      "cv_fits": 30,
+      "releases": 1
+    },
+    {
+      "path": "/private/tmp/task4-audit-smoke-two-20261111/run_receipt.json",
+      "sha256": "fcf43d8d686cfd7898b0647af8bcc6e30c9a1830b4a2845d7d77dca3bdf85fb9",
+      "command": [
+        "/Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/scripts/run_xgboost.py",
+        "smoke",
+        "--smoke-sequence",
+        "gate1_two_releases",
+        "--output",
+        "/private/tmp/task4-audit-smoke-two-20261111"
+      ],
+      "status": "COMPLETE",
+      "cv_fits": 30,
+      "releases": 2
+    }
+  ]
+}

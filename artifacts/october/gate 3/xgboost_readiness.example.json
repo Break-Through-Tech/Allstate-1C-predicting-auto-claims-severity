@@ -1,0 +1,13 @@
+{
+  "note": "PENDING schema example only. The team must record real decisions; this file grants no approval.",
+  "config_sha256": null,
+  "gate1": {"status": "PENDING", "record": null, "sha256": null},
+  "gate2": {"status": "PENDING", "record": null, "sha256": null},
+  "validation_plan": {"status": "PENDING", "record": null, "sha256": null},
+  "release_sequence": null,
+  "iteration_hypothesis": null,
+  "minimum_mae_improvement": null,
+  "max_runtime_seconds": null,
+  "deadline_utc": null,
+  "n_jobs": 4
+}

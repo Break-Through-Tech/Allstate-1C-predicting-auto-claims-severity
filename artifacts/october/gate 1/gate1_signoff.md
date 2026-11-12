@@ -316,3 +316,13 @@ No staging, commit, push, PR creation, review comment, email, board/issue mutati
 Krish Patel confirmed in the task conversation that keeping `october-split-v1` at **75% training / 15% validation / 10% test, seed 42**, was the team's agreed decision. Codex records that reported decision here; no individual signatures or independent reviews are inferred. The exact assignments and source are identified by [split_acceptance.json](split_acceptance.json): manifest SHA-256 `18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1`; 141,238 train, 28,248 validation and 18,832 test claims.
 
 The original split metadata remains a historical, unmodified generation record; its PROPOSED label is superseded for this exact split by this dated agreement. This resolves the split-freeze prerequisite for Krish's requested constant-baseline/shared-evaluator task. It does **not** mark the overall Gate 1 status approved, approve remaining CV/stopping/preprocessing proposals, authorize candidate-model training, or open test targets. Broader readiness decisions and review actions elsewhere in this record remain for the team.
+
+
+## November 12 addendum — Approach 2 readiness
+
+Leng directed that the Codex exchange serve as the team readiness decision for
+XGBoost on November 12, 2026. The [recorded decision](../gate%203/xgboost_readiness_decision_20261112.md)
+accepts this gate’s readiness specifically for the bounded Approach 2 experiment.
+Leng is the only evidenced approver; no other teammate signature is inferred.
+Earlier pending statements are historical. The saved technical plan, 30-CV-fit
+cap, two validation releases, test reservation and run limits control execution.

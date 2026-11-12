@@ -1,0 +1,31 @@
+{
+  "decision_id": "OCT-A2-READINESS-20261112",
+  "recorded_at_utc": "2026-11-12T07:12:49.926407+00:00",
+  "recorded_approvers": [
+    "Leng Lim"
+  ],
+  "config_sha256": "16cbac01484b4f67274b883f3fcfb1c1acab0dec1a416dc45bcdd9f53d7d9c4d",
+  "gate1": {
+    "status": "APPROVED",
+    "record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+    "sha256": "562618c2e281336fc5b0e5eaeae656aa865fe72ce6b0248369bde2cf849a8b46"
+  },
+  "gate2": {
+    "status": "APPROVED",
+    "record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+    "sha256": "562618c2e281336fc5b0e5eaeae656aa865fe72ce6b0248369bde2cf849a8b46"
+  },
+  "validation_plan": {
+    "status": "APPROVED",
+    "record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+    "sha256": "562618c2e281336fc5b0e5eaeae656aa865fe72ce6b0248369bde2cf849a8b46"
+  },
+  "release_sequence": "gate1_two_releases",
+  "iteration_hypothesis": "Training CV at the selected learning rate will indicate whether a nearby, previously untested tree depth improves the selected initial model; change max_depth only and freeze the training-evidence rationale before fitting it.",
+  "minimum_mae_improvement": 1.0,
+  "max_runtime_seconds": 10800,
+  "deadline_utc": "2026-11-13T04:59:00+00:00",
+  "n_jobs": 4,
+  "technical_plan_record": "artifacts/october/gate 3/xgboost_preflight_20261112/leng_plan_approval.json",
+  "technical_plan_sha256": "3a645a4b2c665bb586f637b632c5e904313b2714a827af99a1ae1e9e59902afe"
+}

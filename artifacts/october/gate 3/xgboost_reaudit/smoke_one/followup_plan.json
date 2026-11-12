@@ -1,0 +1,12 @@
+{
+  "id": "A2-C06",
+  "parent": "A2-C04",
+  "parameter": "n_estimators",
+  "value": 6,
+  "previous_value": 4,
+  "rationale": "Synthetic workflow probe: test two extra boosting rounds after initial OOF comparison.",
+  "evidence": "Initial training-only pooled OOF and per-fold results in run_receipt.json",
+  "before_pooled_oof_mae": 100.29762214173564,
+  "frozen_utc": "2026-11-12T03:20:43.294662+00:00",
+  "minimum_mae_improvement": 0.01
+}

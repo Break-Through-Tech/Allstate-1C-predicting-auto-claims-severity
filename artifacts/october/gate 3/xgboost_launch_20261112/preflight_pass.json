@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-11-12T07:16:38.305161+00:00",
+  "command": [
+    "/opt/anaconda3/envs/allstate-btt/bin/python",
+    "-B",
+    "-m",
+    "scripts.run_xgboost",
+    "check",
+    "--readiness",
+    "artifacts/october/gate 3/xgboost_readiness.json"
+  ],
+  "exit_code": 0,
+  "output": "Recorded readiness/config checks passed; no source rows loaded or models fitted\n",
+  "fit_started": false
+}
