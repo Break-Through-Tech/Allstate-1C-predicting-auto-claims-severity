@@ -1,0 +1,70 @@
+{
+  "artifacts/october/gate 3/runs/xgboost-task4/A2-C05_oof.csv": {
+    "sha256": "0b09059d9e1b54a65621c53d795176b2b52e077d49e5d1a24c7724d3a3884324",
+    "bytes": 3684076
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/initial_preprocessing.json": {
+    "sha256": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20",
+    "bytes": 19973
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/initial_model.json": {
+    "sha256": "ba3aa4addc9092bf7d0cd6b66b779d0d4836093f9c3c3330c2f313c4bfbd91de",
+    "bytes": 6034298
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/A2-C04_oof.csv": {
+    "sha256": "2eae3c288a4cd0940ee05a133fc45411411d77100c7c329cb4664a630c8c2f0c",
+    "bytes": 3671740
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/A2-C06_oof.csv": {
+    "sha256": "18580cf4fd183f3c7f0b88a9a10ed60afa76c9a0b073817c95a9a123ba584c8a",
+    "bytes": 3680233
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/final_preprocessing.json": {
+    "sha256": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20",
+    "bytes": 19973
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/followup_plan.json": {
+    "sha256": "f2d1654955cc0d90546f3bcd7e81c4c94ebf848283665df14224c7ef19c069e7",
+    "bytes": 777
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/final_validation_predictions.csv": {
+    "sha256": "eb99aa8de478c025288d296cb460ea6f504b02754db61b6842d50a287bc079c8",
+    "bytes": 678090
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/A2-C02_oof.csv": {
+    "sha256": "cb08d25fdd5cdec2b8a4f3266ccb80e4d3f3e9f83d030b882c61c88a35b5d01f",
+    "bytes": 3681014
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/A2-C03_oof.csv": {
+    "sha256": "545a2c7b4a4b59bfeb1560a99ceb333f7ffc609b788279b62da04465e9f9ef3d",
+    "bytes": 3686004
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/A2-C01_oof.csv": {
+    "sha256": "e46a50af2d7bf52e265ded2d671b5e4d93693b712f7934a365cc1f0a6acafd9b",
+    "bytes": 3679883
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/initial_validation_predictions.csv": {
+    "sha256": "8cc60e73f371ce31184da54f946b352a95bd1abbf4b6c1c53fd8b6ebef47caf2",
+    "bytes": 676176
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/run_receipt.json": {
+    "sha256": "2c8c463e1ea5292f9b2ebaf0e41202e825ce40b4f26801e34dbf606426a8439a",
+    "bytes": 30700
+  },
+  "artifacts/october/gate 3/runs/xgboost-task4/final_model.json": {
+    "sha256": "ed4695696f95fadac99c33ee495b40da409796b9cb1b9e8bb26c6155d11f8f3e",
+    "bytes": 10201672
+  },
+  "artifacts/october/gate 3/xgboost_execution_20261112/automation_receipt.json": {
+    "sha256": "5217cbf623917862fca0ecd84b6280553c37ee4f511fcc9374d7fb3c2eb67a78",
+    "bytes": 3968
+  },
+  "artifacts/october/gate 3/xgboost_execution_20261112/depth_recommendation.json": {
+    "sha256": "f35a2f4f835c25275b0f7143cba784015f2fc341b5c1d2e8344205490d491da8",
+    "bytes": 933
+  },
+  "artifacts/october/gate 3/xgboost_execution_20261112/campaign.log": {
+    "sha256": "1ea01bd7188e425fcd03a07f4e5aa2f54a759ef6cacc98886496d4a3459cb509",
+    "bytes": 11266
+  }
+}

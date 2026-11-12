@@ -1,0 +1,874 @@
+{
+  "run_id": "xgboost-task4-20261112T071650.896576Z",
+  "started_utc": "2026-11-12T07:16:50.896721+00:00",
+  "synthetic": false,
+  "status": "COMPLETE",
+  "stage": "COMPLETE",
+  "branch": "leng/oct-gate3-task4",
+  "git_commit": "98a437544ced5f504ead1cd9740c2f94248a644b",
+  "git_status": "?? \"artifacts/october/gate 3/runs/xgboost-task4/.campaign.lock\"\n?? \"artifacts/october/gate 3/xgboost_execution_20261112/automation_receipt.json\"\n?? \"artifacts/october/gate 3/xgboost_execution_20261112/campaign.log\"",
+  "command": [
+    "/Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/scripts/run_xgboost.py",
+    "initial",
+    "--readiness",
+    "artifacts/october/gate 3/xgboost_readiness.json"
+  ],
+  "code_sha256": {
+    "scripts/run_xgboost.py": "90990bae551769697679e5b5a1b3e0ffa6324107252e8d1e6298d793d365f6c7",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "config_sha256": "16cbac01484b4f67274b883f3fcfb1c1acab0dec1a416dc45bcdd9f53d7d9c4d",
+  "config": {
+    "config_id": "approach2-xgboost-v2-approved-20261112",
+    "status": "APPROVED for bounded Approach 2 training; Leng recorded the team readiness decision on November 12, 2026",
+    "owner": "Leng Lim",
+    "issues": {
+      "scaffold": "#41 \u2014 Gate 2 preparation",
+      "training_and_iteration": "#45 \u2014 Gate 3 Task 12"
+    },
+    "approach": "Approach 2: XGBoost gradient-boosted trees",
+    "hypothesis": "Boosted trees can learn nonlinear effects and interactions among the 130 anonymous predictors and may outperform the constant baselines and regularized GLM.",
+    "inputs": {
+      "features": "cat1-cat116 and cont1-cont14",
+      "excluded": [
+        "id",
+        "loss",
+        "log1p_loss",
+        "partition",
+        "September target summaries and derived labels"
+      ],
+      "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+      "split_manifest": "october-split-v1",
+      "cv_folds": "artifacts/october/gate 2/cv_folds/october_cv_folds.csv",
+      "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+      "cv_folds_sha256": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1"
+    },
+    "preprocessing": {
+      "source": "Hector's XGBoost preprocessing in notebooks/gate2_preprocessing.ipynb",
+      "categorical_features": 116,
+      "continuous_features": 14,
+      "rare_min_count": 30,
+      "categorical_encoding": "Native categorical features with training-derived vocabularies",
+      "unseen_or_missing_category": "Missing categorical value handled by the learned XGBoost default branch",
+      "continuous_scaling": "None",
+      "fit_scope": "Refit preprocessing independently inside every CV fit portion and final training refit"
+    },
+    "target": {
+      "column": "loss",
+      "transform": "identity",
+      "inverse": "identity",
+      "training_objective": "reg:absoluteerror",
+      "evaluation_metric": "MAE in original loss units",
+      "non_finite_prediction": "Fail the run and record the error",
+      "negative_prediction": "Record and score unchanged using the shared evaluator"
+    },
+    "model": {
+      "estimator": "xgboost.XGBRegressor",
+      "objective": "reg:absoluteerror",
+      "eval_metric": "mae",
+      "tree_method": "hist",
+      "enable_categorical": true,
+      "device": "cpu",
+      "n_estimators": 300,
+      "min_child_weight": 5,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_lambda": 1,
+      "max_cat_to_onehot": 4,
+      "max_cat_threshold": 64,
+      "random_state": 42,
+      "n_jobs": 4
+    },
+    "initial_candidates": [
+      {
+        "id": "A2-C01",
+        "max_depth": 3,
+        "learning_rate": 0.05
+      },
+      {
+        "id": "A2-C02",
+        "max_depth": 5,
+        "learning_rate": 0.05
+      },
+      {
+        "id": "A2-C03",
+        "max_depth": 7,
+        "learning_rate": 0.05
+      },
+      {
+        "id": "A2-C04",
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      {
+        "id": "A2-C05",
+        "max_depth": 5,
+        "learning_rate": 0.1
+      }
+    ],
+    "experiment_budget": {
+      "max_configurations": 6,
+      "initial_configurations": 5,
+      "reserved_iteration_configurations": 1,
+      "cv_folds_per_configuration": 5,
+      "maximum_cv_fits": 30,
+      "early_stopping": false,
+      "maximum_final_refits": 2,
+      "failure_policy": "Failures and retries consume allocated slots. Do not exceed 6 configurations or 30 CV fits without a written team amendment. Log unchanged independent reproductions separately.",
+      "resource_deadline": "2026-11-13T04:59:00+00:00",
+      "max_runtime_seconds": 10800
+    },
+    "iteration": {
+      "status": "APPROVED: one training-CV-justified untested max_depth; freeze exact setting before the sixth configuration",
+      "rule": "After the team resolves OCT-A2-RELEASE-SEQUENCE, freeze one justified change to one hyperparameter of the selected initial candidate, using training evidence only.",
+      "constraint": "Document the change and rationale before running the sixth configuration",
+      "comparison": "Record before/after pooled OOF MAE, fold counts/MAE, mean/sample SD and runtime. Also record before/after validation MAE if the team adopts gate1_two_releases.",
+      "validation_use": "Do not use validation results to choose the iteration",
+      "minimum_mae_improvement": 1.0
+    },
+    "evaluation": {
+      "training_claims": 141238,
+      "cv_method": "Five saved folds within the training partition",
+      "selection_metric": "Pooled out-of-fold MAE in original loss units",
+      "tie_rule": "Among configurations within 1 loss unit of the minimum pooled OOF MAE, prefer lower max_depth, then fewer trees, then lower learning_rate, then lower recorded runtime.",
+      "final_refit": "Refit initial winner and follow-up once each on all training claims under gate1_two_releases",
+      "validation_claims": 28248,
+      "validation_release": "APPROVED: one initial and one follow-up validation release; use training CV only for settings and keep decision",
+      "baseline_comparison": [
+        "Training-mean baseline",
+        "Training-median baseline",
+        "Approach 1 regularized GLM"
+      ],
+      "test_partition": "Reserved; do not fit, tune, or evaluate on test claims during October"
+    },
+    "reproducibility": {
+      "record": [
+        "Git commit SHA",
+        "Source and manifest SHA-256",
+        "Fold file SHA-256",
+        "Full configuration",
+        "Library versions",
+        "Training runtime",
+        "Per-fold and pooled MAE",
+        "Failed runs",
+        "Prediction-to-ID alignment",
+        "Workflow run receipt"
+      ],
+      "model_serialization": "JSON",
+      "preprocessing_persistence": "Save fitted rare mappings, fixed vocabularies and schema alongside model JSON."
+    },
+    "environment": {
+      "python": "3.13.5",
+      "numpy": "2.3.3",
+      "pandas": "2.3.2",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.1.1"
+    },
+    "execution": {
+      "training_authorized": true,
+      "requires": [
+        "Recorded Gate 1 and Gate 2 readiness decisions",
+        "Team resolution of OCT-A2-RELEASE-SEQUENCE before candidate fits",
+        "Frozen iteration hypothesis, resource limits and deadline before execution"
+      ],
+      "note": "Readiness/config hashes, environment, input integrity, stage and budget checks remain enforced by scripts/run_xgboost.py."
+    },
+    "policy_review": {
+      "decision_id": "OCT-A2-RELEASE-SEQUENCE",
+      "status": "APPROVED",
+      "reference": "artifacts/october/gate 1/gate1_overview.md: Validation Use and Stopping Rules; OCT-G1-T4-PROPOSAL-v1",
+      "reference_status": "Historical proposal superseded for this run by the November 12 scoped readiness decision",
+      "conflict": {
+        "original_scaffold": "Run the sixth configuration after initial training CV, before one final validation release.",
+        "gate1_proposal": "Release the initial frozen comparison, then freeze one justified iteration and release its training-CV-selected candidate in a second comparison."
+      },
+      "options": [
+        {
+          "id": "gate1_two_releases",
+          "description": "Adopt the Gate 1 sequence: initial XGBoost winner and iteration candidate each receive one full-training refit and one validation release. Record before/after validation and pooled OOF MAE. Choose iteration settings using training evidence only."
+        },
+        {
+          "id": "amend_to_one_release",
+          "description": "Explicitly amend the proposal to finish iteration within training before one validation release. Record before/after OOF MAE and disclose that separate before/after validation evidence will not exist. Team must decide whether this meets the iteration requirement."
+        }
+      ],
+      "selected_option": "gate1_two_releases",
+      "decision_record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+      "required_decision": "Resolved in the recorded November 12 exchange at Leng\u2019s direction"
+    }
+  },
+  "effective_config_sha256": "ef99442a51f3e6723c92fee6ab3935bdab7a3b5fa5a4a84ab05b696b4b1a0499",
+  "readiness": {
+    "decision_id": "OCT-A2-READINESS-20261112",
+    "recorded_at_utc": "2026-11-12T07:12:49.926407+00:00",
+    "recorded_approvers": [
+      "Leng Lim"
+    ],
+    "config_sha256": "16cbac01484b4f67274b883f3fcfb1c1acab0dec1a416dc45bcdd9f53d7d9c4d",
+    "gate1": {
+      "status": "APPROVED",
+      "record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+      "sha256": "562618c2e281336fc5b0e5eaeae656aa865fe72ce6b0248369bde2cf849a8b46"
+    },
+    "gate2": {
+      "status": "APPROVED",
+      "record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+      "sha256": "562618c2e281336fc5b0e5eaeae656aa865fe72ce6b0248369bde2cf849a8b46"
+    },
+    "validation_plan": {
+      "status": "APPROVED",
+      "record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+      "sha256": "562618c2e281336fc5b0e5eaeae656aa865fe72ce6b0248369bde2cf849a8b46"
+    },
+    "release_sequence": "gate1_two_releases",
+    "iteration_hypothesis": "Training CV at the selected learning rate will indicate whether a nearby, previously untested tree depth improves the selected initial model; change max_depth only and freeze the training-evidence rationale before fitting it.",
+    "minimum_mae_improvement": 1.0,
+    "max_runtime_seconds": 10800,
+    "deadline_utc": "2026-11-13T04:59:00+00:00",
+    "n_jobs": 4,
+    "technical_plan_record": "artifacts/october/gate 3/xgboost_preflight_20261112/leng_plan_approval.json",
+    "technical_plan_sha256": "3a645a4b2c665bb586f637b632c5e904313b2714a827af99a1ae1e9e59902afe",
+    "readiness_sha256": "002276a7c5b604944db21a79a0ce5d8a0ccd7ab525d59483a8e4c6626946446e"
+  },
+  "python": "3.13.5",
+  "versions": {
+    "numpy": "2.3.3",
+    "pandas": "2.3.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.1.1"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "implementation": "CPython",
+    "executable": "/opt/anaconda3/envs/allstate-btt/bin/python3.13",
+    "packages": {
+      "numpy": "2.3.3",
+      "pandas": "2.3.2",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.1.1"
+    }
+  },
+  "stage_history": [
+    {
+      "stage": "initial",
+      "started_utc": "2026-11-12T07:16:50.995718+00:00",
+      "environment": {
+        "python": "3.13.5",
+        "implementation": "CPython",
+        "executable": "/opt/anaconda3/envs/allstate-btt/bin/python3.13",
+        "packages": {
+          "numpy": "2.3.3",
+          "pandas": "2.3.2",
+          "scipy": "1.18.1",
+          "scikit-learn": "1.7.2",
+          "xgboost": "3.1.1"
+        }
+      },
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "initial",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "status": "PASS",
+      "ended_utc": "2026-11-12T07:20:08.597948+00:00",
+      "runtime_seconds": 197.6119204160059
+    },
+    {
+      "stage": "release",
+      "started_utc": "2026-11-12T07:20:09.417953+00:00",
+      "environment": {
+        "python": "3.13.5",
+        "implementation": "CPython",
+        "executable": "/opt/anaconda3/envs/allstate-btt/bin/python3.13",
+        "packages": {
+          "numpy": "2.3.3",
+          "pandas": "2.3.2",
+          "scipy": "1.18.1",
+          "scikit-learn": "1.7.2",
+          "xgboost": "3.1.1"
+        }
+      },
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "release",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "status": "PASS",
+      "ended_utc": "2026-11-12T07:20:28.010157+00:00",
+      "runtime_seconds": 18.59153591701761
+    },
+    {
+      "stage": "freeze-followup",
+      "started_utc": "2026-11-12T07:20:29.427671+00:00",
+      "environment": {
+        "python": "3.13.5",
+        "implementation": "CPython",
+        "executable": "/opt/anaconda3/envs/allstate-btt/bin/python3.13",
+        "packages": {
+          "numpy": "2.3.3",
+          "pandas": "2.3.2",
+          "scipy": "1.18.1",
+          "scikit-learn": "1.7.2",
+          "xgboost": "3.1.1"
+        }
+      },
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "freeze-followup",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json",
+        "--parameter",
+        "max_depth",
+        "--value",
+        "8",
+        "--rationale",
+        "Initial training-only evidence at learning_rate=0.05: A2-C01 depth 3 pooled OOF MAE 1189.972448927673; A2-C02 depth 5 pooled OOF MAE 1169.361674111248; A2-C03 depth 7 pooled OOF MAE 1163.675269514285. Parent A2-C03 uses depth 7. The deepest depth at this learning rate was selected; test one deeper level for additional nonlinear structure. Change only max_depth to 8; all other settings stay fixed. Validation is not an input."
+      ],
+      "status": "PASS",
+      "ended_utc": "2026-11-12T07:20:29.589075+00:00",
+      "runtime_seconds": 0.16090733301825821
+    },
+    {
+      "stage": "followup",
+      "started_utc": "2026-11-12T07:20:31.364334+00:00",
+      "environment": {
+        "python": "3.13.5",
+        "implementation": "CPython",
+        "executable": "/opt/anaconda3/envs/allstate-btt/bin/python3.13",
+        "packages": {
+          "numpy": "2.3.3",
+          "pandas": "2.3.2",
+          "scipy": "1.18.1",
+          "scikit-learn": "1.7.2",
+          "xgboost": "3.1.1"
+        }
+      },
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "followup",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "status": "PASS",
+      "ended_utc": "2026-11-12T07:21:23.767145+00:00",
+      "runtime_seconds": 52.401877957978286
+    },
+    {
+      "stage": "release",
+      "started_utc": "2026-11-12T07:21:25.599402+00:00",
+      "environment": {
+        "python": "3.13.5",
+        "implementation": "CPython",
+        "executable": "/opt/anaconda3/envs/allstate-btt/bin/python3.13",
+        "packages": {
+          "numpy": "2.3.3",
+          "pandas": "2.3.2",
+          "scipy": "1.18.1",
+          "scikit-learn": "1.7.2",
+          "xgboost": "3.1.1"
+        }
+      },
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "release",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "status": "PASS",
+      "ended_utc": "2026-11-12T07:21:44.253768+00:00",
+      "runtime_seconds": 18.6536925000255
+    }
+  ],
+  "configurations_attempted": 6,
+  "cv_fits_attempted": 30,
+  "fit_runtime_seconds": 198.31178841809742,
+  "results": [
+    {
+      "id": "A2-C01",
+      "parameters": {
+        "objective": "reg:absoluteerror",
+        "eval_metric": "mae",
+        "tree_method": "hist",
+        "enable_categorical": true,
+        "device": "cpu",
+        "n_estimators": 300,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1,
+        "max_cat_to_onehot": 4,
+        "max_cat_threshold": 64,
+        "random_state": 42,
+        "n_jobs": 4,
+        "max_depth": 3,
+        "learning_rate": 0.05
+      },
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:16:56.341313+00:00",
+      "fold_results": [
+        {
+          "fold": 0,
+          "claims": 28248,
+          "mae": 1183.4847203678034,
+          "fit_predict_seconds": 5.595842333044857
+        },
+        {
+          "fold": 1,
+          "claims": 28248,
+          "mae": 1205.2157790598817,
+          "fit_predict_seconds": 5.320878625032492
+        },
+        {
+          "fold": 2,
+          "claims": 28248,
+          "mae": 1176.8066723615527,
+          "fit_predict_seconds": 5.430574250000063
+        },
+        {
+          "fold": 3,
+          "claims": 28247,
+          "mae": 1195.781120593217,
+          "fit_predict_seconds": 5.34802849998232
+        },
+        {
+          "fold": 4,
+          "claims": 28247,
+          "mae": 1188.574108384881,
+          "fit_predict_seconds": 5.323485833010636
+        }
+      ],
+      "pooled_oof_mae": 1189.9724489276734,
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "fold_mean_mae": 1189.9724801534671,
+      "fold_sample_sd": 10.99412832790629,
+      "prediction_sha256": "e46a50af2d7bf52e265ded2d671b5e4d93693b712f7934a365cc1f0a6acafd9b",
+      "prediction_count": 141238,
+      "negative_prediction_count": 0,
+      "runtime_seconds": 35.66876249999041
+    },
+    {
+      "id": "A2-C02",
+      "parameters": {
+        "objective": "reg:absoluteerror",
+        "eval_metric": "mae",
+        "tree_method": "hist",
+        "enable_categorical": true,
+        "device": "cpu",
+        "n_estimators": 300,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1,
+        "max_cat_to_onehot": 4,
+        "max_cat_threshold": 64,
+        "random_state": 42,
+        "n_jobs": 4,
+        "max_depth": 5,
+        "learning_rate": 0.05
+      },
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:17:32.003147+00:00",
+      "fold_results": [
+        {
+          "fold": 0,
+          "claims": 28248,
+          "mae": 1161.3068529282978,
+          "fit_predict_seconds": 6.168993791972753
+        },
+        {
+          "fold": 1,
+          "claims": 28248,
+          "mae": 1184.7475478192991,
+          "fit_predict_seconds": 6.122546250000596
+        },
+        {
+          "fold": 2,
+          "claims": 28248,
+          "mae": 1157.5051155073909,
+          "fit_predict_seconds": 5.982268166961148
+        },
+        {
+          "fold": 3,
+          "claims": 28247,
+          "mae": 1174.4974249541563,
+          "fit_predict_seconds": 6.292169958993327
+        },
+        {
+          "fold": 4,
+          "claims": 28247,
+          "mae": 1168.7515895590127,
+          "fit_predict_seconds": 6.186331625038292
+        }
+      ],
+      "pooled_oof_mae": 1169.3616741112476,
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "fold_mean_mae": 1169.3617061536315,
+      "fold_sample_sd": 10.827411692693191,
+      "prediction_sha256": "cb08d25fdd5cdec2b8a4f3266ccb80e4d3f3e9f83d030b882c61c88a35b5d01f",
+      "prediction_count": 141238,
+      "negative_prediction_count": 0,
+      "runtime_seconds": 39.65355833299691
+    },
+    {
+      "id": "A2-C03",
+      "parameters": {
+        "objective": "reg:absoluteerror",
+        "eval_metric": "mae",
+        "tree_method": "hist",
+        "enable_categorical": true,
+        "device": "cpu",
+        "n_estimators": 300,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1,
+        "max_cat_to_onehot": 4,
+        "max_cat_threshold": 64,
+        "random_state": 42,
+        "n_jobs": 4,
+        "max_depth": 7,
+        "learning_rate": 0.05
+      },
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:18:11.658014+00:00",
+      "fold_results": [
+        {
+          "fold": 0,
+          "claims": 28248,
+          "mae": 1155.343929437547,
+          "fit_predict_seconds": 6.64482779201353
+        },
+        {
+          "fold": 1,
+          "claims": 28248,
+          "mae": 1177.4380920583876,
+          "fit_predict_seconds": 6.481791250000242
+        },
+        {
+          "fold": 2,
+          "claims": 28248,
+          "mae": 1151.4066980585462,
+          "fit_predict_seconds": 6.386250541021582
+        },
+        {
+          "fold": 3,
+          "claims": 28247,
+          "mae": 1169.9856750695717,
+          "fit_predict_seconds": 6.432719875010662
+        },
+        {
+          "fold": 4,
+          "claims": 28247,
+          "mae": 1164.2021949939253,
+          "fit_predict_seconds": 6.591871416952927
+        }
+      ],
+      "pooled_oof_mae": 1163.675269514285,
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "fold_mean_mae": 1163.6753179235957,
+      "fold_sample_sd": 10.6000380440456,
+      "prediction_sha256": "545a2c7b4a4b59bfeb1560a99ceb333f7ffc609b788279b62da04465e9f9ef3d",
+      "prediction_count": 141238,
+      "negative_prediction_count": 0,
+      "runtime_seconds": 41.24507591704605
+    },
+    {
+      "id": "A2-C04",
+      "parameters": {
+        "objective": "reg:absoluteerror",
+        "eval_metric": "mae",
+        "tree_method": "hist",
+        "enable_categorical": true,
+        "device": "cpu",
+        "n_estimators": 300,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1,
+        "max_cat_to_onehot": 4,
+        "max_cat_threshold": 64,
+        "random_state": 42,
+        "n_jobs": 4,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:18:52.906148+00:00",
+      "fold_results": [
+        {
+          "fold": 0,
+          "claims": 28248,
+          "mae": 1171.3665249586688,
+          "fit_predict_seconds": 5.418368457991164
+        },
+        {
+          "fold": 1,
+          "claims": 28248,
+          "mae": 1195.4129420847366,
+          "fit_predict_seconds": 5.458511125005316
+        },
+        {
+          "fold": 2,
+          "claims": 28248,
+          "mae": 1165.702137318311,
+          "fit_predict_seconds": 5.636975458008237
+        },
+        {
+          "fold": 3,
+          "claims": 28247,
+          "mae": 1183.5286317717455,
+          "fit_predict_seconds": 5.665135707997251
+        },
+        {
+          "fold": 4,
+          "claims": 28247,
+          "mae": 1177.2490498550678,
+          "fit_predict_seconds": 5.550101833010558
+        }
+      ],
+      "pooled_oof_mae": 1178.651832601158,
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "fold_mean_mae": 1178.651857197706,
+      "fold_sample_sd": 11.483205955489463,
+      "prediction_sha256": "2eae3c288a4cd0940ee05a133fc45411411d77100c7c329cb4664a630c8c2f0c",
+      "prediction_count": 141238,
+      "negative_prediction_count": 0,
+      "runtime_seconds": 36.326508667028975
+    },
+    {
+      "id": "A2-C05",
+      "parameters": {
+        "objective": "reg:absoluteerror",
+        "eval_metric": "mae",
+        "tree_method": "hist",
+        "enable_categorical": true,
+        "device": "cpu",
+        "n_estimators": 300,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1,
+        "max_cat_to_onehot": 4,
+        "max_cat_threshold": 64,
+        "random_state": 42,
+        "n_jobs": 4,
+        "max_depth": 5,
+        "learning_rate": 0.1
+      },
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:19:29.235482+00:00",
+      "fold_results": [
+        {
+          "fold": 0,
+          "claims": 28248,
+          "mae": 1158.8211655266998,
+          "fit_predict_seconds": 5.9411085420288146
+        },
+        {
+          "fold": 1,
+          "claims": 28248,
+          "mae": 1182.051669585326,
+          "fit_predict_seconds": 5.986758375016507
+        },
+        {
+          "fold": 2,
+          "claims": 28248,
+          "mae": 1154.7616937835355,
+          "fit_predict_seconds": 6.000990291999187
+        },
+        {
+          "fold": 3,
+          "claims": 28247,
+          "mae": 1171.563032374683,
+          "fit_predict_seconds": 6.091009750030935
+        },
+        {
+          "fold": 4,
+          "claims": 28247,
+          "mae": 1167.0663413621764,
+          "fit_predict_seconds": 6.323988542018924
+        }
+      ],
+      "pooled_oof_mae": 1166.8527456646716,
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "fold_mean_mae": 1166.8527805264844,
+      "fold_sample_sd": 10.769627749570223,
+      "prediction_sha256": "0b09059d9e1b54a65621c53d795176b2b52e077d49e5d1a24c7724d3a3884324",
+      "prediction_count": 141238,
+      "negative_prediction_count": 0,
+      "runtime_seconds": 39.35888570797397
+    },
+    {
+      "id": "A2-C06",
+      "parameters": {
+        "objective": "reg:absoluteerror",
+        "eval_metric": "mae",
+        "tree_method": "hist",
+        "enable_categorical": true,
+        "device": "cpu",
+        "n_estimators": 300,
+        "min_child_weight": 5,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1,
+        "max_cat_to_onehot": 4,
+        "max_cat_threshold": 64,
+        "random_state": 42,
+        "n_jobs": 4,
+        "max_depth": 8,
+        "learning_rate": 0.05
+      },
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:20:37.074503+00:00",
+      "fold_results": [
+        {
+          "fold": 0,
+          "claims": 28248,
+          "mae": 1156.2851355493417,
+          "fit_predict_seconds": 7.716305250010919
+        },
+        {
+          "fold": 1,
+          "claims": 28248,
+          "mae": 1177.1742715129135,
+          "fit_predict_seconds": 7.324174042034429
+        },
+        {
+          "fold": 2,
+          "claims": 28248,
+          "mae": 1152.197250702328,
+          "fit_predict_seconds": 7.039570333028678
+        },
+        {
+          "fold": 3,
+          "claims": 28247,
+          "mae": 1169.1712988717725,
+          "fit_predict_seconds": 7.236229375004768
+        },
+        {
+          "fold": 4,
+          "claims": 28247,
+          "mae": 1165.5982761032067,
+          "fit_predict_seconds": 7.384967125020921
+        }
+      ],
+      "pooled_oof_mae": 1164.085199824779,
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "fold_mean_mae": 1164.0852465479124,
+      "fold_sample_sd": 10.020553103812638,
+      "prediction_sha256": "18580cf4fd183f3c7f0b88a9a10ed60afa76c9a0b073817c95a9a123ba584c8a",
+      "prediction_count": 141238,
+      "negative_prediction_count": 0,
+      "runtime_seconds": 46.68899487500312
+    }
+  ],
+  "releases": {
+    "initial": {
+      "candidate_id": "A2-C03",
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:20:15.161838+00:00",
+      "validation_mae": 1167.5153136500917,
+      "claims": 28248,
+      "model_round_trip": true,
+      "artifact_sha256": {
+        "initial_preprocessing.json": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20",
+        "initial_model.json": "ba3aa4addc9092bf7d0cd6b66b779d0d4836093f9c3c3330c2f313c4bfbd91de",
+        "initial_validation_predictions.csv": "8cc60e73f371ce31184da54f946b352a95bd1abbf4b6c1c53fd8b6ebef47caf2"
+      },
+      "runtime_seconds": 12.843643124972004
+    },
+    "final": {
+      "candidate_id": "A2-C06",
+      "status": "PASS",
+      "started_utc": "2026-11-12T07:21:31.186530+00:00",
+      "validation_mae": 1166.6811041916617,
+      "claims": 28248,
+      "model_round_trip": true,
+      "artifact_sha256": {
+        "final_preprocessing.json": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20",
+        "final_validation_predictions.csv": "eb99aa8de478c025288d296cb460ea6f504b02754db61b6842d50a287bc079c8",
+        "final_model.json": "ed4695696f95fadac99c33ee495b40da409796b9cb1b9e8bb26c6155d11f8f3e"
+      },
+      "runtime_seconds": 13.061983291991055
+    }
+  },
+  "test_partition": "Never loaded, fitted, tuned, or evaluated",
+  "updated_utc": "2026-11-12T07:21:44.253794+00:00",
+  "frozen_inputs": {
+    "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+    "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+    "cv_folds_sha256": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+    "training_claims": 141238
+  },
+  "initial_winner": "A2-C03",
+  "followup_plan_sha256": "f2d1654955cc0d90546f3bcd7e81c4c94ebf848283665df14224c7ef19c069e7",
+  "comparison": {
+    "before_id": "A2-C03",
+    "after_id": "A2-C06",
+    "before_pooled_oof_mae": 1163.675269514285,
+    "after_pooled_oof_mae": 1164.085199824779,
+    "improvement": -0.40993031049401907,
+    "keep_followup": false,
+    "reason": "Training-only improvement compared with the recorded keep threshold",
+    "before_validation_mae": 1167.5153136500917,
+    "after_validation_mae": 1166.6811041916617
+  },
+  "final_candidate": "A2-C03"
+}

@@ -1,5 +1,12 @@
 # October Approach 2 runner
 
+**November 12 result: the approved campaign is complete and independently
+verified. Retain depth 7.** The depth-8 follow-up missed the 1.0 CV improvement
+threshold. The allocated 30 CV fits and two refits are fully consumed; this guide
+does not authorize another campaign or a reset. See the
+[final experiment record](../artifacts/october/gate%203/approach2_xgboost_record.md)
+and [saved-prediction audit](../artifacts/october/gate%203/xgboost_results_20261112/results_audit.json).
+
 Owner: Leng Lim. GitHub [issue #45](https://github.com/Break-Through-Tech/Allstate-1C-predicting-auto-claims-severity/issues/45)
 is titled **Task 12: Train Approach 2 and run one iteration**; this is the work
 described as Gate 3 Task 4 in the task conversation.
@@ -183,5 +190,7 @@ Training reads skip every non-training row before feature/target conversion.
 Only an explicitly sequenced validation release loads validation rows. Test
 rows are always skipped before conversion. Source hashing and the shared frozen
 split's ID-only membership checks traverse bytes/IDs without scoring test claims.
-No real training, validation release or test evaluation was performed for this
-implementation.
+The completed campaign performed the two approved validation releases. Subsequent
+verification rescored saved predictions without fitting new models. No test
+target evaluation was performed. The original implementation/audit records that
+predate real training remain historical evidence.

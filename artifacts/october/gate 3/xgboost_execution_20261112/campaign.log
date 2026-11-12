@@ -1,0 +1,84 @@
+2026-11-12T07:16:50.364375+00:00 STAGE_START initial
+2026-11-12T07:16:52.375747+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=0/30 completed_folds=0 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:16:58.387272+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=1/30 completed_folds=0 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:04.402384+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=1/30 completed_folds=1 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:04.402442+00:00 FIRST_REAL_FIT_VERIFIED: at least one real CV fit completed and its held-out score was saved.
+2026-11-12T07:17:06.406763+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=2/30 completed_folds=1 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:10.415196+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=2/30 completed_folds=2 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:12.419620+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=3/30 completed_folds=2 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:18.434386+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=3/30 completed_folds=3 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:20.438873+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=4/30 completed_folds=3 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:24.448813+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=4/30 completed_folds=4 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:26.453878+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=5/30 completed_folds=4 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:32.469146+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=5/30 completed_folds=5 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:34.474426+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=6/30 completed_folds=5 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:40.490888+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=6/30 completed_folds=6 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:42.493361+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=7/30 completed_folds=6 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:48.509137+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=7/30 completed_folds=7 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:50.514574+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=8/30 completed_folds=7 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:17:56.531232+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=9/30 completed_folds=8 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:04.552504+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=10/30 completed_folds=9 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:12.573114+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=10/30 completed_folds=10 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:14.578628+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=11/30 completed_folds=10 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:20.594102+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=11/30 completed_folds=11 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:22.599614+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=12/30 completed_folds=11 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:28.615417+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=12/30 completed_folds=12 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:30.619565+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=13/30 completed_folds=12 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:36.635884+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=13/30 completed_folds=13 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:38.641355+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=14/30 completed_folds=13 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:44.652536+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=14/30 completed_folds=14 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:46.657921+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=15/30 completed_folds=14 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:52.672351+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=15/30 completed_folds=15 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:18:54.677765+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=16/30 completed_folds=15 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:00.693878+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=16/30 completed_folds=16 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:02.696852+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=17/30 completed_folds=16 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:08.712998+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=18/30 completed_folds=17 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:14.729369+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=18/30 completed_folds=18 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:16.734889+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=19/30 completed_folds=18 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:22.745452+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=20/30 completed_folds=19 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:28.760421+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=20/30 completed_folds=20 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:30.765833+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=21/30 completed_folds=20 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:36.782046+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=21/30 completed_folds=21 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:38.787522+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=22/30 completed_folds=21 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:44.803616+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=22/30 completed_folds=22 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:46.809419+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=23/30 completed_folds=22 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:52.823767+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=23/30 completed_folds=23 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:19:54.829205+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=24/30 completed_folds=23 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:20:00.845224+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=24/30 completed_folds=24 validation_attempts=0 status=INITIAL_RUNNING
+2026-11-12T07:20:02.850664+00:00 PROGRESS stage=INITIAL_RUNNING CV_attempts=25/30 completed_folds=24 validation_attempts=0 status=INITIAL_RUNNING
+INITIAL_COMPLETE: /Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/artifacts/october/gate 3/runs/xgboost-task4
+2026-11-12T07:20:08.866302+00:00 PROGRESS stage=INITIAL_COMPLETE CV_attempts=25/30 completed_folds=25 validation_attempts=0 status=INITIAL_COMPLETE
+2026-11-12T07:20:08.867388+00:00 STAGE_END initial PASS
+2026-11-12T07:20:08.868671+00:00 DEPTH_FROZEN_BEFORE_VALIDATION parent=A2-C03 new_max_depth=8
+2026-11-12T07:20:08.868883+00:00 STAGE_START release
+2026-11-12T07:20:08.876886+00:00 PROGRESS stage=INITIAL_COMPLETE CV_attempts=25/30 completed_folds=25 validation_attempts=0 status=INITIAL_COMPLETE
+2026-11-12T07:20:16.893249+00:00 PROGRESS stage=INITIAL_COMPLETE CV_attempts=25/30 completed_folds=25 validation_attempts=1 status=INITIAL_COMPLETE
+INITIAL_COMPLETE: /Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/artifacts/october/gate 3/runs/xgboost-task4
+2026-11-12T07:20:28.929425+00:00 STAGE_END release PASS
+2026-11-12T07:20:28.931622+00:00 STAGE_START freeze-followup
+2026-11-12T07:20:28.947029+00:00 PROGRESS stage=INITIAL_COMPLETE CV_attempts=25/30 completed_folds=25 validation_attempts=1 status=INITIAL_COMPLETE
+FOLLOWUP_FROZEN: /Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/artifacts/october/gate 3/runs/xgboost-task4
+2026-11-12T07:20:30.952921+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=25/30 completed_folds=25 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:20:30.953624+00:00 STAGE_END freeze-followup PASS
+2026-11-12T07:20:30.954043+00:00 STAGE_START followup
+2026-11-12T07:20:30.963078+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=25/30 completed_folds=25 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:20:38.977118+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=26/30 completed_folds=25 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:20:46.989403+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=26/30 completed_folds=26 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:20:48.994893+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=27/30 completed_folds=26 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:20:57.015370+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=27/30 completed_folds=27 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:20:59.016083+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=28/30 completed_folds=27 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:21:05.032547+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=28/30 completed_folds=28 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:21:07.037853+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=29/30 completed_folds=28 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:21:15.056925+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=29/30 completed_folds=29 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:21:17.062513+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=30/30 completed_folds=29 validation_attempts=1 status=FOLLOWUP_FROZEN
+2026-11-12T07:21:23.077301+00:00 PROGRESS stage=FOLLOWUP_FROZEN CV_attempts=30/30 completed_folds=30 validation_attempts=1 status=FOLLOWUP_FROZEN
+FOLLOWUP_COMPLETE: /Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/artifacts/october/gate 3/runs/xgboost-task4
+2026-11-12T07:21:25.082922+00:00 PROGRESS stage=FOLLOWUP_COMPLETE CV_attempts=30/30 completed_folds=30 validation_attempts=1 status=FOLLOWUP_COMPLETE
+2026-11-12T07:21:25.085477+00:00 STAGE_END followup PASS
+2026-11-12T07:21:25.086205+00:00 STAGE_START release
+2026-11-12T07:21:25.097629+00:00 PROGRESS stage=FOLLOWUP_COMPLETE CV_attempts=30/30 completed_folds=30 validation_attempts=1 status=FOLLOWUP_COMPLETE
+2026-11-12T07:21:33.118649+00:00 PROGRESS stage=FOLLOWUP_COMPLETE CV_attempts=30/30 completed_folds=30 validation_attempts=2 status=FOLLOWUP_COMPLETE
+COMPLETE: /Users/leng/Desktop/Allstate-1C-predicting-auto-claims-severity/.worktrees/oct-gate3-task4/artifacts/october/gate 3/runs/xgboost-task4
+2026-11-12T07:21:45.151120+00:00 PROGRESS stage=COMPLETE CV_attempts=30/30 completed_folds=30 validation_attempts=2 status=COMPLETE
+2026-11-12T07:21:45.153124+00:00 STAGE_END release PASS
+2026-11-12T07:21:45.153229+00:00 CAMPAIGN_COMPLETE: independently audit saved predictions before reporting final MAE.

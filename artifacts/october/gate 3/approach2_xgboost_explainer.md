@@ -27,8 +27,11 @@ and retain the change only if its training-CV improvement reaches the team's
 recorded threshold. Validation is released only in the team's recorded sequence;
 test claims stay reserved.
 
-Real training is still awaiting readiness and validation-policy decisions.
-Synthetic smoke scores demonstrate that the software runs; they do not establish
-accuracy on claims. Even after real training, unusually large losses and
-categories with little training evidence may be hard to predict. The eventual
-receipt must report before/after MAE and whether the follow-up was worth keeping.
+The approved real run retained depth 7. Allowing one more level, depth 8, changed
+training cross-validation MAE from 1163.6753 to 1164.0852, which missed the agreed
+1.0 improvement threshold. Its slightly lower validation MAE did not override
+that rule. The retained model's validation MAE is 1167.5153 original loss units.
+These results and the saved predictions were independently checked; synthetic
+smoke scores remain software checks only. Unusually large losses and categories
+with little training evidence may still be hard to predict. No reserved test
+outcome was used.

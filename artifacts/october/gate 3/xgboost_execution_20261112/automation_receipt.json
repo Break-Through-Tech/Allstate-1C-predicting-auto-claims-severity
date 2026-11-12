@@ -1,0 +1,116 @@
+{
+  "started_utc": "2026-11-12T07:16:50.331491+00:00",
+  "git_commit": "98a437544ced5f504ead1cd9740c2f94248a644b",
+  "controller_sha256": "8f43455bb229f3bcc27093966aa3d17c09112c91f077be22fb924c306a42579b",
+  "runner_sha256": {
+    "scripts/run_xgboost.py": "90990bae551769697679e5b5a1b3e0ffa6324107252e8d1e6298d793d365f6c7",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "readiness_sha256": "002276a7c5b604944db21a79a0ce5d8a0ccd7ab525d59483a8e4c6626946446e",
+  "config_sha256": "16cbac01484b4f67274b883f3fcfb1c1acab0dec1a416dc45bcdd9f53d7d9c4d",
+  "status": "COMPLETE",
+  "steps": [
+    {
+      "stage": "initial",
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-u",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "initial",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "started_utc": "2026-11-12T07:16:50.364045+00:00",
+      "status": "PASS",
+      "pid": 75181,
+      "exit_code": 0,
+      "ended_utc": "2026-11-12T07:20:08.866432+00:00"
+    },
+    {
+      "stage": "release",
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-u",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "release",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "started_utc": "2026-11-12T07:20:08.868705+00:00",
+      "status": "PASS",
+      "pid": 75499,
+      "exit_code": 0,
+      "ended_utc": "2026-11-12T07:20:28.926975+00:00"
+    },
+    {
+      "stage": "freeze-followup",
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-u",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "freeze-followup",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json",
+        "--parameter",
+        "max_depth",
+        "--value",
+        "8",
+        "--rationale",
+        "Initial training-only evidence at learning_rate=0.05: A2-C01 depth 3 pooled OOF MAE 1189.972448927673; A2-C02 depth 5 pooled OOF MAE 1169.361674111248; A2-C03 depth 7 pooled OOF MAE 1163.675269514285. Parent A2-C03 uses depth 7. The deepest depth at this learning rate was selected; test one deeper level for additional nonlinear structure. Change only max_depth to 8; all other settings stay fixed. Validation is not an input."
+      ],
+      "started_utc": "2026-11-12T07:20:28.931030+00:00",
+      "status": "PASS",
+      "pid": 75533,
+      "exit_code": 0,
+      "ended_utc": "2026-11-12T07:20:30.953001+00:00"
+    },
+    {
+      "stage": "followup",
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-u",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "followup",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "started_utc": "2026-11-12T07:20:30.953683+00:00",
+      "status": "PASS",
+      "pid": 75543,
+      "exit_code": 0,
+      "ended_utc": "2026-11-12T07:21:25.083123+00:00"
+    },
+    {
+      "stage": "release",
+      "command": [
+        "/opt/anaconda3/envs/allstate-btt/bin/python",
+        "-u",
+        "-B",
+        "-m",
+        "scripts.run_xgboost",
+        "release",
+        "--readiness",
+        "artifacts/october/gate 3/xgboost_readiness.json"
+      ],
+      "started_utc": "2026-11-12T07:21:25.085608+00:00",
+      "status": "PASS",
+      "pid": 75618,
+      "exit_code": 0,
+      "ended_utc": "2026-11-12T07:21:45.151381+00:00"
+    }
+  ],
+  "first_real_fit_verified": true,
+  "first_real_fit_verified_utc": "2026-11-12T07:17:04.402435+00:00",
+  "depth_recommendation_sha256": "f35a2f4f835c25275b0f7143cba784015f2fc341b5c1d2e8344205490d491da8",
+  "ended_utc": "2026-11-12T07:21:45.153262+00:00",
+  "elapsed_seconds": 294.7984457500279
+}
