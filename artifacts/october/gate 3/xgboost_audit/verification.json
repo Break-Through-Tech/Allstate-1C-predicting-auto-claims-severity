@@ -1,0 +1,55 @@
+{
+  "real_source_loaded": false,
+  "existing_receipts": [
+    {
+      "name": "one_release_receipt.json",
+      "code_hashes_match": true,
+      "oof_arithmetic_and_artifact_hashes_match": true,
+      "exactly_one_changed_setting": [
+        "n_estimators"
+      ],
+      "rationale_saved_before_sixth_fit": true
+    },
+    {
+      "name": "two_releases_receipt.json",
+      "code_hashes_match": true,
+      "oof_arithmetic_and_artifact_hashes_match": true,
+      "exactly_one_changed_setting": [
+        "n_estimators"
+      ],
+      "rationale_saved_before_sixth_fit": true
+    }
+  ],
+  "fresh_smokes": [
+    {
+      "path": "/private/tmp/task4-audit-smoke-one-20261111",
+      "status": "COMPLETE",
+      "cv_fits": 30,
+      "releases": 1
+    },
+    {
+      "path": "/private/tmp/task4-audit-smoke-two-20261111",
+      "status": "COMPLETE",
+      "cv_fits": 30,
+      "releases": 2
+    }
+  ],
+  "frozen_ids_only_check": {
+    "training_claims": 141238,
+    "fold_counts": {
+      "0": 28248,
+      "1": 28248,
+      "2": 28248,
+      "3": 28247,
+      "4": 28247
+    },
+    "hashes_match": true,
+    "no_validation_or_test_ids_in_saved_folds": true
+  },
+  "preprocessing_probe": {
+    "distinct_fitted_preprocessors": 5,
+    "fit_ids_match_four_folds": true,
+    "holdout_ids_disjoint": true,
+    "heldout_only_label_becomes_missing": true
+  }
+}

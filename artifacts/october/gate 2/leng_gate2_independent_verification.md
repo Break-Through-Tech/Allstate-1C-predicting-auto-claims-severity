@@ -218,3 +218,13 @@ Gate 1/Gate 2 decisions, CV/group/time assumptions, remaining Advisor questions 
 explicit risk acceptance, stopping/release policy and the board record. Only the
 nine listed paths form the proposal. No tracked teammate file, historical artifact
 or stash was modified; no staging, commit, push, branch switch or PR was performed.
+
+
+## November 12 addendum — scoped readiness accepted
+
+Leng directed that the Codex exchange serve as the team readiness decision for
+XGBoost on November 12, 2026. The [recorded decision](../gate%203/xgboost_readiness_decision_20261112.md)
+accepts this gate’s readiness specifically for the bounded Approach 2 experiment.
+Leng is the only evidenced approver; no other teammate signature is inferred.
+Earlier pending statements are historical. The saved technical plan, 30-CV-fit
+cap, two validation releases, test reservation and run limits control execution.

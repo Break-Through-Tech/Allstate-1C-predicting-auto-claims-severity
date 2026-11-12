@@ -1,0 +1,14 @@
+{
+  "stale_receipt_race": {
+    "in_memory_stage": "FOLLOWUP_FROZEN",
+    "in_memory_cv_fits": 25,
+    "disk_stage": "COMPLETE",
+    "disk_cv_fits": 30
+  },
+  "version_drift_not_rejected": true,
+  "synthetic_validation_relabels_training_row": {
+    "validation_features_equal_training_first_row": true,
+    "validation_truth_equals_training_first_row": true,
+    "validation_id": 201
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "A2-C06",
+  "parent": "A2-C03",
+  "parameter": "max_depth",
+  "value": 8,
+  "previous_value": 7,
+  "rationale": "Initial training-only evidence at learning_rate=0.05: A2-C01 depth 3 pooled OOF MAE 1189.972448927673; A2-C02 depth 5 pooled OOF MAE 1169.361674111248; A2-C03 depth 7 pooled OOF MAE 1163.675269514285. Parent A2-C03 uses depth 7. The deepest depth at this learning rate was selected; test one deeper level for additional nonlinear structure. Change only max_depth to 8; all other settings stay fixed. Validation is not an input.",
+  "evidence": "Initial training-only pooled OOF and per-fold results in run_receipt.json",
+  "before_pooled_oof_mae": 1163.675269514285,
+  "frozen_utc": "2026-11-12T07:20:29.588458+00:00",
+  "minimum_mae_improvement": 1.0
+}

@@ -1,0 +1,84 @@
+test_bad_coverage (test_baselines_evaluation.EvaluationTests.test_bad_coverage) ... ok
+test_bad_truth_coverage_and_schema (test_baselines_evaluation.EvaluationTests.test_bad_truth_coverage_and_schema) ... ok
+test_bool_complex_and_wrong_prediction_schema (test_baselines_evaluation.EvaluationTests.test_bool_complex_and_wrong_prediction_schema) ... ok
+test_duplicate_truth (test_baselines_evaluation.EvaluationTests.test_duplicate_truth) ... ok
+test_invalid_ids (test_baselines_evaluation.EvaluationTests.test_invalid_ids) ... ok
+test_invalid_predictions (test_baselines_evaluation.EvaluationTests.test_invalid_predictions) ... ok
+test_invalid_truth (test_baselines_evaluation.EvaluationTests.test_invalid_truth) ... ok
+test_known_mae_and_count (test_baselines_evaluation.EvaluationTests.test_known_mae_and_count) ... ok
+test_partition_overlap (test_baselines_evaluation.EvaluationTests.test_partition_overlap) ... ok
+test_shuffled_rows (test_baselines_evaluation.EvaluationTests.test_shuffled_rows) ... ok
+test_test_loss_never_converted (test_baselines_evaluation.EvaluationTests.test_test_loss_never_converted) ... ok
+test_training_only_and_reproduction (test_baselines_evaluation.EvaluationTests.test_training_only_and_reproduction) ... ok
+test_validation_cannot_enter_training (test_baselines_evaluation.EvaluationTests.test_validation_cannot_enter_training) ... ok
+test_baseline_delta (test_model_comparison.ComparisonTests.test_baseline_delta) ... ok
+test_canonical_string_ids_in_diagnostics (test_model_comparison.ComparisonTests.test_canonical_string_ids_in_diagnostics) ... ok
+test_claim_count (test_model_comparison.ComparisonTests.test_claim_count) ... ok
+test_duplicate (test_model_comparison.ComparisonTests.test_duplicate) ... ok
+test_empty (test_model_comparison.ComparisonTests.test_empty) ... ok
+test_error_bin_support (test_model_comparison.ComparisonTests.test_error_bin_support) ... ok
+test_extra (test_model_comparison.ComparisonTests.test_extra) ... ok
+test_fold_stability (test_model_comparison.ComparisonTests.test_fold_stability) ... ok
+test_generalization_gap (test_model_comparison.ComparisonTests.test_generalization_gap) ... ok
+test_high_loss_mae (test_model_comparison.ComparisonTests.test_high_loss_mae) ... ok
+test_manifest_hash (test_model_comparison.ComparisonTests.test_manifest_hash) ... ok
+test_manifest_id (test_model_comparison.ComparisonTests.test_manifest_id) ... ok
+test_missing (test_model_comparison.ComparisonTests.test_missing) ... ok
+test_nonfinite (test_model_comparison.ComparisonTests.test_nonfinite) ... ok
+test_nonnumeric (test_model_comparison.ComparisonTests.test_nonnumeric) ... ok
+test_null_id (test_model_comparison.ComparisonTests.test_null_id) ... ok
+test_percentage (test_model_comparison.ComparisonTests.test_percentage) ... ok
+test_recorded_mae_mismatch (test_model_comparison.ComparisonTests.test_recorded_mae_mismatch) ... ok
+test_reproducible (test_model_comparison.ComparisonTests.test_reproducible) ... ok
+test_signed_error (test_model_comparison.ComparisonTests.test_signed_error) ... ok
+test_source_version (test_model_comparison.ComparisonTests.test_source_version) ... ok
+test_tied_quantiles_and_outside_training_range (test_model_comparison.ComparisonTests.test_tied_quantiles_and_outside_training_range) ... ok
+test_unavailable_metrics (test_model_comparison.ComparisonTests.test_unavailable_metrics) ... ok
+test_unavailable_stability (test_model_comparison.ComparisonTests.test_unavailable_stability) ... ok
+test_valid_predictions_have_no_failures (test_model_comparison.ComparisonTests.test_valid_predictions_have_no_failures) ... ok
+test_wrong_scale (test_model_comparison.ComparisonTests.test_wrong_scale) ... ok
+test_assignment_invariant_to_input_order_and_repeat (test_partition_manifest.PartitionTests.test_assignment_invariant_to_input_order_and_repeat) ... ok
+test_bad_manifests_fail (test_partition_manifest.PartitionTests.test_bad_manifests_fail) ... ok
+test_changed_source_hash_stops_before_reading_rows (test_partition_manifest.PartitionTests.test_changed_source_hash_stops_before_reading_rows) ... ok
+test_duplicate_assignment_and_invalid_ids_fail (test_partition_manifest.PartitionTests.test_duplicate_assignment_and_invalid_ids_fail) ... ok
+test_eligibility_all_or_abort (test_partition_manifest.PartitionTests.test_eligibility_all_or_abort) ... ok
+test_export_never_overwrites_different_files (test_partition_manifest.PartitionTests.test_export_never_overwrites_different_files) ... ok
+test_rare_rule_boundary_and_validation_local_counts_are_separate (test_partition_manifest.PartitionTests.test_rare_rule_boundary_and_validation_local_counts_are_separate) ... ok
+test_rounding_and_nonoverlap_for_awkward_population_sizes (test_partition_manifest.PartitionTests.test_rounding_and_nonoverlap_for_awkward_population_sizes) ... ok
+test_test_target_poison_does_not_reach_diagnostics (test_partition_manifest.PartitionTests.test_test_target_poison_does_not_reach_diagnostics) ... ok
+test_corrupted_prediction_artifact_fails_before_scoring (test_verify_gate2_leng.IndependentVerificationTests.test_corrupted_prediction_artifact_fails_before_scoring) ... ok
+test_default_import_without_gate2_modeling_packages (test_verify_gate2_leng.IndependentVerificationTests.test_default_import_without_gate2_modeling_packages) ... ok
+test_duplicate_source_rows_cannot_be_overwritten (test_verify_gate2_leng.IndependentVerificationTests.test_duplicate_source_rows_cannot_be_overwritten) ... ok
+test_json_duplicate_keys_rejected (test_verify_gate2_leng.IndependentVerificationTests.test_json_duplicate_keys_rejected) ... ok
+test_no_removable_assertions_in_independent_verifiers (test_verify_gate2_leng.IndependentVerificationTests.test_no_removable_assertions_in_independent_verifiers) ... ok
+test_optional_config_remains_unapproved (test_verify_gate2_leng.IndependentVerificationTests.test_optional_config_remains_unapproved) ... ok
+test_poisoned_test_target_is_never_converted (test_verify_gate2_leng.IndependentVerificationTests.test_poisoned_test_target_is_never_converted) ... ok
+test_prediction_csv_rejections (test_verify_gate2_leng.IndependentVerificationTests.test_prediction_csv_rejections) ... ok
+test_receipt_writes_cannot_overwrite_existing_evidence (test_verify_gate2_leng.IndependentVerificationTests.test_receipt_writes_cannot_overwrite_existing_evidence) ... ok
+test_saved_nonconstant_alignment_and_negative_predictions (test_verify_gate2_leng.IndependentVerificationTests.test_saved_nonconstant_alignment_and_negative_predictions) ... ok
+test_shared_evaluator_independent_contract_probes (test_verify_gate2_leng.IndependentVerificationTests.test_shared_evaluator_independent_contract_probes) ... ok
+test_source_coverage_and_loss_failures (test_verify_gate2_leng.IndependentVerificationTests.test_source_coverage_and_loss_failures) ... ok
+test_wrong_score_rejected_including_optimized_python (test_verify_gate2_leng.IndependentVerificationTests.test_wrong_score_rejected_including_optimized_python) ... ok
+test_config_budget_cannot_be_expanded_silently (test_xgboost_runner.RunnerTests.test_config_budget_cannot_be_expanded_silently) ... ok
+test_existing_validation_contract_is_unchanged (test_xgboost_runner.RunnerTests.test_existing_validation_contract_is_unchanged) ... ok
+test_expired_deadline_and_exhausted_runtime_block (test_xgboost_runner.RunnerTests.test_expired_deadline_and_exhausted_runtime_block) ... ok
+test_failed_fit_consumes_slot_and_is_recorded (test_xgboost_runner.RunnerTests.test_failed_fit_consumes_slot_and_is_recorded) ... ok
+test_folds_reject_duplicate_missing_test_and_invalid_labels (test_xgboost_runner.RunnerTests.test_folds_reject_duplicate_missing_test_and_invalid_labels) ... ok
+test_followup_is_frozen_once_and_changes_one_parameter (test_xgboost_runner.RunnerTests.test_followup_is_frozen_once_and_changes_one_parameter) ... ok
+test_followup_rejects_changed_plan_and_out_of_sequence_release (test_xgboost_runner.RunnerTests.test_followup_rejects_changed_plan_and_out_of_sequence_release) ... ok
+test_invalid_followup_setting_or_missing_rationale_is_rejected (test_xgboost_runner.RunnerTests.test_invalid_followup_setting_or_missing_rationale_is_rejected) ... ok
+test_lock_prevents_overlapping_campaign_writers (test_xgboost_runner.RunnerTests.test_lock_prevents_overlapping_campaign_writers) ... ok
+test_partition_reader_skips_poisoned_validation_and_test_rows (test_xgboost_runner.RunnerTests.test_partition_reader_skips_poisoned_validation_and_test_rows) ... ok
+test_pending_readiness_blocks_before_source_access_or_output_creation (test_xgboost_runner.RunnerTests.test_pending_readiness_blocks_before_source_access_or_output_creation) ... ok
+test_readiness_requires_all_recorded_decisions_and_hashes (test_xgboost_runner.RunnerTests.test_readiness_requires_all_recorded_decisions_and_hashes) ... ok
+test_selection_applies_one_unit_tie_and_complexity_order (test_xgboost_runner.RunnerTests.test_selection_applies_one_unit_tie_and_complexity_order) ... ok
+test_shared_training_metric_and_negative_prediction (test_xgboost_runner.RunnerTests.test_shared_training_metric_and_negative_prediction) ... ok
+test_training_metric_rejects_validation_test_duplicates_and_nonfinite (test_xgboost_runner.RunnerTests.test_training_metric_rejects_validation_test_duplicates_and_nonfinite) ... ok
+
+----------------------------------------------------------------------
+Ran 76 tests in 3.245s
+
+OK
+PASS: Frozen source, split acceptance, schema, IDs, counts and ID-only assignment
+PASS: Optional proposed config: static safeguards, identities and 6 x 5 budget
+PASS: Nonconstant aligned MAE, unchanged negative prediction and 26 invalid cases

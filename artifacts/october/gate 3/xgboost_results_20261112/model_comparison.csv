@@ -1,0 +1,6 @@
+model,validation_mae
+training_mean_baseline,1959.6309163876394
+training_median_baseline,1802.7938540781647
+frozen_glm,1250.4533331280988
+xgboost_initial,1167.5153136500919
+xgboost_followup,1166.6811041916615

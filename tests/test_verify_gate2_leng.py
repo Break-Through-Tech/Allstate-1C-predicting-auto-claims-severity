@@ -30,11 +30,10 @@ verify_synthetic_evaluator()
                                 cwd=verify.ROOT, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
-    def test_optional_config_remains_unapproved(self):
-        source = verify.GATE2 / "approach2_xgboost_config.json"
-        # Task 8 test discovery remains usable without the optional Gate 3 file.
-        if not source.exists():
-            self.skipTest("Approach 2 scaffold is not present")
+    def test_historical_proposed_config_rejects_authorization_mutations(self):
+        # The static Gate 2 verifier audits the historical, unapproved scaffold.
+        # Runtime authorization is checked separately by the Gate 3 runner.
+        source = verify.ROOT / "tests/fixtures/approach2_xgboost_proposed.json"
         result = verify.verify_proposed_config(source)
         self.assertFalse(result["training_authorized"])
         original = json.loads(source.read_text())

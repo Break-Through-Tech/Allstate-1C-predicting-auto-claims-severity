@@ -1,0 +1,79 @@
+{
+  "verdict": "PASS: all three technical findings fixed; real training remains blocked",
+  "findings": {
+    "lock": "FIXED",
+    "environment": "FIXED",
+    "synthetic_validation": "FIXED"
+  },
+  "full_tests": 84,
+  "optimized_runner_tests": 23,
+  "code_sha256": {
+    "scripts/run_xgboost.py": "90990bae551769697679e5b5a1b3e0ffa6324107252e8d1e6298d793d365f6c7",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "test_sha256": "6969b135226fa7ba92ce4c39365c546c457e5617f5e901f6e61118c41104e3cc",
+  "config_sha256": "0aa4dd5f848ad09eebf3b12730219fda9130c21481ffc53f5e42cbc5edb670e2",
+  "smokes": [
+    {
+      "folder": "smoke_one",
+      "receipt_sha256": "e341f8e3fcc56d9babb6dae3e40666eafc52ee260321b35d0530aab7f56fde05",
+      "configurations": 6,
+      "cv_fits": 30,
+      "releases": 1,
+      "all_oof_and_validation_maes_independently_match": true,
+      "validation_fixture_matches_generated_holdout": true,
+      "stage_environments_recorded": 4,
+      "comparison": {
+        "before_id": "A2-C04",
+        "after_id": "A2-C06",
+        "before_pooled_oof_mae": 100.29762214173564,
+        "after_pooled_oof_mae": 84.51956815376919,
+        "improvement": 15.778053987966459,
+        "keep_followup": true,
+        "reason": "Training-only improvement compared with the recorded keep threshold"
+      }
+    },
+    {
+      "folder": "smoke_two",
+      "receipt_sha256": "ede7affa4fa5a8cb7bee8ef40ed92a37f747df4a7580713ddca0f176015e46f9",
+      "configurations": 6,
+      "cv_fits": 30,
+      "releases": 2,
+      "all_oof_and_validation_maes_independently_match": true,
+      "validation_fixture_matches_generated_holdout": true,
+      "stage_environments_recorded": 5,
+      "comparison": {
+        "before_id": "A2-C04",
+        "after_id": "A2-C06",
+        "before_pooled_oof_mae": 100.29762214173564,
+        "after_pooled_oof_mae": 84.51956815376919,
+        "improvement": 15.778053987966459,
+        "keep_followup": true,
+        "reason": "Training-only improvement compared with the recorded keep threshold",
+        "before_validation_mae": 50.57471742674835,
+        "after_validation_mae": 40.56824770018585
+      }
+    }
+  ],
+  "original_audit_sha256": {
+    "reproduce_findings.py": "e81f805c00e3122758924f222f36e70a1c82917fade7332a8afe63b8e019d8f4",
+    "audit_receipt.json": "7bdbbc7f3bd09a16b7eb2045c15ec16c2ccb8b2838e9bc43b40986df78daad56",
+    "audit.md": "53af740f39f1bad4cbefba7d348b14d28eb4c539f9bc5656a85d94a54db7027d",
+    "probe_results.json": "02bba1a8f12408ee6b4153f31b35367fce102204738bdc8df2bd6e4a6c529c0c",
+    "tests.log": "2de4ce6c656e560ed5c4b962397426f71e5996b89585af44b337da176f61a6ba",
+    "verification.json": "4851ee1d503b345b56481c1964a0a65f256a9034aa83343eb11621fc58073a82"
+  },
+  "real_training_hold": {
+    "training_authorized": false,
+    "check_exit_code": 1,
+    "message": "BLOCKED: config execution.training_authorized is false; team readiness is pending",
+    "real_campaign_created": false
+  },
+  "original_checkout_preserved": {
+    "branch": "leng/oct-gate2-task8",
+    "head": "d3fe52285e9bdfb5143e51f83e215294c7a21d56",
+    "untracked_files_unchanged": 17,
+    "tracked_and_index_unchanged": true
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "synthetic_only": true,
+  "real_training_performed": false,
+  "tests_passed": 76,
+  "checks": [
+    {
+      "sequence": "amend_to_one_release",
+      "receipt": "one_release_receipt.json",
+      "receipt_sha256": "bf0551d8b079f8bdc935f197db7ff1b3d8e7cde013245957a977851c4dcd27dc",
+      "cv_fits": 30,
+      "configurations": 6,
+      "releases": 1,
+      "comparison": {
+        "before_id": "A2-C04",
+        "after_id": "A2-C06",
+        "before_pooled_oof_mae": 100.29762214173564,
+        "after_pooled_oof_mae": 84.51956815376919,
+        "improvement": 15.778053987966459,
+        "keep_followup": true,
+        "reason": "Training-only improvement compared with the recorded keep threshold"
+      },
+      "independent_math_fsum_matches_all_six_oof_scores": true,
+      "model_round_trip_passed": true
+    },
+    {
+      "sequence": "gate1_two_releases",
+      "receipt": "two_releases_receipt.json",
+      "receipt_sha256": "7416fc9cc1ef164862b5ee440f02d0a4e2a576c0e4ee78c4e859850eb4c1edeb",
+      "cv_fits": 30,
+      "configurations": 6,
+      "releases": 2,
+      "comparison": {
+        "before_id": "A2-C04",
+        "after_id": "A2-C06",
+        "before_pooled_oof_mae": 100.29762214173564,
+        "after_pooled_oof_mae": 84.51956815376919,
+        "improvement": 15.778053987966459,
+        "keep_followup": true,
+        "reason": "Training-only improvement compared with the recorded keep threshold",
+        "before_validation_mae": 48.37241662953801,
+        "after_validation_mae": 48.03965295766301
+      },
+      "independent_math_fsum_matches_all_six_oof_scores": true,
+      "model_round_trip_passed": true
+    }
+  ]
+}

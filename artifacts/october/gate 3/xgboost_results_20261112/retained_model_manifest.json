@@ -1,0 +1,20 @@
+{
+  "retained_candidate": "A2-C03",
+  "max_depth": 7,
+  "learning_rate": 0.05,
+  "selection_basis": "Training-only pooled OOF MAE and the pre-recorded 1.0 improvement threshold",
+  "followup_retained": false,
+  "model": {
+    "path": "artifacts/october/gate 3/runs/xgboost-task4/initial_model.json",
+    "sha256": "ba3aa4addc9092bf7d0cd6b66b779d0d4836093f9c3c3330c2f313c4bfbd91de"
+  },
+  "preprocessing": {
+    "path": "artifacts/october/gate 3/runs/xgboost-task4/initial_preprocessing.json",
+    "sha256": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20"
+  },
+  "validation_predictions": {
+    "path": "artifacts/october/gate 3/runs/xgboost-task4/initial_validation_predictions.csv",
+    "sha256": "8cc60e73f371ce31184da54f946b352a95bd1abbf4b6c1c53fd8b6ebef47caf2"
+  },
+  "receipt_sha256": "2c8c463e1ea5292f9b2ebaf0e41202e825ce40b4f26801e34dbf606426a8439a"
+}

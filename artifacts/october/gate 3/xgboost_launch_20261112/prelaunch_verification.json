@@ -1,0 +1,12 @@
+{
+  "tests_passed": 87,
+  "runner_sha256": {
+    "scripts/run_xgboost.py": "90990bae551769697679e5b5a1b3e0ffa6324107252e8d1e6298d793d365f6c7",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "controller_sha256": "8f43455bb229f3bcc27093966aa3d17c09112c91f077be22fb924c306a42579b",
+  "readiness_sha256": "002276a7c5b604944db21a79a0ce5d8a0ccd7ab525d59483a8e4c6626946446e",
+  "config_sha256": "16cbac01484b4f67274b883f3fcfb1c1acab0dec1a416dc45bcdd9f53d7d9c4d",
+  "model_input_preprocessing_environment_and_grid_unchanged": true
+}

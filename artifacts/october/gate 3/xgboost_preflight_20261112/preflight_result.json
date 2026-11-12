@@ -1,0 +1,48 @@
+{
+  "status": "BLOCKED_BEFORE_REAL_TRAINING",
+  "checked_at_utc": "2026-11-12T07:02:35.378984+00:00",
+  "origin_main": "df557c41e23fa162b4bdfd00df8316e0b6e74f3a",
+  "reaudited_runner_hashes_match": true,
+  "user_technical_plan_record": "leng_plan_approval.json",
+  "plan_record_sha256": "3a645a4b2c665bb586f637b632c5e904313b2714a827af99a1ae1e9e59902afe",
+  "missing_readiness_records": [
+    {
+      "gate": "Gate 1",
+      "path": "artifacts/october/gate 1/gate1_signoff.md",
+      "status": "NOT YET APPROVED",
+      "missing": "Recorded Gate 1 readiness approval or explicit accepted assumptions/risks applicable to Approach 2 modeling.",
+      "sha256": "08780ee1f4c499c0cb4daf0dfb9d9056cf7986c955ebedc98c097d6df9a1e015"
+    },
+    {
+      "gate": "Gate 2",
+      "path": "artifacts/october/gate 2/leng_gate2_independent_verification.md",
+      "status": "Formal Gate 1/Gate 2 approval is not recorded",
+      "missing": "Recorded Gate 2 readiness acceptance for preprocessing, frozen folds, target/evaluator rules, environment and Approach 2 candidate training.",
+      "sha256": "d614d23ddfcbd8abaf75e7fbc8aee9185d8f6bd2e0727f95eb581e7b3e5e5c0f"
+    }
+  ],
+  "other_available_evidence": [
+    {
+      "path": "artifacts/october/gate 1/split_acceptance.json",
+      "scope": "accepted_for_baselines; explicitly excludes candidate-model readiness"
+    },
+    {
+      "path": "artifacts/october/gate 3/comparison_inputs/glm-20261103T055706Z-0748a4b5/run_receipt.json",
+      "scope": "Reported November 2 verbal approval for Approach 1; no Approach 2 gate readiness recorded"
+    }
+  ],
+  "runner_preflight": {
+    "exit_code": 1,
+    "message": "BLOCKED: config execution.training_authorized is false; team readiness is pending",
+    "log": "preflight.log"
+  },
+  "configuration_unchanged": true,
+  "config_sha256": "0aa4dd5f848ad09eebf3b12730219fda9130c21481ffc53f5e42cbc5edb670e2",
+  "real_fits_started": 0,
+  "validation_releases": 0,
+  "real_campaign_created": false,
+  "caffeinate_launched": false,
+  "local_commit_created": false,
+  "pr_prepared": false,
+  "next_step": "Record applicable Gate 1 and Gate 2 readiness decisions with their actual source/date/scope; then bind those records and Leng\u2019s approved plan into readiness/config and repeat preflight."
+}

@@ -1,10 +1,10 @@
 {
-  "config_id": "approach2-xgboost-v1",
-  "status": "PROPOSED; training blocked pending Gate 1/Gate 2 readiness and release-sequence decision",
+  "config_id": "approach2-xgboost-v2-approved-20261112",
+  "status": "APPROVED for bounded Approach 2 training; Leng recorded the team readiness decision on November 12, 2026",
   "owner": "Leng Lim",
   "issues": {
-    "scaffold": "#41 — Gate 2 preparation",
-    "training_and_iteration": "#45 — Gate 3 Task 12"
+    "scaffold": "#41 \u2014 Gate 2 preparation",
+    "training_and_iteration": "#45 \u2014 Gate 3 Task 12"
   },
   "approach": "Approach 2: XGBoost gradient-boosted trees",
   "hypothesis": "Boosted trees can learn nonlinear effects and interactions among the 130 anonymous predictors and may outperform the constant baselines and regularized GLM.",
@@ -95,23 +95,25 @@
     "early_stopping": false,
     "maximum_final_refits": 2,
     "failure_policy": "Failures and retries consume allocated slots. Do not exceed 6 configurations or 30 CV fits without a written team amendment. Log unchanged independent reproductions separately.",
-    "resource_deadline": "Pending team confirmation before training."
+    "resource_deadline": "2026-11-13T04:59:00+00:00",
+    "max_runtime_seconds": 10800
   },
   "iteration": {
-    "status": "Reserved for Gate 3; do not execute while release sequence is unresolved",
+    "status": "APPROVED: one training-CV-justified untested max_depth; freeze exact setting before the sixth configuration",
     "rule": "After the team resolves OCT-A2-RELEASE-SEQUENCE, freeze one justified change to one hyperparameter of the selected initial candidate, using training evidence only.",
     "constraint": "Document the change and rationale before running the sixth configuration",
     "comparison": "Record before/after pooled OOF MAE, fold counts/MAE, mean/sample SD and runtime. Also record before/after validation MAE if the team adopts gate1_two_releases.",
-    "validation_use": "Do not use validation results to choose the iteration"
+    "validation_use": "Do not use validation results to choose the iteration",
+    "minimum_mae_improvement": 1.0
   },
   "evaluation": {
     "training_claims": 141238,
     "cv_method": "Five saved folds within the training partition",
     "selection_metric": "Pooled out-of-fold MAE in original loss units",
     "tie_rule": "Among configurations within 1 loss unit of the minimum pooled OOF MAE, prefer lower max_depth, then fewer trees, then lower learning_rate, then lower recorded runtime.",
-    "final_refit": "Blocked until the team resolves the sequence; refit each released configuration and its preprocessing on all training claims.",
+    "final_refit": "Refit initial winner and follow-up once each on all training claims under gate1_two_releases",
     "validation_claims": 28248,
-    "validation_release": "UNRESOLVED: policy_review lists two options; neither is authorized.",
+    "validation_release": "APPROVED: one initial and one follow-up validation release; use training CV only for settings and keep decision",
     "baseline_comparison": [
       "Training-mean baseline",
       "Training-median baseline",
@@ -144,19 +146,19 @@
     "xgboost": "3.1.1"
   },
   "execution": {
-    "training_authorized": false,
+    "training_authorized": true,
     "requires": [
       "Recorded Gate 1 and Gate 2 readiness decisions",
       "Team resolution of OCT-A2-RELEASE-SEQUENCE before candidate fits",
       "Frozen iteration hypothesis, resource limits and deadline before execution"
     ],
-    "note": "Declarative hold in a scaffold; a future training runner must enforce it."
+    "note": "Readiness/config hashes, environment, input integrity, stage and budget checks remain enforced by scripts/run_xgboost.py."
   },
   "policy_review": {
     "decision_id": "OCT-A2-RELEASE-SEQUENCE",
-    "status": "PENDING_TEAM_DECISION",
+    "status": "APPROVED",
     "reference": "artifacts/october/gate 1/gate1_overview.md: Validation Use and Stopping Rules; OCT-G1-T4-PROPOSAL-v1",
-    "reference_status": "PROPOSED; not a recorded team approval",
+    "reference_status": "Historical proposal superseded for this run by the November 12 scoped readiness decision",
     "conflict": {
       "original_scaffold": "Run the sixth configuration after initial training CV, before one final validation release.",
       "gate1_proposal": "Release the initial frozen comparison, then freeze one justified iteration and release its training-CV-selected candidate in a second comparison."
@@ -171,8 +173,8 @@
         "description": "Explicitly amend the proposal to finish iteration within training before one validation release. Record before/after OOF MAE and disclose that separate before/after validation evidence will not exist. Team must decide whether this meets the iteration requirement."
       }
     ],
-    "selected_option": null,
-    "decision_record": null,
-    "required_decision": "Select and record a sequence and its comparison/selection rules before any real candidate training. Neither option is adopted by this configuration."
+    "selected_option": "gate1_two_releases",
+    "decision_record": "artifacts/october/gate 3/xgboost_readiness_decision_20261112.md",
+    "required_decision": "Resolved in the recorded November 12 exchange at Leng\u2019s direction"
   }
 }
