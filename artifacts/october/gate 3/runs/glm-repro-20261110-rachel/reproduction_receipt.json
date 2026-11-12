@@ -1,0 +1,34 @@
+{
+  "run_id": "glm-repro-20261110-rachel",
+  "reproduces": "glm-20261103T055706Z-0748a4b5",
+  "owner": "Rachel Cheung",
+  "issue": "#44",
+  "created_by": "notebooks/gate3_approach1_glm.ipynb",
+  "environment": {
+    "python": "3.13.16",
+    "pandas": "2.3.2",
+    "numpy": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2"
+  },
+  "fold_seed": 42,
+  "cv_fits": 30,
+  "selected_alpha": 100.0,
+  "pooled_cv_mae": {
+    "1.0": 1246.0854900383645,
+    "10.0": 1245.721246863279,
+    "100.0": 1245.4044484586707,
+    "1000.0": 1246.5778666845404,
+    "10000.0": 1269.3443946350008,
+    "100000.0": 1470.8651531947528
+  },
+  "training_fit_mae": 1240.4230794385571,
+  "max_fold_mae_difference_vs_official": 2.2737367544323206e-13,
+  "max_validation_prediction_difference_vs_official": 3.637978807091713e-12,
+  "runtime_seconds": {
+    "cv_30_fits": 77.1,
+    "final_refit": 4.4
+  },
+  "validation_targets_read": 0,
+  "test_used": false
+}
