@@ -1,0 +1,4 @@
+model,validation_mae,claims
+training_mean,1959.6309163876397,28248
+training_median,1802.7938540781647,28248
+retained_xgboost_A2-C03,1167.5153136500917,28248
