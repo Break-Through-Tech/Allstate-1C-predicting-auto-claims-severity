@@ -1,0 +1,55 @@
+{
+  "glm-20261103T055706Z-0748a4b5": {
+    "folds": {
+      "evidence_type": "cross_validation_folds",
+      "status": "ASSESSED",
+      "count": 5,
+      "mean_mae": 1245.4044958530176,
+      "std_mae": 12.641633241510851,
+      "min_mae": 1231.8398432376573,
+      "max_mae": 1261.0855934952974,
+      "range_mae": 29.24575025764011
+    },
+    "train_metric_scope": "In-sample metric is from the independent reproduction, not the original fit",
+    "training_mae": null,
+    "reproduction_training_mae": 1240.4230794385571,
+    "runtime_seconds": 89.02515091700116,
+    "runtime_type": "whole search/refit workflow",
+    "complexity": "808 encoded inputs; alpha 100",
+    "validation_minus_cv_fold_mean": 5.048837275081496
+  },
+  "xgboost-task4-20261112T071650.896576Z:A2-C03": {
+    "folds": {
+      "evidence_type": "cross_validation_folds",
+      "status": "ASSESSED",
+      "count": 5,
+      "mean_mae": 1163.6753179235957,
+      "std_mae": 10.6000380440456,
+      "min_mae": 1151.4066980585462,
+      "max_mae": 1177.4380920583876,
+      "range_mae": 26.031393999841384
+    },
+    "training_mae": null,
+    "runtime_seconds": 12.843643124972004,
+    "runtime_type": "release refit/predict/serialization/evaluation",
+    "complexity": "300 trees, max depth 7; 130 source inputs",
+    "validation_minus_cv_fold_mean": 3.8399957264959994
+  },
+  "xgboost-task4-20261112T071650.896576Z:A2-C06": {
+    "folds": {
+      "evidence_type": "cross_validation_folds",
+      "status": "ASSESSED",
+      "count": 5,
+      "mean_mae": 1164.0852465479124,
+      "std_mae": 10.020553103812638,
+      "min_mae": 1152.197250702328,
+      "max_mae": 1177.1742715129135,
+      "range_mae": 24.9770208105856
+    },
+    "training_mae": null,
+    "runtime_seconds": 13.061983291991055,
+    "runtime_type": "release refit/predict/serialization/evaluation",
+    "complexity": "300 trees, max depth 8; 130 source inputs",
+    "validation_minus_cv_fold_mean": 2.595857643749241
+  }
+}
