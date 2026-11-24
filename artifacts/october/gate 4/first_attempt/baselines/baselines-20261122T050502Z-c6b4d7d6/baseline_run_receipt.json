@@ -1,0 +1,114 @@
+{
+  "run_id": "baselines-20261122T050502Z-c6b4d7d6",
+  "timestamp_utc": "2026-11-22T05:05:02.982885+00:00",
+  "code_version": "e833961fd980d3f0cf75c6bbe39d203860af05b5",
+  "git_status_at_execution": "",
+  "python": "3.13.2",
+  "pandas": "2.3.2",
+  "numpy": "2.3.3",
+  "scikit_learn": "not used",
+  "execution_command": "/Users/beck/Developer/Allstate-1C-predicting-auto-claims-severity/.venv/bin/python -m scripts.run_baselines --output /var/folders/r2/nsnwdhsj6xndpzyf5rnlz5480000gn/T/allstate-october-gate4-tsgqfnoh/rerun --allow-python-patch-difference",
+  "evaluation_script": "scripts/evaluation.py",
+  "code_sha256": {
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "scripts/run_baselines.py": "77b8f75556c95684b4ac6e010818bf3d022f7a84f55d885a703e07140b56318a"
+  },
+  "source_path": "data/allstate_claims_data.csv",
+  "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "source_version": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "manifest_path": "artifacts/october/gate 1/october_partition_manifest.csv",
+  "manifest_id": "october-split-v1",
+  "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "metadata_sha256": "dc95b89481aa9092a79059e2c71b5bbd632c7c785cd659097a878e184b29859d",
+  "acceptance_sha256": "1561b59d1c1fff367d14781b326df302bbebd0b1548b6c984fecc79dddb07ebf",
+  "train_claim_count": 141238,
+  "validation_claim_count": 28248,
+  "results": [
+    {
+      "mae": 1959.6309163876397,
+      "evaluated_claim_count": 28248,
+      "partition": "validation",
+      "partition_id": "october-split-v1:validation",
+      "manifest_id": "october-split-v1",
+      "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+      "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+      "metric": "MAE",
+      "units": "original loss units",
+      "run_metadata": {
+        "run_id": "baselines-20261122T050502Z-c6b4d7d6",
+        "baseline": "mean"
+      },
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "baseline_name": "mean",
+      "fitted_constant": 3038.297456137867,
+      "prediction_artifact": "/private/var/folders/r2/nsnwdhsj6xndpzyf5rnlz5480000gn/T/allstate-october-gate4-tsgqfnoh/rerun/baselines/baselines-20261122T050502Z-c6b4d7d6/baseline_mean_predictions.csv",
+      "prediction_sha256": "0bbd02a90d9d4b9b97891d966a1eefa65e1969e14f496e583b463ebfcb0f53bd",
+      "reproducible": true,
+      "independent_mae": 1959.6309163876394
+    },
+    {
+      "mae": 1802.7938540781647,
+      "evaluated_claim_count": 28248,
+      "partition": "validation",
+      "partition_id": "october-split-v1:validation",
+      "manifest_id": "october-split-v1",
+      "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+      "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+      "metric": "MAE",
+      "units": "original loss units",
+      "run_metadata": {
+        "run_id": "baselines-20261122T050502Z-c6b4d7d6",
+        "baseline": "median"
+      },
+      "checks": {
+        "id_alignment": true,
+        "duplicate_prediction_ids_absent": true,
+        "missing_prediction_ids_absent": true,
+        "extra_prediction_ids_absent": true,
+        "numeric_finite_predictions": true
+      },
+      "baseline_name": "median",
+      "fitted_constant": 2116.665,
+      "prediction_artifact": "/private/var/folders/r2/nsnwdhsj6xndpzyf5rnlz5480000gn/T/allstate-october-gate4-tsgqfnoh/rerun/baselines/baselines-20261122T050502Z-c6b4d7d6/baseline_median_predictions.csv",
+      "prediction_sha256": "9087e4adbe924d696e2fddcf296d90fbe183b99579c05b4b292fee9f7c807225",
+      "reproducible": true,
+      "independent_mae": 1802.7938540781647
+    }
+  ],
+  "automated_tests": {
+    "command": "python3 -m unittest discover -s tests -p test_baselines_evaluation.py",
+    "exit_code": 0,
+    "output": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.017s\n\nOK\n"
+  },
+  "test_isolation": "CSV traversal skips test rows before loss conversion; no test targets retained, scored or summarized. Covered by poisoned-test-target unit test.",
+  "comparison_sha256": "2cd4c10efa9f6de80bc2f0cec50561fd77354c2245d77ace82687a2b8bda9d33",
+  "checks": {
+    "Frozen manifest verified": true,
+    "Source version verified": true,
+    "Train/validation separation verified": true,
+    "Shared MAE evaluator implemented": true,
+    "MAE calculated in original loss units": true,
+    "Prediction IDs aligned correctly": true,
+    "Exactly one prediction per validation claim": true,
+    "No missing predictions": true,
+    "No extra predictions": true,
+    "All predictions finite": true,
+    "Training-mean baseline evaluated": true,
+    "Training-median comparator evaluated": true,
+    "Both fitted constants use training data only": true,
+    "Baseline comparison generated": true,
+    "Versions and hashes recorded": true,
+    "Automated tests pass": true,
+    "Reproducibility confirmed": true,
+    "Test targets remain untouched": true,
+    "Evaluation documentation created": true,
+    "Task completion summary created": true,
+    "Run receipt generated": true
+  }
+}

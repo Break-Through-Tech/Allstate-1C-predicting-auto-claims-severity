@@ -1,0 +1,139 @@
+{
+  "status": "FAILED",
+  "started_utc": "2026-11-22T05:04:59.994564+00:00",
+  "git_commit": "e833961fd980d3f0cf75c6bbe39d203860af05b5",
+  "git_status_before": "",
+  "command": [
+    "/Users/beck/Developer/Allstate-1C-predicting-auto-claims-severity/.venv/bin/python",
+    "-B",
+    "-m",
+    "scripts.reproduce_october_gate4",
+    "--output",
+    "/var/folders/r2/nsnwdhsj6xndpzyf5rnlz5480000gn/T/allstate-october-gate4-tsgqfnoh/rerun",
+    "--allow-python-patch-difference"
+  ],
+  "owner": "Hector Baeza",
+  "purpose": "Unchanged Gate 4 reproduction; no tuning or selection",
+  "test_targets_read": 0,
+  "test_predictions_generated": 0,
+  "cv_fits": 0,
+  "candidate_refits": 1,
+  "environment": {
+    "python": "3.13.2",
+    "implementation": "CPython",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13",
+    "packages": {
+      "numpy": "2.3.3",
+      "pandas": "2.3.2",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.7.2",
+      "xgboost": "3.1.1"
+    }
+  },
+  "expected_environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.3",
+    "pandas": "2.3.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.1.1"
+  },
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python_patch_difference_allowed": true,
+  "exact_environment_match": false,
+  "retained_candidate": "A2-C03",
+  "parameters": {
+    "objective": "reg:absoluteerror",
+    "eval_metric": "mae",
+    "tree_method": "hist",
+    "enable_categorical": true,
+    "device": "cpu",
+    "n_estimators": 300,
+    "min_child_weight": 5,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 1,
+    "max_cat_to_onehot": 4,
+    "max_cat_threshold": 64,
+    "random_state": 42,
+    "n_jobs": 4,
+    "max_depth": 7,
+    "learning_rate": 0.05
+  },
+  "retained_manifest": {
+    "retained_candidate": "A2-C03",
+    "max_depth": 7,
+    "learning_rate": 0.05,
+    "selection_basis": "Training-only pooled OOF MAE and the pre-recorded 1.0 improvement threshold",
+    "followup_retained": false,
+    "model": {
+      "path": "artifacts/october/gate 3/runs/xgboost-task4/initial_model.json",
+      "sha256": "ba3aa4addc9092bf7d0cd6b66b779d0d4836093f9c3c3330c2f313c4bfbd91de"
+    },
+    "preprocessing": {
+      "path": "artifacts/october/gate 3/runs/xgboost-task4/initial_preprocessing.json",
+      "sha256": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20"
+    },
+    "validation_predictions": {
+      "path": "artifacts/october/gate 3/runs/xgboost-task4/initial_validation_predictions.csv",
+      "sha256": "8cc60e73f371ce31184da54f946b352a95bd1abbf4b6c1c53fd8b6ebef47caf2"
+    },
+    "receipt_sha256": "2c8c463e1ea5292f9b2ebaf0e41202e825ce40b4f26801e34dbf606426a8439a"
+  },
+  "code_sha256": {
+    "scripts/run_xgboost.py": "90990bae551769697679e5b5a1b3e0ffa6324107252e8d1e6298d793d365f6c7",
+    "scripts/evaluation.py": "449904760e833b21036c01a113cfa7c76628c57f4e1a6ae0dcaae4a3cc3e3c32",
+    "notebooks/gate2_preprocessing.ipynb": "75f9a385d59316e84b09c99bfdb0cb8ed3d2f4595b15768f75ba1a739c0b8f10"
+  },
+  "driver_sha256": "78a6e11780856d35974614f259226bf1936737bcd206aeecadea32042230d737",
+  "config_sha256": "16cbac01484b4f67274b883f3fcfb1c1acab0dec1a416dc45bcdd9f53d7d9c4d",
+  "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+  "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+  "cv_folds_sha256": "82fb7f3d9899af71a61f3e3f1b0117f88ac97b0255070253fd8190ec2c7bfcd1",
+  "manifest_id": "october-split-v1",
+  "training_claims": 141238,
+  "validation_claims": 28248,
+  "reserved_test_claims": 18832,
+  "baseline_run_id": "baselines-20261122T050502Z-c6b4d7d6",
+  "candidate_fit_seconds": 7.893685208000534,
+  "candidate_evaluation": {
+    "mae": 1167.5153136500917,
+    "evaluated_claim_count": 28248,
+    "partition": "validation",
+    "partition_id": "october-split-v1:validation",
+    "manifest_id": "october-split-v1",
+    "manifest_sha256": "18e69673953fa61cbbabdd0421e83d31bd46b6f93356a2227793c6013e0850f1",
+    "source_sha256": "74037cb248a1064e4d578692a4f4e5d8492ed1b2033daf643496e1b68b14ae03",
+    "metric": "MAE",
+    "units": "original loss units",
+    "run_metadata": {},
+    "checks": {
+      "id_alignment": true,
+      "duplicate_prediction_ids_absent": true,
+      "missing_prediction_ids_absent": true,
+      "extra_prediction_ids_absent": true,
+      "numeric_finite_predictions": true
+    }
+  },
+  "historical_validation_mae": 1167.5153136500917,
+  "max_prediction_difference": 0.0,
+  "predictions_match_within_1e_6": true,
+  "preprocessing_matches": true,
+  "model_bytes_match": true,
+  "test_exit_code": 1,
+  "error": "EvaluationError: Repository tests failed; see tests.log",
+  "ended_utc": "2026-11-22T05:05:20.855868+00:00",
+  "elapsed_seconds": 20.85253054200075,
+  "artifact_sha256": {
+    "baselines/baselines-20261122T050502Z-c6b4d7d6/baseline_comparison.csv": "2cd4c10efa9f6de80bc2f0cec50561fd77354c2245d77ace82687a2b8bda9d33",
+    "baselines/baselines-20261122T050502Z-c6b4d7d6/baseline_mean_predictions.csv": "0bbd02a90d9d4b9b97891d966a1eefa65e1969e14f496e583b463ebfcb0f53bd",
+    "baselines/baselines-20261122T050502Z-c6b4d7d6/baseline_median_predictions.csv": "9087e4adbe924d696e2fddcf296d90fbe183b99579c05b4b292fee9f7c807225",
+    "baselines/baselines-20261122T050502Z-c6b4d7d6/baseline_run_receipt.json": "438eab41f37b7a6794f482a5df75ebaa6a1d4e3959644ff8878a753ba3050ee2",
+    "rerun_comparison.csv": "808d21effddd02bf5b206fac3c43fa775af2a880dd144af4f356d62b99ea8882",
+    "retained_model.json": "ba3aa4addc9092bf7d0cd6b66b779d0d4836093f9c3c3330c2f313c4bfbd91de",
+    "retained_preprocessing.json": "dfef502c313b34aff97d76aae44f96c19c942c5bdf4179e922b3b0a9a99b5f20",
+    "retained_validation_predictions.csv": "8cc60e73f371ce31184da54f946b352a95bd1abbf4b6c1c53fd8b6ebef47caf2",
+    "tests.log": "5cdcd65cea04d7b021262abce8b0ee8c3bb5be5c69771431fa2756b4643ea7d3"
+  }
+}

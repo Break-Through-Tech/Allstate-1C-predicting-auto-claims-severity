@@ -1,0 +1,281 @@
+diff --git a/scripts/reproduce_october_gate4.py b/scripts/reproduce_october_gate4.py
+new file mode 100644
+index 0000000..2976762
+--- /dev/null
++++ b/scripts/reproduce_october_gate4.py
+@@ -0,0 +1,185 @@
++"""Reproduce both constants and the retained A2-C03; no search or test scoring.
++
++Run from a clean committed checkout. Write evidence outside that checkout.
++The Gate 3 campaign is historical and is never resumed by this script.
++"""
++import argparse
++import json
++import math
++from pathlib import Path
++import platform
++import subprocess
++import sys
++from time import perf_counter
++
++import numpy as np
++import pandas as pd
++
++from scripts import run_xgboost as x
++from scripts.evaluation import evaluate_mae, require, sha256
++from scripts.run_baselines import run as run_baselines
++
++RETAINED = Path('artifacts/october/gate 3/xgboost_results_20261112/retained_model_manifest.json')
++
++
++def environment_check(expected, actual, allow_patch=False):
++    """Package changes always fail. A Python patch difference stays conditional."""
++    require(actual['packages'] == {p: expected[p] for p in x.PACKAGES},
++            'Modeling package versions differ; reproduce in the recorded environment')
++    exact = actual['python'] == expected['python']
++    require(exact or (allow_patch and actual['python'].split('.')[:2]
++                     == expected['python'].split('.')[:2]),
++            'Python differs; use the recorded version or explicitly allow a patch-only reproduction')
++    return exact
++
++
++def retained_inputs(root, config, record):
++    """Pin the retained release, not files named final (the rejected follow-up)."""
++    retained = json.loads((root / RETAINED).read_text())
++    require(retained['retained_candidate'] == record['final_candidate'] == 'A2-C03'
++            and retained['followup_retained'] is False,
++            'Retained candidate differs; review the reproduction plan')
++    require(record['code_sha256'] == x.code_hashes()
++            and record['config_sha256'] == sha256(root / x.CONFIG),
++            'Historical fitting code or configuration differs')
++    require(sha256(root / x.CAMPAIGN / 'run_receipt.json') == retained['receipt_sha256'],
++            'Historical receipt hash differs')
++    for key in ('model', 'preprocessing', 'validation_predictions'):
++        item = retained[key]
++        path = (root / item['path']).resolve()
++        require(path.is_relative_to(root.resolve()) and sha256(path) == item['sha256'],
++                f'Retained {key} path or hash differs')
++    candidate = next(r for r in record['results'] if r['id'] == 'A2-C03')
++    declared = next(c for c in config['initial_candidates'] if c['id'] == 'A2-C03')
++    require(candidate['parameters'] == x.model_params(config, declared)
++            and candidate['parameters']['max_depth'] == retained['max_depth'] == 7
++            and candidate['parameters']['learning_rate'] == retained['learning_rate'] == .05,
++            'Frozen model settings differ')
++    require(record['releases']['initial']['candidate_id'] == 'A2-C03',
++            'Retained release identity differs')
++    return retained, candidate['parameters']
++
++
++def run(output, allow_patch=False):
++    output = Path(output).resolve()
++    require(not output.is_relative_to(x.ROOT), 'Write outside the clean checkout')
++    require(not output.exists(), 'Output already exists; use a new directory')
++    require(x.git('status', '--porcelain', '--untracked-files=all') == '',
++            'Use a clean committed checkout, including untracked files')
++    output.mkdir(parents=True)
++    receipt = {'status': 'RUNNING', 'started_utc': x.now(),
++               'git_commit': x.git('rev-parse', 'HEAD'), 'git_status_before': '',
++               'command': [sys.executable, '-B', '-m', 'scripts.reproduce_october_gate4', *sys.argv[1:]],
++               'owner': 'Hector Baeza', 'purpose': 'Unchanged Gate 4 reproduction; no tuning or selection',
++               'test_targets_read': 0, 'test_predictions_generated': 0,
++               'cv_fits': 0, 'candidate_refits': 0}
++    tick = perf_counter()
++    try:
++        config = json.loads((x.ROOT / x.CONFIG).read_text())
++        historical = json.loads((x.ROOT / x.CAMPAIGN / 'run_receipt.json').read_text())
++        actual = x.actual_environment()
++        receipt.update(environment=actual, expected_environment=config['environment'],
++                       platform=platform.platform(), machine=platform.machine(),
++                       python_patch_difference_allowed=allow_patch)
++        exact = environment_check(config['environment'], actual, allow_patch)
++        receipt['exact_environment_match'] = exact
++        for name, arguments in [('environment-freeze.txt', ['freeze', '--all']),
++                                ('environment-check.txt', ['check'])]:
++            check = subprocess.run([sys.executable, '-m', 'pip', *arguments],
++                                   capture_output=True, text=True)
++            (output / name).write_text(check.stdout + check.stderr)
++            require(check.returncode == 0, f'Environment inspection failed: {name}')
++        retained, params = retained_inputs(x.ROOT, config, historical)
++        receipt.update(retained_candidate='A2-C03', parameters=params,
++                       retained_manifest=retained, code_sha256=x.code_hashes(),
++                       driver_sha256=sha256(Path(__file__)), config_sha256=sha256(x.ROOT / x.CONFIG))
++        x.verify_input_hashes(config)
++        split, training, _folds = x.real_inputs(config)
++        receipt.update(source_sha256=split.source_sha256, manifest_sha256=split.manifest_sha256,
++                       cv_folds_sha256=config['inputs']['cv_folds_sha256'],
++                       manifest_id=split.manifest_id, training_claims=len(training),
++                       validation_claims=len(split.validation_ids), reserved_test_claims=len(split.test_ids))
++        baseline = run_baselines(output / 'baselines')
++        require(baseline['git_status_at_execution'] == '' and all(baseline['checks'].values()),
++                'Baseline rerun failed or was not clean')
++        receipt['baseline_run_id'] = baseline['run_id']
++        from xgboost import XGBRegressor
++        import xgboost
++        receipt['xgboost_build_info'] = xgboost.build_info()
++        prep = x.load_preprocessor()
++        fit_start = perf_counter()
++        transformed = prep.fit_transform(training[x.FEATURES])
++        model = XGBRegressor(**params)
++        receipt['candidate_refits'] = 1
++        model.fit(transformed, training.loss)
++        receipt['candidate_fit_seconds'] = perf_counter() - fit_start
++        # Validation is read only after the one frozen refit. Test is unsupported.
++        validation = x.read_partition(split, split.validation_ids)
++        native = prep.named_steps['native']
++        state = {'schema': x.FEATURES, 'continuous': x.CONTS, 'rare_min_count': 30,
++                 'rare_levels': native.rare_levels_, 'categories': native.categories_,
++                 'notebook_sha256': sha256(x.ROOT / x.NOTEBOOK)}
++        old_state = json.loads((x.ROOT / retained['preprocessing']['path']).read_text())
++        require(state == old_state, 'Training-fitted preprocessing differs from retained state')
++        pred = pd.DataFrame({'id': validation.index,
++                             'prediction': model.predict(prep.transform(validation[x.FEATURES]))})
++        model.save_model(output / 'retained_model.json')
++        x.write_json(output / 'retained_preprocessing.json', state, new=True)
++        pred.to_csv(output / 'retained_validation_predictions.csv', index=False, float_format='%.17g')
++        restored = XGBRegressor()
++        restored.load_model(output / 'retained_model.json')
++        require(np.array_equal(restored.predict(prep.transform(validation[x.FEATURES])), pred.prediction),
++                'Model serialization changed predictions')
++        disk_pred = pd.read_csv(output / 'retained_validation_predictions.csv', float_precision='round_trip')
++        truth = validation[['loss']].rename_axis('id').reset_index()
++        score = evaluate_mae(truth, disk_pred, split=split)
++        saved = pd.read_csv(x.ROOT / retained['validation_predictions']['path'], float_precision='round_trip')
++        # The existing evaluator validates historical coverage before comparison.
++        saved_score = evaluate_mae(truth, saved, split=split)
++        aligned = disk_pred.set_index('id').prediction.loc[saved.id].to_numpy()
++        gap = float(np.max(np.abs(aligned - saved.prediction.to_numpy())))
++        original_mae = historical['releases']['initial']['validation_mae']
++        require(math.isclose(saved_score['mae'], original_mae, abs_tol=1e-9, rel_tol=1e-12),
++                'Historical saved score differs from its receipt')
++        # This verifies reproduction, not an improvement claim. No retries/tuning.
++        matches = gap <= 1e-6 and abs(score['mae'] - original_mae) <= 1e-6
++        receipt.update(candidate_evaluation=score, historical_validation_mae=original_mae,
++                       max_prediction_difference=gap, predictions_match_within_1e_6=matches,
++                       preprocessing_matches=True,
++                       model_bytes_match=sha256(output / 'retained_model.json') == retained['model']['sha256'])
++        rows = [{'model': 'training_' + r['baseline_name'], 'validation_mae': r['mae'],
++                 'claims': r['evaluated_claim_count']} for r in baseline['results']]
++        rows.append({'model': 'retained_xgboost_A2-C03', 'validation_mae': score['mae'],
++                     'claims': score['evaluated_claim_count']})
++        pd.DataFrame(rows).to_csv(output / 'rerun_comparison.csv', index=False, float_format='%.17g')
++        tests = subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', 'tests', '-v'],
++                               cwd=x.ROOT, text=True, capture_output=True)
++        (output / 'tests.log').write_text(tests.stdout + tests.stderr)
++        receipt['test_exit_code'] = tests.returncode
++        require(tests.returncode == 0, 'Repository tests failed; see tests.log')
++        require(matches, 'Candidate predictions differ; report the discrepancy without retuning')
++        receipt['git_status_after'] = x.git('status', '--porcelain', '--untracked-files=all')
++        require(receipt['git_status_after'] == '', 'Reproduction changed the clean checkout')
++        receipt['status'] = 'PASS' if exact else 'CONDITIONAL_PYTHON_PATCH_MISMATCH'
++        receipt['remaining_work'] = [] if exact else [
++            'Repeat with Python 3.13.5 before claiming an exact environment match.']
++    except BaseException as exc:
++        receipt.update(status='FAILED', error=f'{type(exc).__name__}: {exc}')
++        raise
++    finally:
++        receipt.update(ended_utc=x.now(), elapsed_seconds=perf_counter() - tick)
++        receipt['artifact_sha256'] = {str(p.relative_to(output)): sha256(p)
++                                     for p in sorted(output.rglob('*')) if p.is_file()}
++        x.write_json(output / 'reproduction_receipt.json', receipt, new=True)
++    print(json.dumps({'status': receipt['status'], 'validation_mae': score['mae'],
++                      'max_prediction_difference': gap, 'output': str(output)}, indent=2))
++    return receipt
++
++
++if __name__ == '__main__':
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('--output', type=Path, required=True)
++    parser.add_argument('--allow-python-patch-difference', action='store_true',
++                        help='Record conditional evidence; never claim exact environment equivalence')
++    args = parser.parse_args()
++    run(args.output, args.allow_python_patch_difference)
+diff --git a/tests/test_october_gate4.py b/tests/test_october_gate4.py
+new file mode 100644
+index 0000000..685f9c2
+--- /dev/null
++++ b/tests/test_october_gate4.py
+@@ -0,0 +1,60 @@
++"""Guard the new reproduction entry point without training a real model."""
++from pathlib import Path
++import tempfile
++import unittest
++from unittest.mock import patch
++
++from scripts import reproduce_october_gate4 as g
++from scripts.evaluation import EvaluationError
++
++
++class Gate4Tests(unittest.TestCase):
++    def setUp(self):
++        self.expected = {'python': '3.13.5', **{p: '1.0' for p in g.x.PACKAGES}}
++        self.actual = {'python': '3.13.5', 'packages': {p: '1.0' for p in g.x.PACKAGES}}
++
++    def test_exact_environment(self):
++        self.assertTrue(g.environment_check(self.expected, self.actual))
++
++    def test_python_difference_fails_by_default(self):
++        self.actual['python'] = '3.13.2'
++        with self.assertRaises(EvaluationError):
++            g.environment_check(self.expected, self.actual)
++        self.assertFalse(g.environment_check(self.expected, self.actual, True))
++
++    def test_opt_in_cannot_allow_package_or_python_minor_changes(self):
++        self.actual['packages']['xgboost'] = '9.0'
++        with self.assertRaises(EvaluationError):
++            g.environment_check(self.expected, self.actual, True)
++        self.actual['packages']['xgboost'] = '1.0'
++        self.actual['python'] = '3.14.0'
++        with self.assertRaises(EvaluationError):
++            g.environment_check(self.expected, self.actual, True)
++
++    def test_dirty_checkout_stops_before_output_or_training(self):
++        with tempfile.TemporaryDirectory() as tmp, patch.object(g.x, 'git', return_value='?? draft.md'), \
++                patch.object(g.x, 'real_inputs') as inputs:
++            output = Path(tmp) / 'evidence'
++            with self.assertRaises(EvaluationError):
++                g.run(output)
++            self.assertFalse(output.exists())
++            inputs.assert_not_called()
++
++    def test_output_inside_checkout_is_rejected(self):
++        with self.assertRaises(EvaluationError):
++            g.run(g.x.ROOT / 'artifacts' / 'not-created')
++
++    def test_retained_followup_cannot_replace_depth_seven(self):
++        import json
++        retained = {'retained_candidate': 'A2-C06', 'followup_retained': True}
++        with tempfile.TemporaryDirectory() as tmp:
++            root = Path(tmp)
++            path = root / g.RETAINED
++            path.parent.mkdir(parents=True)
++            path.write_text(json.dumps(retained))
++            with self.assertRaises(EvaluationError):
++                g.retained_inputs(root, {}, {'final_candidate': 'A2-C06'})
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/tests/test_xgboost_runner.py b/tests/test_xgboost_runner.py
+index a1f47e5..3e806f2 100644
+--- a/tests/test_xgboost_runner.py
++++ b/tests/test_xgboost_runner.py
+@@ -62,6 +62,19 @@ def campaign(output, stage='FOLLOWUP_FROZEN'):
+ 
+ 
+ class RunnerTests(unittest.TestCase):
++    def setUp(self):
++        # These are workflow unit tests, not an environment certification.
++        # A matching fixture lets lock/stage tests reach the intended guard on
++        # any host. Individual mismatch tests still alter one recorded value.
++        config = json.loads((runner.ROOT / runner.CONFIG).read_text())
++        expected = config['environment']
++        fixture = {'python': expected['python'], 'implementation': 'CPython',
++                   'executable': '/synthetic/python',
++                   'packages': {p: expected[p] for p in runner.PACKAGES}}
++        mock = patch.object(runner, 'actual_environment', side_effect=lambda: deepcopy(fixture))
++        mock.start()
++        self.addCleanup(mock.stop)
++
+     def test_shared_training_metric_and_negative_prediction(self):
+         truth = pd.DataFrame({'id': [2, 1], 'loss': [10., 2.]})
+         pred = pd.DataFrame({'id': [1, 2], 'prediction': [-2., 8.]})

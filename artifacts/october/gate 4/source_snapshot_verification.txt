@@ -1,0 +1,6 @@
+The bundle contains this ref:
+aeee7320e3283d7254684eabdf20ba95b28b9f8b refs/heads/main
+The bundle requires this ref:
+692dd8f77fbea881a0640da5f7adae1083ea6178 
+The bundle uses this hash algorithm: sha1
+/Users/beck/Developer/Allstate-1C-predicting-auto-claims-severity/artifacts/october/gate 4/source_snapshot.bundle is okay
