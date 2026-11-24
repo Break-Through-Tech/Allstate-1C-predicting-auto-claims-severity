@@ -414,6 +414,55 @@ def write_task_summary(path, out, comparison, bins, tails, overfit, stable, fail
     path.write_text('\n'.join(lines))
 
 
+def candidate_decision(candidates, baselines, *, source_sha256, manifest_id, manifest_sha256, validation_count):
+    """Decide from verified evidence; policy-retained releases only, strict baselines.
+
+    Callers must first rescore saved predictions with the shared evaluator and
+    validate provenance. No diagnostic metric participates in this decision.
+    """
+    expected = {'source_sha256': source_sha256, 'manifest_id': manifest_id,
+                'manifest_sha256': manifest_sha256, 'validation_claim_count': validation_count}
+    def valid(row):
+        value = row.get('validation_mae')
+        return (row.get('verified') is True and isinstance(value, (float, int))
+                and not isinstance(value, bool) and math.isfinite(value) and value >= 0
+                and all(row.get(k) == v for k, v in expected.items())
+                and row.get('units') == 'original loss units')
+    if not isinstance(baselines, dict) or set(baselines) != {'mean', 'median'} or not all(valid(b) for b in baselines.values()):
+        return {'status': 'INSUFFICIENT_EVIDENCE', 'selected_run_id': None, 'rationale': 'Missing or invalid baseline evidence', 'candidates': []}
+    rows = []
+    for candidate in candidates:
+        row = dict(candidate)
+        eligible = valid(row)
+        row.update(evaluation_eligibility='ELIGIBLE' if eligible else 'INELIGIBLE',
+                   beats_mean=False, beats_median=False, decision_status='INELIGIBLE', decision_rationale=row.get('failure_reason'))
+        for name, baseline in baselines.items():
+            row[f'{name}_baseline_mae'] = baseline['validation_mae']
+            delta, pct = baseline_changes(row['validation_mae'], baseline['validation_mae']) if eligible else (None, None)
+            row[f'delta_vs_{name}'] = delta
+            row[f'pct_improvement_vs_{name}'] = pct
+            row[f'beats_{name}'] = bool(eligible and row['validation_mae'] < baseline['validation_mae'])
+        if eligible:
+            if not row.get('policy_retained', True):
+                row.update(decision_status='NOT_RETAINED_BY_EXISTING_POLICY', decision_rationale='Valid comparison evidence; existing training-CV retention rule excludes this release')
+            elif row['beats_mean'] and row['beats_median']:
+                row.update(decision_status='QUALIFIES', decision_rationale='Strictly beats both verified baselines on identical validation claims')
+            else:
+                row.update(decision_status='DOES_NOT_BEAT_BOTH', decision_rationale='Strict improvement over both baselines is required; a tie does not qualify')
+        rows.append(row)
+    qualifying = sorted((r for r in rows if r['decision_status'] == 'QUALIFIES'), key=lambda r: (r['validation_mae'], r['run_id']))
+    if qualifying:
+        best = qualifying[0]
+        if len(qualifying) > 1 and abs(best['validation_mae'] - qualifying[1]['validation_mae']) <= max(math.ulp(best['validation_mae']), math.ulp(qualifying[1]['validation_mae'])):
+            return {'status': 'INSUFFICIENT_EVIDENCE', 'selected_run_id': None, 'rationale': 'Numerically tied eligible candidates; team policy needed', 'candidates': rows}
+        best['decision_status'] = 'PROVISIONAL_CANDIDATE'
+        return {'status': 'PROVISIONAL_CANDIDATE', 'selected_run_id': best['run_id'],
+                'rationale': 'Lowest validation MAE among policy-retained eligible candidates, strictly below both constants', 'candidates': rows}
+    incomplete = not rows or any(r['evaluation_eligibility'] == 'INELIGIBLE' for r in rows)
+    return {'status': 'INSUFFICIENT_EVIDENCE' if incomplete else 'NO_SELECTION', 'selected_run_id': None,
+            'rationale': 'Incomplete evaluation evidence' if incomplete else 'No policy-retained eligible candidate strictly beats both constants', 'candidates': rows}
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-root', type=Path, default=Path('artifacts/october/gate 3/comparisons'))
